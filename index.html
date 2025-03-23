@@ -445,46 +445,47 @@
     <script src="notes/assets/vendor/php-email-form/validate.js"></script>
     <script src="notes/assets/js/main.js"></script>
     <!-- SmtpJS -->
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
-    <script>
-        // Initialize AOS
-        if (typeof AOS !== 'undefined') {
-            AOS.init();
-        }
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+<script>
+    if (typeof AOS !== 'undefined') {
+        AOS.init();
+    }
 
-        // Toggle Feedback Popup
-        function toggleFeedbackForm() {
-            var popup = document.getElementById('feedbackPopup');
-            popup.classList.toggle('active');
-        }
+    function toggleFeedbackForm() {
+        var popup = document.getElementById('feedbackPopup');
+        popup.classList.toggle('active');
+    }
 
-        // Handle Form Submission with SmtpJS
-        document.getElementById('feedbackForm').addEventListener('submit', function(event) {
-            event.preventDefault();
+    document.getElementById('feedbackForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        console.log("Form submitted");
 
-            var formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                message: document.getElementById('message').value
-            };
+        var formData = {
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            message: document.getElementById('message').value
+        };
+        console.log("Form data:", formData);
 
-            Email.send({
-                SecureToken: "f1fe64a2-40d1-4b7b-9101-c451d9c3c692", // Replace with your SecureToken
-                To: "rshula49@gmail.com",
-                From: "rohitvendasta@gmail.com",
-                Subject: "New Feedback Submission - Notes Website",
-                Body: "Name: " + formData.name + "<br>Email: " + formData.email + "<br>Message: " + formData.message
-            }).then(
-                function(message) {
-                    document.getElementById('formMessage').innerHTML = '<span style="color:green;">Feedback sent successfully!</span>';
-                    document.getElementById('feedbackForm').reset();
-                    setTimeout(toggleFeedbackForm, 2000); // Auto-close after 2 seconds
-                },
-                function(error) {
-                    document.getElementById('formMessage').innerHTML = '<span style="color:red;">Failed to send feedback. Try again.</span>';
-                }
-            );
-        });
-    </script>
+        Email.send({
+            SecureToken: "c14f48ad-d289-4895-9278-b868a8f262a3", // Replace with the new token
+            To: "rohitvendasta@gmail.com",
+            From: "rohitvendasta@gmail.com",
+            Subject: "New Feedback Submission - Notes Website",
+            Body: "Name: " + formData.name + "<br>Email: " + formData.email + "<br>Message: " + formData.message
+        }).then(
+            function(message) {
+                console.log("Success:", message);
+                document.getElementById('formMessage').innerHTML = '<span style="color:green;">Feedback sent successfully!</span>';
+                document.getElementById('feedbackForm').reset();
+                setTimeout(toggleFeedbackForm, 2000);
+            },
+            function(error) {
+                console.error("Error:", error);
+                document.getElementById('formMessage').innerHTML = '<span style="color:red;">Failed to send feedback: ' + error + '</span>';
+            }
+        );
+    });
+</script>
 </body>
 </html>
