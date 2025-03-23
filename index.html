@@ -26,6 +26,47 @@
       <!-- Add EmailJS SDK -->
       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
       <style>
+         .feedback-btn {
+   display: inline-flex;
+   align-items: center;
+   padding: 10px 20px;
+   background-image: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+   background-size: 200% auto;
+   color: white;
+   font-weight: bold;
+   font-size: 16px;
+   text-transform: uppercase;
+   border-radius: 8px;
+   cursor: pointer;
+   transition: all 0.3s ease;
+   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+   animation: pulse 2s infinite ease-in-out;
+}
+.feedback-btn:hover {
+   background-position: right center;
+   transform: scale(1.05);
+   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+   color: white;
+   text-decoration: none;
+}
+.feedback-icon {
+   margin-right: 8px;
+   font-size: 18px;
+}
+@keyframes pulse {
+   0% { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); }
+   50% { box-shadow: 0 4px 16px rgba(0, 210, 255, 0.4); }
+   100% { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); }
+}
+@media (max-width: 576px) {
+   .feedback-btn {
+      padding: 8px 16px;
+      font-size: 14px;
+   }
+   .feedback-icon {
+      font-size: 16px;
+   }
+}
          .btn-grad-blue {
             background-image: linear-gradient(to right, #00d2ff 0%, #3a7bd5  51%, #00d2ff  100%);
             transition: 0.5s;
@@ -550,8 +591,12 @@
                            Developed by <a href="https://github.com/rohitshukla001" target="_blank">Rohit Shukla</a> ↗
                            <img src="https://info.rohitshukla.net/images/project/rohitshukla.jpg" alt="Rohit Shukla" class="developer-image">
                         </span>
-                        <span class="feedback-link btn btn-sm btn-warning" onclick="toggleFeedbackForm()">Share Your Feedback</span>
-                     </p>
+<p>
+      <span class="feedback-btn" onclick="toggleFeedbackForm()">
+         <span class="feedback-icon">✉</span> Share Your Feedback
+      </span>
+   </p>
+                                             </p>
                   </div>
                </div>
             </div>
