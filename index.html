@@ -63,6 +63,24 @@
          color: black;
          text-decoration: none;
          }
+         /* Hover effect for footer */
+         .developer-container {
+            position: relative;
+            display: inline-block;
+         }
+         .developer-image {
+            display: none;
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px; /* Adjust size as needed */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+         }
+         .developer-container:hover .developer-image {
+            display: block;
+         }
       </style>
    </head>
    <body>
@@ -456,7 +474,13 @@
                         </div>
                      </div>
                   </div>
-                  <p>Developed by  <a href="https://github.com/rohitshukla001" target="_blank" > Rohit shukla</a> ↗</p>
+                  <!-- Footer with Hover Image -->
+                  <p>
+                     <span class="developer-container">
+                        Developed by <a href="https://github.com/rohitshukla001" target="_blank">Rohit Shukla</a> ↗
+                        <img src="https://info.rohitshukla.net/images/project/rohitshukla.jpg" alt="Rohit Shukla" class="developer-image">
+                     </span>
+                  </p>
                </div>
             </div>
          </section>
