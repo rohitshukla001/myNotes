@@ -6,18 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
     <title>Notes Website</title>
-    <link rel="icon" href="notes/favi.png" type="image/png">
+    <link rel="shortcut icon" href="notes/favi.png" />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Montserrat:wght@500;700&display=swap" rel="stylesheet" />
     <style>
         body {
             font-family: 'Open Sans', sans-serif;
             background: #f8f9fa;
         }
-        h1, h2, h3 {
-            font-family: 'Montserrat', sans-serif;
-        }
         #header {
-            background: linear-gradient(to right, #1a1a1a, #333333);
+            background-color: #000000;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
         .navbar .btn {
@@ -29,22 +26,18 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             background: #fff;
             padding: 10px;
-            transition: transform 0.3s;
-        }
-        .member:hover {
-            transform: translateY(-5px);
         }
         .img-fluid {
-            max-height: 150px;
+            max-height: 200px;
             object-fit: cover;
-            border-radius: 5px;
         }
         .btn-grad-blue {
             background-image: linear-gradient(to right, #00d2ff 0%, #3a7bd5 51%, #00d2ff 100%);
             transition: 0.5s;
             background-size: 200% auto;
             color: white;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 20px #eee;
+            display: block;
             font-size: 14px;
             width: 100%;
             margin: 5px 0;
@@ -59,7 +52,8 @@
             transition: 0.5s;
             background-size: 200% auto;
             color: black;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 20px #eee;
+            display: block;
             font-size: 14px;
             width: 100%;
             margin: 5px 0;
@@ -74,7 +68,8 @@
             transition: 0.5s;
             background-size: 200% auto;
             color: black;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 20px #eee;
+            display: block;
             font-size: 14px;
             width: 100%;
             margin: 5px 0;
@@ -89,10 +84,10 @@
             font-size: 16px;
         }
         footer {
-            background: #1a1a1a;
-            color: #fff;
-            padding: 20px 0;
             text-align: center;
+            padding: 20px 0;
+            background: #000000;
+            color: #fff;
         }
         footer a {
             color: #00d2ff;
@@ -106,12 +101,12 @@
 <body>
     <header id="header" class="header d-flex align-items-center">
         <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-            <a href="#" class="logo d-flex align-items-center">
+            <a onClick="window.location.reload()" class="logo d-flex align-items-center">
                 <img src="Images/noteslogo.png" width="200" alt="Logo" class="logo" />
             </a>
             <nav id="navbar" class="navbar">
                 <ul class="text-white">
-                    <li><a class="btn btn-sm p-2 text-white" href="#">Home</a></li>
+                    <li><a class="btn btn-sm p-2 text-white" onClick="window.location.reload()" role="button">Home</a></li>
                     <li><a class="btn btn-sm p-2 text-white" href="#notes">Notes</a></li>
                 </ul>
             </nav>
@@ -133,23 +128,23 @@
                                 </h3>
                                 <div id="faq-content-java" class="accordion-collapse collapse" data-bs-parent="#faqlist-java">
                                     <div class="accordion-body">
-                                        <ul class="list-group border-0">
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad-blue" href="/notes/Java Terminology.pdf">Terminology</a></li>
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad-blue" href="/notes/Collections.pdf">Collections</a></li>
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad-blue" href="/notes/oops.pdf">OOPs</a></li>
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad-yellow" href="https://whimsical.com/java-F3wA8hstGi42DU8BZrsCUL">RoadMap</a></li>
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad-yellow" href="https://drive.google.com/file/d/1rdIMUCiW1yjA6_irliXu19zC_GPEcR66/view">Material</a></li>
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad-yellow" href="https://www.edureka.co/blog/java-collections/">Collection</a></li>
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad" href="/notes/roadmap.pdf">All Roadmap</a></li>
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad" href="/notes/backend.pdf">Backend Map</a></li>
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad" href="/notes/java.pdf">Java Roadmap</a></li>
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad-yellow" href="/notes/Core-JAVA.pdf">Core JAVA</a></li>
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad-yellow" href="https://enos.itcollege.ee/~jpoial/allalaadimised/reading/Java-Interview-Questions.pdf">Core JAVA Ques.</a></li>
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad-yellow" href="/notes/Core_java_interview_questions_and_answer.pdf">JAVA Ques. 2</a></li>
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad-yellow" href="https://www.geeksforgeeks.org/java-interview-questions/">GFG Ques. 3</a></li>
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad" href="/notes/Core Java Interview Questions.pdf">JAVA Ques. 4</a></li>
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad" href="https://www.javatpoint.com/corejava-interview-questions">Core JAVA Ques</a></li>
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad" href="https://www.guru99.com/java-interview-questions-answers.html">Guru99 Ques</a></li>
+                                        <ul class="list-group border">
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-blue" href="/notes/Java Terminology.pdf" role="button">Terminology</a></li>
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-blue" href="/notes/Collections.pdf" role="button">Collections</a></li>
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-blue" href="/notes/oops.pdf" role="button">Oops</a></li>
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-yellow" href="https://whimsical.com/java-F3wA8hstGi42DU8BZrsCUL" role="button">RoadMap</a></li>
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-yellow" href="https://drive.google.com/file/d/1rdIMUCiW1yjA6_irliXu19zC_GPEcR66/view" role="button">Material</a></li>
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-yellow" href="https://www.edureka.co/blog/java-collections/" role="button">Collection</a></li>
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad" href="/notes/roadmap.pdf" role="button">All Roadmap</a></li>
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad" href="/notes/backend.pdf" role="button">Backend map</a></li>
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad" href="/notes/java.pdf" role="button">Java Roadmap</a></li>
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-yellow" href="/notes/Core-JAVA.pdf" role="button">Core JAVA</a></li>
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-yellow" href="https://enos.itcollege.ee/~jpoial/allalaadimised/reading/Java-Interview-Questions.pdf" role="button">Core JAVA Ques.</a></li>
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-yellow" href="/notes/Core_java_interview_questions_and_answer.pdf" role="button">JAVA Ques. 2</a></li>
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-yellow" href="https://www.geeksforgeeks.org/java-interview-questions/" role="button">GFG Ques. 3</a></li>
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad" href="/notes/Core Java Interview Questions.pdf" role="button">JAVA Ques. 4</a></li>
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad" href="https://www.javatpoint.com/corejava-interview-questions" role="button">Core JAVA Ques</a></li>
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad" href="https://www.guru99.com/java-interview-questions-answers.html" role="button">Guru99 Ques</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -170,10 +165,10 @@
                                 </h3>
                                 <div id="faq-content-dsa" class="accordion-collapse collapse" data-bs-parent="#faqlist-dsa">
                                     <div class="accordion-body">
-                                        <ul class="list-group border-0">
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad-yellow" href="docs/DSA_COMPLETE ROADMAAP.pdf">Roadmap</a></li>
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad-yellow" href="docs/250+DSA QUESTIONS FOR PLACEMENTS.pdf">Practice Questions</a></li>
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad-yellow" href="https://whimsical.com/master-roadmap-SzYF2dY2SqwtPQfY5A3mZS">Master Roadmap</a></li>
+                                        <ul class="list-group border">
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-yellow" href="docs/DSA_COMPLETE ROADMAAP.pdf" role="button">Roadmap</a></li>
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-yellow" href="docs/250+DSA QUESTIONS FOR PLACEMENTS.pdf" role="button">Practice Questions</a></li>
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-yellow" href="https://whimsical.com/master-roadmap-SzYF2dY2SqwtPQfY5A3mZS" role="button">Master RoadMap</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -194,8 +189,8 @@
                                 </h3>
                                 <div id="faq-content-ewm" class="accordion-collapse collapse" data-bs-parent="#faqlist-ewm">
                                     <div class="accordion-body">
-                                        <ul class="list-group border-0">
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad-blue" href="notes/Exception Handling.pdf">Exception Handling</a></li>
+                                        <ul class="list-group border">
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-blue" href="notes/Exception Handling.pdf" role="button">Exception Handling</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -216,10 +211,10 @@
                                 </h3>
                                 <div id="faq-content-chm" class="accordion-collapse collapse" data-bs-parent="#faqlist-chm">
                                     <div class="accordion-body">
-                                        <ul class="list-group border-0">
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad-yellow" href="https://www.tutorialspoint.com/hibernate/hibernate_tutorial.pdf">Hibernate 1</a></li>
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad-yellow" href="https://whimsical.com/master-roadmap-SzYF2dY2SqwtPQfY5A3mZS">Master Roadmap</a></li>
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad-blue" href="notes/Multithreading.pdf">Multithreading</a></li>
+                                        <ul class="list-group border">
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-yellow" href="https://www.tutorialspoint.com/hibernate/hibernate_tutorial.pdf" role="button">Hibernate 1</a></li>
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-yellow" href="https://whimsical.com/master-roadmap-SzYF2dY2SqwtPQfY5A3mZS" role="button">Master RoadMap</a></li>
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-blue" href="notes/Multithreading.pdf" role="button">Multithreading</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -240,9 +235,9 @@
                                 </h3>
                                 <div id="faq-content-sql" class="accordion-collapse collapse" data-bs-parent="#faqlist-sql">
                                     <div class="accordion-body">
-                                        <ul class="list-group border-0">
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad-yellow" href="notes/PostgreSQL.pdf">PostgreSQL</a></li>
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad-blue" href="notes/SQL.pdf">SQL</a></li>
+                                        <ul class="list-group border">
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-yellow" href="notes/PostgreSQL.pdf" role="button">PostgreSQL</a></li>
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-blue" href="notes/SQL.pdf" role="button">SQL</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -263,8 +258,8 @@
                                 </h3>
                                 <div id="faq-content-web" class="accordion-collapse collapse" data-bs-parent="#faqlist-web">
                                     <div class="accordion-body">
-                                        <ul class="list-group border-0">
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad-yellow" href="/notes/HTML Interview Questions.pdf">HTML Questions</a></li>
+                                        <ul class="list-group border">
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-yellow" href="/notes/HTML Interview Questions.pdf" role="button">HTML Questions</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -285,16 +280,16 @@
                                 </h3>
                                 <div id="faq-content-interview" class="accordion-collapse collapse" data-bs-parent="#faqlist-interview">
                                     <div class="accordion-body">
-                                        <ul class="list-group border-0">
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad-yellow" href="/notes/hr_round_equestion.pdf">HR Round</a></li>
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad-yellow" href="https://testbook.com/interview/servlet-interview-questions">Servlet Questions</a></li>
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad-yellow" href="https://www.edureka.co/blog/interview-questions/servlet-interview-questions/">Servlet Questions 1</a></li>
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad-yellow" href="https://www.interviewbit.com/servlet-interview-questions/">Servlet Questions 2</a></li>
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad-yellow" href="https://career.guru99.com/top-50-servlet-interview-questions/">Servlet Questions 3</a></li>
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad-yellow" href="https://www.tutorialspoint.com/servlets/pdf/servlets_interview_questions.pdf">Servlet Questions 4</a></li>
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad" href="/notes/JAVA_UNIT-4_NOTES">Java Unit Notes</a></li>
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad" href="/notes/java_collections_1">Java Collections 1</a></li>
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad" href="/notes/java_collections_2">Java Collections 2</a></li>
+                                        <ul class="list-group border">
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-yellow" href="/notes/hr_round_equestion.pdf" role="button">HR Round</a></li>
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-yellow" href="https://testbook.com/interview/servlet-interview-questions" role="button">Servlet Questions</a></li>
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-yellow" href="https://www.edureka.co/blog/interview-questions/servlet-interview-questions/" role="button">Servlet Questions 1</a></li>
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-yellow" href="https://www.interviewbit.com/servlet-interview-questions/" role="button">Servlet Questions 2</a></li>
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-yellow" href="https://career.guru99.com/top-50-servlet-interview-questions/" role="button">Servlet Questions 3</a></li>
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-yellow" href="https://www.tutorialspoint.com/servlets/pdf/servlets_interview_questions.pdf" role="button">Servlet Questions 4</a></li>
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad" href="/notes/JAVA_UNIT-4_NOTES" role="button">Java Unit Notes</a></li>
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad" href="/notes/java_collections_1" role="button">Java collections 1</a></li>
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad" href="/notes/java_collections_2" role="button">Java collections 2</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -315,9 +310,9 @@
                                 </h3>
                                 <div id="faq-content-jsreact" class="accordion-collapse collapse" data-bs-parent="#faqlist-jsreact">
                                     <div class="accordion-body">
-                                        <ul class="list-group border-0">
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad-yellow" href="https://medium.com/@rajanraj8979/roadmap-for-react-js-for-beginners-to-advance-522ce3588838">React Roadmap-1</a></li>
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad-yellow" href="https://learningdaily.dev/the-best-react-developer-roadmap-for-2024-1aaf406c5a32">React Roadmap-2</a></li>
+                                        <ul class="list-group border">
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-yellow" href="https://medium.com/@rajanraj8979/roadmap-for-react-js-for-beginners-to-advance-522ce3588838" role="button">React roadmap-1</a></li>
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-yellow" href="https://learningdaily.dev/the-best-react-developer-roadmap-for-2024-1aaf406c5a32" role="button">React roadmap-2</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -338,8 +333,8 @@
                                 </h3>
                                 <div id="faq-content-devops" class="accordion-collapse collapse" data-bs-parent="#faqlist-devops">
                                     <div class="accordion-body">
-                                        <ul class="list-group border-0">
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad-yellow" href="https://www.tutorialspoint.com/postman/postman_tutorial.pdf">Postman Tutorial</a></li>
+                                        <ul class="list-group border">
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-yellow" href="https://www.tutorialspoint.com/postman/postman_tutorial.pdf" role="button">Postman Tutorial</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -360,11 +355,11 @@
                                 </h3>
                                 <div id="faq-content-go" class="accordion-collapse collapse" data-bs-parent="#faqlist-go">
                                     <div class="accordion-body">
-                                        <ul class="list-group border-0">
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad-yellow" href="/notes/RoadmapGolang.pdf">Golang Roadmap</a></li>
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad" href="/notes/golang_tutorial.pdf">Golang Tutorial</a></li>
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad" href="/notes/Angular.pdf">Angular</a></li>
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad-blue" href="/notes/Temporal_workflow.pdf">Temporal Workflow</a></li>
+                                        <ul class="list-group border">
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-yellow" href="/notes/RoadmapGolang.pdf" role="button">Golang Roadmap</a></li>
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad" href="/notes/golang_tutorial.pdf" role="button">Golang Tutorial</a></li>
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad" href="/notes/Angular.pdf" role="button">Angular</a></li>
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-blue" href="/notes/Temporal_workflow.pdf" role="button">Temporal workflow</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -385,11 +380,11 @@
                                 </h3>
                                 <div id="faq-content-spring" class="accordion-collapse collapse" data-bs-parent="#faqlist-spring">
                                     <div class="accordion-body">
-                                        <ul class="list-group border-0">
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad-yellow" href="/notes/spring_boot_questions_and_answer.pdf">Spring & Spring Boot</a></li>
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad-yellow" href="https://leverageedu.com/blog/hi/common-english-words-used-in-daily-life-with-hindi-meaning/">Common Words in English</a></li>
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad-yellow" href="https://infinitylearn.com/surge/english/word-meaning-english-to-hindi/">100 Words in English</a></li>
-                                            <li class="list-group-item border-0"><a target="_blank" class="btn btn-grad-yellow" href="https://hindimediumhelp.blogspot.com/2020/12/English-Words-Hindi-Meaning.html">100+ Words</a></li>
+                                        <ul class="list-group border">
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-yellow" href="/notes/spring_boot_questions_and_answer.pdf" role="button">Spring & Spring boot</a></li>
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-yellow" href="https://leverageedu.com/blog/hi/common-english-words-used-in-daily-life-with-hindi-meaning/" role="button">Common English Words</a></li>
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-yellow" href="https://infinitylearn.com/surge/english/word-meaning-english-to-hindi/" role="button">100 Words in English</a></li>
+                                            <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-yellow" href="https://hindimediumhelp.blogspot.com/2020/12/English-Words-Hindi-Meaning.html" role="button">100+ Words</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -410,13 +405,13 @@
                                 </h3>
                                 <div id="faq-content-personal" class="accordion-collapse collapse" data-bs-parent="#faqlist-personal">
                                     <div class="accordion-body">
-                                        <ul class="list-group border-0">
-                                            <li class="list-group-item border-0">
+                                        <ul class="list-group border">
+                                            <li class="list-group-item border">
                                                 <input
-                                                    onclick="window.open('https://jstrieb.github.io/link-lock/#eyJ2IjoiMC4wLjEiLCJlIjoiOUdvTXNXZW9uQkZtODYyNnFkSE1lM01oUWxJY1drbFYvQURnYkdpVW9WbU1HdHB6c2ZTUGFEeEJtUmtHWkVjb2pLM0N2aWczYXJzM2ZVYTVrK2h6NXArb0FqWlpjM1hwN09BPSIsImgiOiI4MTcqKio3MiIsInMiOiIvRXluUjVxcUR4bFNuQXM3L05vcnVRPT0iLCJpIjoiOHhMVFY0MU4wdFBYdS9PTiJ9', 'mywindow', 'menubar=1,resizable=1,width=50%')"
+                                                    onclick="window.open('https://jstrieb.github.io/link-lock/#eyJ2IjoiMC4wLjEiLCJlIjoiOUdvTXNXZW9uQkZtODYyNnFkSE1lM01oUWxJY1drbFYvQURnYkdpVW9WbU1HdHB6c2ZTUGFEeEJtUmtHWkVjb2pLM0N2aWczYXJzM2ZVYTVrK2h6NXArb0FqWlpjM1hwN09BPSIsImgiOiI4MTcqKio3MiIsInMiOiIvRXluUjVxcUR4bFNuQXM3L05vcnVRPT0iLCJpIjoiOHhMVFY0MU4wdFBYdS9PTiJ9', 'mywindow', 'menubar=1,resizable=1, width=50%')"
                                                     type="button"
                                                     value="➕"
-                                                    class="btn btn-grad-blue"
+                                                    class="btn btn-sm btn-grad-blue"
                                                 />
                                             </li>
                                         </ul>
@@ -438,13 +433,5 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script>
-        document.querySelectorAll('a[href="#"]').forEach(anchor => {
-            anchor.addEventListener('click', (e) => {
-                e.preventDefault();
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        });
-    </script>
 </body>
 </html>
