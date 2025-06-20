@@ -261,6 +261,32 @@
          .scroll-top:hover {
             background: #00d2ff;
          }
+         /* Search Bar Styles */
+         .search-form {
+            display: flex;
+            align-items: center;
+         }
+         .search-form input {
+            border-radius: 20px 0 0 20px;
+            border: 1px solid #3a7bd5;
+            padding: 5px 10px;
+            font-size: 14px;
+         }
+         .search-form button {
+            border-radius: 0 20px 20px 0;
+            background-image: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+            border: none;
+            padding: 5px 10px;
+            color: white;
+         }
+         .search-form button:hover {
+            background-position: right center;
+         }
+         @media (max-width: 768px) {
+            .search-form input {
+               width: 120px;
+            }
+         }
       </style>
    </head>
    <body>
@@ -270,9 +296,15 @@
                <img src="Images/noteslogo.png" width="200" alt="Logo" class="logo" />
             </a>
             <nav id="navbar" class="navbar">
-               <ul class="text-white">
+               <ul class="text-white d-flex align-items-center">
                   <li><a class="btn btn-sm p-2 text-white" onClick="window.location.reload()" role="button">Home</a></li>
                   <li><a class="btn btn-sm p-2 text-white" href="#notes">Notes</a></li>
+                  <li>
+                     <form class="search-form">
+                        <input type="text" id="searchInput" placeholder="Search notes..." />
+                        <button type="submit"><i class="bi bi-search"></i></button>
+                     </form>
+                  </li>
                </ul>
             </nav>
          </div>
@@ -282,7 +314,7 @@
             <div class="container" data-aos="fade-up">
                <div class="row gy-4">
                   <!-- Java Section -->
-                  <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+                  <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="200">
                      <div class="member">
                         <img src="Images\java_image.png" class="img-fluid" alt="JAVA" />
                         <hr />
@@ -332,7 +364,7 @@
                      </div>
                   </div>
                   <!-- DSA Section -->
-                  <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+                  <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="100">
                      <div class="member">
                         <img src="Images\dsa_image.png" class="img-fluid" alt="DSA" />
                         <hr />
@@ -361,9 +393,9 @@
                      </div>
                   </div>
                   <!-- EWM Section -->
-                  <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+                  <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="100">
                      <div class="member">
-                        <img src="Images\EWM.png" class="img-fluid" alt="EWM" />
+                        <img src="Images\EWM.png" class appear="no" class="img-fluid" alt="EWM" />
                         <hr />
                         <div class="container" data-aos="fade-up">
                            <div class="accordion accordion-flush" id="faqlist" data-aos="fade-up" data-aos-delay="100">
@@ -384,7 +416,7 @@
                      </div>
                   </div>
                   <!-- CHM Section -->
-                  <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+                  <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="100">
                      <div class="member">
                         <img src="Images\CHM.png" class="img-fluid" alt="CHM" />
                         <hr />
@@ -418,7 +450,7 @@
                <!-- SQL Section -->
                <div class="container" style="margin-top:15px;" data-aos="fade-up">
                   <div class="row gy-4">
-                     <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+                     <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="100">
                         <div class="member">
                            <img src="Images\sql_image.png" class="img-fluid" alt="SQL" />
                            <hr />
@@ -442,7 +474,7 @@
                         </div>
                      </div>
                      <!-- Web Technology Section -->
-                     <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+                     <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="200">
                         <div class="member">
                            <img src="Images\web_image.png" class="img-fluid" alt="Web Technology" />
                            <hr />
@@ -467,7 +499,7 @@
                         </div>
                      </div>
                      <!-- Interview Section -->
-                     <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+                     <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="300">
                         <div class="member">
                            <img src="Images\interview_image.png" class="img-fluid" alt="Interview" />
                            <hr />
@@ -512,7 +544,7 @@
                         </div>
                      </div>
                      <!-- JavaScript/React Section -->
-                     <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
+                     <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="400">
                         <div class="member">
                            <img src="Images\JavaScript_react.png" class="img-fluid" alt="Left Notes" />
                            <hr />
@@ -546,7 +578,7 @@
                <!-- DevOps Section -->
                <div class="container" style="margin-top:15px;" data-aos="fade-up">
                   <div class="row gy-4">
-                     <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+                     <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="100">
                         <div class="member">
                            <img src="Images\Devops_Img.png" class="img-fluid" alt="DevOps" />
                            <hr />
@@ -571,7 +603,7 @@
                         </div>
                      </div>
                      <!-- Go Section -->
-                     <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+                     <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="300">
                         <div class="member">
                            <img src="Images\Go.png" class="img-fluid" alt="Go" />
                            <hr />
@@ -605,7 +637,7 @@
                         </div>
                      </div>
                      <!-- Spring Section -->
-                     <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
+                     <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="400">
                         <div class="member">
                            <img src="Images\spring_image.png" class="img-fluid" alt="Spring" />
                            <hr />
@@ -633,7 +665,7 @@
                         </div>
                      </div>
                      <!-- Personal Section -->
-                     <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
+                     <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="400">
                         <div class="member">
                            <img src="Images\personal_image.png" class="img-fluid" alt="Left Notes" />
                            <hr />
@@ -746,6 +778,26 @@
                   console.error("Error:", error);
                   document.getElementById('formMessage').innerHTML = '<span style="color:red;">Failed to send feedback: ' + error.text + '</span>';
                });
+         });
+
+         // Search functionality
+         document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.trim().toLowerCase();
+            const cards = document.querySelectorAll('.card-section');
+            
+            cards.forEach(card => {
+               const buttons = card.querySelectorAll('.list-group-item a');
+               let hasMatch = false;
+               
+               buttons.forEach(button => {
+                  const text = button.textContent.trim().toLowerCase();
+                  if (text.includes(searchTerm)) {
+                     hasMatch = true;
+                  }
+               });
+               
+               card.style.display = hasMatch || searchTerm === '' ? '' : 'none';
+            });
          });
       </script>
    </body>
