@@ -300,7 +300,7 @@
                   <li><a class="btn btn-sm p-2 text-white" onClick="window.location.reload()" role="button">Home</a></li>
                   <li><a class="btn btn-sm p-2 text-white" href="#notes">Notes</a></li>
                   <li>
-                     <form class="search-form">
+                     <form class="search-form" onsubmit="return false;">
                         <input type="text" id="searchInput" placeholder="Search notes..." />
                         <button type="submit"><i class="bi bi-search"></i></button>
                      </form>
@@ -312,19 +312,19 @@
       <div>
          <section id="notes" class="jumbotron team">
             <div class="container" data-aos="fade-up">
-               <div class="row gy-4">
+               <div class="row gy-4" id="cardContainer">
                   <!-- Java Section -->
                   <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="200">
                      <div class="member">
                         <img src="Images\java_image.png" class="img-fluid" alt="JAVA" />
                         <hr />
                         <div class="container" data-aos="fade-up">
-                           <div class="accordion accordion-flush" id="faqlist" data-aos="fade-up" data-aos-delay="100">
+                           <div class="accordion accordion-flush" id="faqlist-java">
                               <div class="accordion-item">
                                  <h3 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-5"></button>
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-java"></button>
                                  </h3>
-                                 <div id="faq-content-5" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                                 <div id="faq-content-java" class="accordion-collapse collapse" data-bs-parent="#faqlist-java">
                                     <div class="accordion-body">
                                        <ul class="list-group border">
                                           <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-blue" href="/notes/Java Terminology.pdf" role="button">Terminology</a></li>
@@ -369,12 +369,12 @@
                         <img src="Images\dsa_image.png" class="img-fluid" alt="DSA" />
                         <hr />
                         <div class="container" data-aos="fade-up">
-                           <div class="accordion accordion-flush" id="faqlist" data-aos="fade-up" data-aos-delay="100">
+                           <div class="accordion accordion-flush" id="faqlist-dsa">
                               <div class="accordion-item">
                                  <h3 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-5"></button>
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-dsa"></button>
                                  </h3>
-                                 <div id="faq-content-5" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                                 <div id="faq-content-dsa" class="accordion-collapse collapse" data-bs-parent="#faqlist-dsa">
                                     <div class="accordion-body">
                                        <ul class="list-group">
                                           <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="docs/DSA_COMPLETE ROADMAAP.pdf" role="button">Roadmap</a></li>
@@ -395,15 +395,15 @@
                   <!-- EWM Section -->
                   <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="100">
                      <div class="member">
-                        <img src="Images\EWM.png" class appear="no" class="img-fluid" alt="EWM" />
+                        <img src="Images\EWM.png" class="img-fluid" alt="EWM" />
                         <hr />
                         <div class="container" data-aos="fade-up">
-                           <div class="accordion accordion-flush" id="faqlist" data-aos="fade-up" data-aos-delay="100">
+                           <div class="accordion accordion-flush" id="faqlist-ewm">
                               <div class="accordion-item">
                                  <h3 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-5"></button>
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-ewm"></button>
                                  </h3>
-                                 <div id="faq-content-5" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                                 <div id="faq-content-ewm" class="accordion-collapse collapse" data-bs-parent="#faqlist-ewm">
                                     <div class="accordion-body">
                                        <ul class="list-group">
                                           <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-blue" href="notes/Exception Handling.pdf" role="button">Exception Handling</a></li>
@@ -421,12 +421,12 @@
                         <img src="Images\CHM.png" class="img-fluid" alt="CHM" />
                         <hr />
                         <div class="container" data-aos="fade-up">
-                           <div class="accordion accordion-flush" id="faqlist" data-aos="fade-up" data-aos-delay="100">
+                           <div class="accordion accordion-flush" id="faqlist-chm">
                               <div class="accordion-item">
                                  <h3 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-5"></button>
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-chm"></button>
                                  </h3>
-                                 <div id="faq-content-5" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                                 <div id="faq-content-chm" class="accordion-collapse collapse" data-bs-parent="#faqlist-chm">
                                     <div class="accordion-body">
                                        <ul class="list-group">
                                           <li class="list-group-item border">
@@ -449,18 +449,18 @@
             <div>
                <!-- SQL Section -->
                <div class="container" style="margin-top:15px;" data-aos="fade-up">
-                  <div class="row gy-4">
+                  <div class="row gy-4" id="cardContainer2">
                      <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="100">
                         <div class="member">
                            <img src="Images\sql_image.png" class="img-fluid" alt="SQL" />
                            <hr />
                            <div class="container" data-aos="fade-up">
-                              <div class="accordion accordion-flush" id="faqlist" data-aos="fade-up" data-aos-delay="100">
+                              <div class="accordion accordion-flush" id="faqlist-sql">
                                  <div class="accordion-item">
                                     <h3 class="accordion-header">
-                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-4"></button>
+                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-sql"></button>
                                     </h3>
-                                    <div id="faq-content-4" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                                    <div id="faq-content-sql" class="accordion-collapse collapse" data-bs-parent="#faqlist-sql">
                                        <div class="accordion-body">
                                           <ul class="list-group">
                                              <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="notes/PostgreSQL.pdf" role="button">PostgreSQL</a></li>
@@ -479,12 +479,12 @@
                            <img src="Images\web_image.png" class="img-fluid" alt="Web Technology" />
                            <hr />
                            <div class="container" data-aos="fade-up">
-                              <div class="accordion accordion-flush" id="faqlist" data-aos="fade-up" data-aos-delay="100">
+                              <div class="accordion accordion-flush" id="faqlist-web">
                                  <div class="accordion-item">
                                     <h3 class="accordion-header">
-                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-4"></button>
+                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-web"></button>
                                     </h3>
-                                    <div id="faq-content-4" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                                    <div id="faq-content-web" class="accordion-collapse collapse" data-bs-parent="#faqlist-web">
                                        <div class="accordion-body">
                                           <ul class="list-group">
                                              <li class="list-group-item border">
@@ -504,12 +504,12 @@
                            <img src="Images\interview_image.png" class="img-fluid" alt="Interview" />
                            <hr />
                            <div class="container" data-aos="fade-up">
-                              <div class="accordion accordion-flush" id="faqlist" data-aos="fade-up" data-aos-delay="100">
+                              <div class="accordion accordion-flush" id="faqlist-interview">
                                  <div class="accordion-item">
                                     <h3 class="accordion-header">
-                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-4"></button>
+                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-interview"></button>
                                     </h3>
-                                    <div id="faq-content-4" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                                    <div id="faq-content-interview" class="accordion-collapse collapse" data-bs-parent="#faqlist-interview">
                                        <div class="accordion-body">
                                           <ul class="list-group">
                                              <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-warning" href="/notes/hr_round_equestion.pdf" role="button">HR Round</a></li>
@@ -549,12 +549,12 @@
                            <img src="Images\JavaScript_react.png" class="img-fluid" alt="Left Notes" />
                            <hr />
                            <div class="container" data-aos="fade-up">
-                              <div class="accordion accordion-flush" id="faqlist" data-aos="fade-up" data-aos-delay="100">
+                              <div class="accordion accordion-flush" id="faqlist-react">
                                  <div class="accordion-item">
                                     <h3 class="accordion-header">
-                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-4"></button>
+                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-react"></button>
                                     </h3>
-                                    <div id="faq-content-4" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                                    <div id="faq-content-react" class="accordion-collapse collapse" data-bs-parent="#faqlist-react">
                                        <div class="accordion-body">
                                           <ul class="list-group">
                                              <li class="list-group-item border">
@@ -577,18 +577,18 @@
             <div>
                <!-- DevOps Section -->
                <div class="container" style="margin-top:15px;" data-aos="fade-up">
-                  <div class="row gy-4">
+                  <div class="row gy-4" id="cardContainer3">
                      <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="100">
                         <div class="member">
                            <img src="Images\Devops_Img.png" class="img-fluid" alt="DevOps" />
                            <hr />
                            <div class="container" data-aos="fade-up">
-                              <div class="accordion accordion-flush" id="faqlist" data-aos="fade-up" data-aos-delay="100">
+                              <div class="accordion accordion-flush" id="faqlist-devops">
                                  <div class="accordion-item">
                                     <h3 class="accordion-header">
-                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-3"></button>
+                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-devops"></button>
                                     </h3>
-                                    <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                                    <div id="faq-content-devops" class="accordion-collapse collapse" data-bs-parent="#faqlist-devops">
                                        <div class="accordion-body">
                                           <ul class="list-group">
                                              <li class="list-group-item border">
@@ -608,12 +608,12 @@
                            <img src="Images\Go.png" class="img-fluid" alt="Go" />
                            <hr />
                            <div class="container" data-aos="fade-up">
-                              <div class="accordion accordion-flush" id="faqlist" data-aos="fade-up" data-aos-delay="100">
+                              <div class="accordion accordion-flush" id="faqlist-go">
                                  <div class="accordion-item">
                                     <h3 class="accordion-header">
-                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-3"></button>
+                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-go"></button>
                                     </h3>
-                                    <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                                    <div id="faq-content-go" class="accordion-collapse collapse" data-bs-parent="#faqlist-go">
                                        <div class="accordion-body">
                                           <ul class="list-group">
                                              <li class="list-group-item border">
@@ -642,12 +642,12 @@
                            <img src="Images\spring_image.png" class="img-fluid" alt="Spring" />
                            <hr />
                            <div class="container" data-aos="fade-up">
-                              <div class="accordion accordion-flush" id="faqlist" data-aos="fade-up" data-aos-delay="100">
+                              <div class="accordion accordion-flush" id="faqlist-spring">
                                  <div class="accordion-item">
                                     <h3 class="accordion-header">
-                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-3"></button>
+                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-spring"></button>
                                     </h3>
-                                    <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist">
+                                    <div id="faq-content-spring" class="accordion-collapse collapse" data-bs-parent="#faqlist-spring">
                                        <div class="accordion-body">
                                           <ul class="list-group">
                                              <li class="list-group-item border">
@@ -670,7 +670,7 @@
                            <img src="Images\personal_image.png" class="img-fluid" alt="Left Notes" />
                            <hr />
                            <div class="container" data-aos="fade-up">
-                              <div class="accordion accordion-flush" id="faqlist" data-aos="fade-up" data-aos-delay="100">
+                              <div class="accordion accordion-flush" id="faqlist-personal">
                                  <div class="accordion-item">
                                     <input
                                        onclick="window.open('https://jstrieb.github.io/link-lock/#eyJ2IjoiMC4wLjEiLCJlIjoiY2Rrb0piQnlnbXpSanpSNEttbGMwenhoV1hPVmFTTVpGVDRkRzlNbzQ2OEVCOWV0N1FONGpIMUh4Vmo0YzA4SWd4SFplbGttbzh4MjRHQlhPZDBMNmtVPSIsImgiOiI4MTcqKio5NiIsInMiOiI0elRLeWlFMERYUWhPalNpcTk0RDR3PT0iLCJpIjoielNVaEpacUJXU1p5UFVZNCJ9','mywindow', 
@@ -780,24 +780,65 @@
                });
          });
 
+         // Store original card HTML
+         const cardContainers = [
+            document.getElementById('cardContainer'),
+            document.getElementById('cardContainer2'),
+            document.getElementById('cardContainer3')
+         ];
+         const originalCards = cardContainers.map(container => container.innerHTML);
+
          // Search functionality
          document.getElementById('searchInput').addEventListener('input', function(e) {
             const searchTerm = e.target.value.trim().toLowerCase();
-            const cards = document.querySelectorAll('.card-section');
             
-            cards.forEach(card => {
-               const buttons = card.querySelectorAll('.list-group-item a');
-               let hasMatch = false;
+            // Clear all card containers
+            cardContainers.forEach(container => {
+               container.innerHTML = '';
+            });
+
+            // If search term is empty, keep containers empty (no cards shown)
+            if (searchTerm === '') {
+               if (typeof AOS !== 'undefined') {
+                  AOS.refresh();
+               }
+               return;
+            }
+
+            // Create a temporary container to parse original cards
+            const tempContainer = document.createElement('div');
+            
+            // Restore and filter cards for each container
+            cardContainers.forEach((container, index) => {
+               tempContainer.innerHTML = originalCards[index];
+               const cards = tempContainer.querySelectorAll('.card-section');
                
-               buttons.forEach(button => {
-                  const text = button.textContent.trim().toLowerCase();
-                  if (text.includes(searchTerm)) {
-                     hasMatch = true;
+               cards.forEach(card => {
+                  const buttons = card.querySelectorAll('.list-group-item a');
+                  let hasMatch = false;
+                  
+                  buttons.forEach(button => {
+                     const text = button.textContent.trim().toLowerCase();
+                     if (text.includes(searchTerm)) {
+                        hasMatch = true;
+                     }
+                  });
+                  
+                  if (hasMatch) {
+                     // Append matching card to the container
+                     container.appendChild(card.cloneNode(true));
+                     const accordionCollapse = card.querySelector('.accordion-collapse');
+                     if (accordionCollapse) {
+                        accordionCollapse.classList.add('show');
+                     }
                   }
                });
-               
-               card.style.display = hasMatch || searchTerm === '' ? '' : 'none';
             });
+
+            // Refresh AOS animations
+            if (typeof AOS !== 'undefined') {
+               AOS.refresh();
+            }
          });
       </script>
    </body>
