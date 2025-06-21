@@ -796,28 +796,30 @@
                   }
                });
                
-               if (hasMatch || searchTerm === '') {
+               if (hasMatch && searchTerm !== '') {
                   card.style.display = '';
-                  // Expand accordion if there's a match
-                  if (hasMatch) {
-                     const accordionCollapse = card.querySelector('.accordion-collapse');
-                     if (accordionCollapse) {
-                        accordionCollapse.classList.add('show');
-                     }
-                  }
-                  // Refresh AOS animations
-                  if (typeof AOS !== 'undefined') {
-                     AOS.refresh();
+                  const accordionCollapse = card.querySelector('.accordion-collapse');
+                  if (accordionCollapse) {
+                     accordionCollapse.classList.add('show');
                   }
                } else {
                   card.style.display = 'none';
-                  // Collapse accordion if no match
                   const accordionCollapse = card.querySelector('.accordion-collapse');
                   if (accordionCollapse) {
                      accordionCollapse.classList.remove('show');
                   }
                }
+               
+               // Show all cards if search term is empty
+               if (searchTerm === '') {
+                  card.style.display = '';
+               }
             });
+            
+            // Refresh AOS animations
+            if (typeof AOS !== 'undefined') {
+               AOS.refresh();
+            }
          });
       </script>
    </body>
