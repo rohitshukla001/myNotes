@@ -255,28 +255,39 @@
          .scroll-top:hover {
             background: #00d2ff;
          }
-         .search-form {
-            display: flex;
-            align-items: center;
+         /* Custom Navbar Search Bar Styles */
+         .navbar.navbar-light {
+            background-color: transparent !important;
+            padding: 0;
          }
-         .search-form input {
-            border-radius: 20px 0 0 20px;
+         .navbar .form-control {
+            background-color: #fff;
             border: 1px solid #3a7bd5;
+            border-radius: 20px 0 0 20px;
             padding: 5px 10px;
             font-size: 14px;
+            color: #333;
          }
-         .search-form button {
+         .navbar .form-control:focus {
+            border-color: #00d2ff;
+            box-shadow: 0 0 5px rgba(0, 210, 255, 0.5);
+         }
+         .navbar .btn-outline-success {
+            border: none;
             border-radius: 0 20px 20px 0;
             background-image: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
-            border: none;
-            padding: 5px 10px;
+            background-size: 200% auto;
+            color: white;
+            padding: 5px 15px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+         }
+         .navbar .btn-outline-success:hover {
+            background-position: right center;
             color: white;
          }
-         .search-form button:hover {
-            background-position: right center;
-         }
          @media (max-width: 768px) {
-            .search-form input {
+            .navbar .form-control {
                width: 120px;
             }
          }
@@ -284,11 +295,11 @@
          .empty-state {
             display: none;
             text-align: center;
-            padding: 30px 30px;
+            padding: 50px 20px;
             background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
             border-radius: 15px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            margin: 50px auto;
+            margin: 20px auto;
             max-width: 600px;
             animation: pulse-empty 2s infinite ease-in-out;
          }
@@ -347,10 +358,14 @@
                   <li><a class="btn btn-sm p-2 text-white" onClick="window.location.reload()" role="button">Home</a></li>
                   <li><a class="btn btn-sm p-2 text-white" href="#notes">Notes</a></li>
                   <li>
-                     <form class="search-form" onsubmit="return false;">
-                        <input type="text" id="searchInput" placeholder="Search notes..." />
-                        <button type="submit"><i class="bi bi-search"></i></button>
-                     </form>
+                     <nav class="navbar navbar-light">
+                        <div class="container-fluid">
+                           <form class="d-flex" onsubmit="return false;">
+                              <input class="form-control me-2" type="search" id="searchInput" placeholder="Search notes..." aria-label="Search">
+                              <button class="btn btn-outline-success" type="submit">Search</button>
+                           </form>
+                        </div>
+                     </nav>
                   </li>
                </ul>
             </nav>
@@ -655,7 +670,7 @@
                                           <ul class="list-group">
                                              <li class="list-group-item border">
                                                 <a target="_blank" class="btn btn-sm border btn-grad-yellow" href="/notes/spring_boot_questions_and_answer.pdf" role="button">Spring & Spring boot</a>
-                                                <a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://leverageedu.com/blog/hi/common-english-words-used-in-daily-life-with-hindi-meaning/" role="button">Commond words in english</a>
+                                                <a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://leverageedu.com/blog/hi/common-english-words-used-in-daily-life-with-hindi-meaning/" role="button">Common words in english</a>
                                                 <a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://infinitylearn.com/surge/english/word-meaning-english-to-hindi/" role="button">100 words in english</a>
                                                 <a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://hindimediumhelp.blogspot.com/2020/12/English-Words-Hindi-Meaning.html" role="button">100+ words</a>
                                              </li>
