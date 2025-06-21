@@ -48,31 +48,35 @@
    display: block;
 }
 .btn-grad-blue:hover {
-   background-position: right center;
+   background-position: right center; 
    color: #fff;
    text-decoration: none;
 }
 .btn-grad {
-   background-image: linear-gradient(to right, #EFEFBB 0%, #000 51%, #000 51%, #FFFFFF);
+   background-image: linear-gradient(to right, #EFEFBB 0%, #D4D3DD 51%, #EFEFBB 100%);
    transition: 0.5s;
-   background-size: contain;
-   color: white;
-   box-shadow: 0 0 20px #000;
+   background-size: 200% auto;
+   color: black;
+   box-shadow: 0 0 20px #eee;
    display: block;
 }
 .btn-grad:hover {
-   background-position: right center;
+   background-position: right center; 
+   color: black;
+   text-decoration: none;
 }
 .btn-grad-yellow {
-   background-image: linear-gradient(to right, #8e9eab 0%, #ffffff 51%, #ffffff);
-   transition: 0.25s;
-   background-size: auto;
+   background-image: linear-gradient(to right, #8e9eab 0%, #eef2f3 51%, #8e9eab 100%);
+   transition: 0.5s;
+   background-size: 200% auto;
    color: black;
-   box-shadow: 0 0 20px rgba(0,0,0,0);
-   display: inline-block;
+   box-shadow: 0 0 20px #eee;
+   display: block;
 }
 .btn-grad-yellow:hover {
    background-position: right center;
+   color: black;
+   text-decoration: none;
 }
 .developer-container {
    position: relative;
@@ -80,20 +84,20 @@
 }
 .developer-image {
    display: none;
-   position: fixed;
-   top: calc(100% + 10px);
+   position: absolute;
+   bottom: calc(100% + 10px); 
    left: 50%;
    transform: translateX(-50%) translateY(10px) scale(0.9);
-   width: 350px;
+   width: 250px; 
    border-radius: 8px;
-   box-shadow: 0 6px 40px rgba(0, 0, 0, 0.3);
-   opacity: 0.3;
-   transition: all 0.6s ease;
+   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
+   opacity: 0; 
+   transition: all 0.6s ease-in-out;
 }
-.developer-container:hover {
+.developer-container:hover .developer-image {
    display: block;
-   opacity: 1;
-   transform: translateX(-50%) translateY(0) scale(1);
+   opacity: 1; 
+   transform: translateX(-50%) translateY(0) scale(1); 
 }
 .feedback-link {
    color: #3a7bd5;
@@ -105,19 +109,19 @@
    text-decoration: underline;
 }
 .feedback-popup {
-   display: fixed;
-   position: 50%;
+   display: none;
+   position: fixed;
    top: 50%;
    left: 50%;
    transform: translate(-50%, -50%);
-   width: 50px;
+   width: 350px;
    background: #fff;
    border-radius: 10px;
-   box-shadow: 0px 20px rgba(0, 0, 0, 0.2);
+   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
    padding: 0;
    z-index: 1000;
    opacity: 0;
-   transition: opacity ease, transform 0.3s ease;
+   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 .feedback-popup.active {
    display: block;
@@ -265,7 +269,7 @@
 .empty-state {
    display: none;
    text-align: center;
-   padding: 30px;
+   padding: 30px 30px;
    background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
    border-radius: 15px;
    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
@@ -274,9 +278,9 @@
    animation: pulse-empty 2s infinite ease-in-out;
 }
 .empty-state i {
-  font-size: 20px;
+   font-size: 60px;
    color: #3a7bd5;
-   margin-bottom: 25px;
+   margin-bottom: 20px;
    animation: bounce 1.5s infinite;
 }
 .empty-state h3 {
