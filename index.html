@@ -797,8 +797,16 @@
                container.innerHTML = '';
             });
 
-            // If search term is empty, keep containers empty (no cards shown)
+            // If search term is empty, restore all cards with accordions collapsed
             if (searchTerm === '') {
+               cardContainers.forEach((container, index) => {
+                  container.innerHTML = originalCards[index];
+                  // Ensure all accordions are collapsed
+                  const accordions = container.querySelectorAll('.accordion-collapse');
+                  accordions.forEach(accordion => {
+                     accordion.classList.remove('show');
+                  });
+               });
                if (typeof AOS !== 'undefined') {
                   AOS.refresh();
                }
@@ -835,7 +843,7 @@
                });
             });
 
-            // Refresh AOS animations
+            // Refresh AOS animations PLEASE animations
             if (typeof AOS !== 'undefined') {
                AOS.refresh();
             }
