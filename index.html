@@ -312,7 +312,7 @@
       <div>
          <section id="notes" class="jumbotron team">
             <div class="container" data-aos="fade-up">
-               <div class="row gy-4">
+               <div class="row gy-4" id="cardContainer">
                   <!-- Java Section -->
                   <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="200">
                      <div class="member">
@@ -449,7 +449,7 @@
             <div>
                <!-- SQL Section -->
                <div class="container" style="margin-top:15px;" data-aos="fade-up">
-                  <div class="row gy-4">
+                  <div class="row gy-4" id="cardContainer2">
                      <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="100">
                         <div class="member">
                            <img src="Images\sql_image.png" class="img-fluid" alt="SQL" />
@@ -577,7 +577,7 @@
             <div>
                <!-- DevOps Section -->
                <div class="container" style="margin-top:15px;" data-aos="fade-up">
-                  <div class="row gy-4">
+                  <div class="row gy-4" id="cardContainer3">
                      <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="100">
                         <div class="member">
                            <img src="Images\Devops_Img.png" class="img-fluid" alt="DevOps" />
@@ -780,37 +780,61 @@
                });
          });
 
+         // Store original card HTML
+         const cardContainers = [
+            document.getElementById('cardContainer'),
+            document.getElementById('cardContainer2'),
+            document.getElementById('cardContainer3')
+         ];
+         const originalCards = cardContainers.map(container => container.innerHTML);
+
          // Search functionality
          document.getElementById('searchInput').addEventListener('input', function(e) {
             const searchTerm = e.target.value.trim().toLowerCase();
-            const cards = document.querySelectorAll('.card-section');
             
-            cards.forEach(card => {
-               const buttons = card.querySelectorAll('.list-group-item a');
-               let hasMatch = false;
+            // Clear all card containers
+            cardContainers.forEach(container => {
+               container.innerHTML = '';
+            });
+
+            // If search term is empty, keep containers empty (no cards shown)
+            if (searchTerm === '') {
+               if (typeof AOS !== 'undefined') {
+                  AOS.refresh();
+               }
+               return;
+            }
+
+            // Create a temporary container to parse original cards
+            const tempContainer = document.createElement('div');
+            
+            // Restore and filter cards for each container
+            cardContainers.forEach((container, index) => {
+               tempContainer.innerHTML = originalCards[index];
+               const cards = tempContainer.querySelectorAll('.card-section');
                
-               buttons.forEach(button => {
-                  const text = button.textContent.trim().toLowerCase();
-                  if (text.includes(searchTerm)) {
-                     hasMatch = true;
+               cards.forEach(card => {
+                  const buttons = card.querySelectorAll('.list-group-item a');
+                  let hasMatch = false;
+                  
+                  buttons.forEach(button => {
+                     const text = button.textContent.trim().toLowerCase();
+                     if (text.includes(searchTerm)) {
+                        hasMatch = true;
+                     }
+                  });
+                  
+                  if (hasMatch) {
+                     // Append matching card to the container
+                     container.appendChild(card.cloneNode(true));
+                     const accordionCollapse = card.querySelector('.accordion-collapse');
+                     if (accordionCollapse) {
+                        accordionCollapse.classList.add('show');
+                     }
                   }
                });
-               
-               if (hasMatch) {
-                  card.style.display = '';
-                  const accordionCollapse = card.querySelector('.accordion-collapse');
-                  if (accordionCollapse) {
-                     accordionCollapse.classList.add('show');
-                  }
-               } else {
-                  card.style.display = 'none';
-                  const accordionCollapse = card.querySelector('.accordion-collapse');
-                  if (accordionCollapse) {
-                     accordionCollapse.classList.remove('show');
-                  }
-               }
             });
-            
+
             // Refresh AOS animations
             if (typeof AOS !== 'undefined') {
                AOS.refresh();
