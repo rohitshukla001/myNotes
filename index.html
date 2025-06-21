@@ -1,56 +1,291 @@
 <!DOCTYPE html>
 <html lang="en">
    <head>
-      <meta charset="UTF-8" />
+      <meta charset="utf-8" />
       <meta name="robots" content="noindex, nofollow">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" crossorigin="anonymous" />
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
       <title>Notes Website</title>
       <link href="notes/bootstrap.min.css" rel="stylesheet" />
       <link href="notes/bootstrap-icons.css" rel="stylesheet" />
-      <link href="assets/style.css" rel="stylesheet" />
+      <link href="notes/style.css" rel="stylesheet" />
       <link
          href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
          rel="stylesheet"
          />
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" crossorigin="anonymous" />      
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" integrity="sha384-XGjxtQfXaH2tnPFa9x+ruJTuXZYAf柏+VDRrxmuLX/N3j4tFhx3vLfKWgM+jug" crossorigin="anonymous" />      
       <link href="notes/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" crossorigin="anonymous" />
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/css/glightbox.min.css" crossorigin="anonymous" />
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.css" crossorigin="anonymous" />
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" integrity="sha256-GqiEX9BuR1rv5zPU5Vs2qS/NSHl1BJyBcjQYJ6ycwD4=" crossorigin="anonymous" />
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/css/glightbox.min.css" integrity="sha256-V/w9wNFxGyXQtTS9qJDXyP2io9FLHBLV5fHdF613SFQ=" crossorigin="anonymous" />
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.css" integrity="sha256-9qFuTamR5MXgYvH2X2eQc5OGBro8g+VDYBH/VZA7l3U=" crossorigin="anonymous" />
       <link href="notes/assets/css/main.css" rel="stylesheet" />
       <link rel="shortcut icon" href="notes/favi.png" />
+      <link rel="shortcut icon" href="notes/favi.png" />
+      <link rel="shortcut icon" sizes="72x72" href="notes/favi.png" />
+      <link rel="shortcut icon" sizes="114x114" href="notes/favi.png" />
+      <!-- Add EmailJS SDK -->
       <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-      <script src="assets/script.js"></script>
-      <script src="notes/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-      <script src="notes/assets/vendor/aos/aos.js"></script>
-      <script src="notes/assets/vendor/glightbox/js/glightbox.min.js"></script>
-      <script src="notes/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-      <script src="notes/assets/vendor/swiper/swiper-bundle.min.js"></script>
-      <script src="notes/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-      <script src="notes/assets/js/main.js"></script>
-      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
       <style>
-         .feedback-popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 20px;
-            border: 1px solid #ccc;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            z-index: 1000;
-         }
-         .feedback-popup.show {
+         .feedback-btn {
+   display: inline-flex;
+   align-items: center;
+   padding: 10px 20px;
+   background-image: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+   background-size: 200% auto;
+   color: white;
+   font-weight: bold;
+   font-size: 16px;
+   text-transform: uppercase;
+   border-radius: 8px;
+   cursor: pointer;
+   transition: all 0.3s ease;
+   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+   animation: pulse 2s infinite ease-in-out;
+}
+.feedback-btn:hover {
+   background-position: right center;
+   transform: scale(1.05);
+   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+   color: white;
+   text-decoration: none;
+}
+.feedback-icon {
+   margin-right: 8px;
+   font-size: 18px;
+}
+@keyframes pulse {
+   0% { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); }
+   50% { box-shadow: 0 4px 16px rgba(0, 210, 255, 0.4); }
+   100% { box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); }
+}
+@media (max-width: 576px) {
+   .feedback-btn {
+      padding: 8px 16px;
+      font-size: 14px;
+   }
+   .feedback-icon {
+      font-size: 16px;
+   }
+}
+         .btn-grad-blue {
+            background-image: linear-gradient(to right, #00d2ff 0%, #3a7bd5  51%, #00d2ff  100%);
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;
+            box-shadow: 0 0 20px #eee;
             display: block;
          }
-         .close-btn {
-            float: right;
+         .btn-grad-blue:hover {
+            background-position: right center; 
+            color: #fff;
+            text-decoration: none;
+         }
+         .btn-grad {
+            background-image: linear-gradient(to right, #EFEFBB 0%, #D4D3DD  51%, #EFEFBB  100%);
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: black;
+            box-shadow: 0 0 20px #eee;
+            display: block;
+         }
+         .btn-grad:hover {
+            background-position: right center; 
+            color: black;
+            text-decoration: none;
+         }
+         .btn-grad-yellow {
+            background-image: linear-gradient(to right, #8e9eab 0%, #eef2f3  51%, #8e9eab  100%);
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: black;
+            box-shadow: 0 0 20px #eee;
+            display: block;
+         }
+         .btn-grad-yellow:hover {
+            background-position: right center;
+            color: black;
+            text-decoration: none;
+         }
+         .developer-container {
+            position: relative;
+            display: inline-block;
+         }
+         .developer-image {
+            display: none;
+            position: absolute;
+            bottom: calc(100% + 10px); 
+            left: 50%;
+            transform: translateX(-50%) translateY(10px) scale(0.9);
+            width: 250px; 
+            border-radius: 8px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
+            opacity: 0; 
+            transition: all 0.6s ease-in-out;
+         }
+         .developer-container:hover .developer-image {
+            display: block;
+            opacity: 1; 
+            transform: translateX(-50%) translateY(0) scale(1); 
+         }
+         /* Feedback Form Styles */
+         .feedback-link {
+            color: #3a7bd5;
             cursor: pointer;
+            margin-left: 10px;
+         }
+         .feedback-link:hover {
+            color: #00d2ff;
+            text-decoration: underline;
+         }
+         /* Feedback Form Styles */
+         .feedback-popup {
+   display: none;
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   width: 350px;
+   background: #fff;
+   border-radius: 10px;
+   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+   padding: 0; /* Padding moved to inner elements */
+   z-index: 1000;
+   opacity: 0;
+   transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.feedback-popup.active {
+   display: block;
+   opacity: 1;
+   transform: translate(-50%, -50%) scale(1);
+}
+.feedback-popup:not(.active) {
+   transform: translate(-50%, -50%) scale(0.95);
+}
+.popup-header {
+   background-image: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+   padding: 15px 20px;
+   border-radius: 10px 10px 0 0;
+   position: relative;
+   color: white;
+}
+.popup-header h4 {
+   margin: 0;
+   font-size: 20px;
+   font-weight: bold;
+   text-transform: uppercase;
+}
+.popup-header .close-btn {
+   position: absolute;
+   top: 50%;
+   right: 20px;
+   transform: translateY(-50%);
+   font-size: 28px;
+   color: #fff;
+   cursor: pointer;
+   transition: color 0.3s ease, transform 0.3s ease;
+}
+.popup-header .close-btn:hover {
+   color: #f0f0f0;
+   transform: translateY(-50%) rotate(90deg);
+}
+.feedback-popup .form-group {
+   margin: 20px;
+}
+.feedback-popup .form-group label {
+   display: block;
+   margin-bottom: 5px;
+   color: #3a7bd5;
+   font-weight: 600;
+}
+.feedback-popup .form-control {
+   width: 100%;
+   padding: 8px 12px;
+   border: 1px solid #ddd;
+   border-radius: 6px;
+   font-size: 14px;
+   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.feedback-popup .form-control:focus {
+   border-color: #3a7bd5;
+   box-shadow: 0 0 5px rgba(58, 123, 213, 0.5);
+   outline: none;
+}
+.feedback-popup .btn-submit {
+   display: block;
+   width: calc(100% - 40px);
+   margin: 0 20px 20px;
+   padding: 10px;
+   background-image: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+   background-size: 200% auto;
+   color: white;
+   font-weight: bold;
+   font-size: 16px;
+   text-transform: uppercase;
+   border: none;
+   border-radius: 6px;
+   cursor: pointer;
+   transition: all 0.3s ease;
+   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+.feedback-popup .btn-submit:hover {
+   background-position: right center;
+   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+.feedback-popup #formMessage {
+   text-align: center;
+   margin-bottom: 15px;
+}
+@media (max-width: 576px) {
+   .feedback-popup {
+      width: 90%;
+   }
+   .popup-header h4 {
+      font-size: 18px;
+   }
+   .feedback-popup .btn-submit {
+      font-size: 14px;
+      padding: 8px;
+   }
+}
+         .scroll-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: #3a7bd5;
+            color: white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+         }
+         .scroll-top:hover {
+            background: #00d2ff;
+         }
+         /* Search Bar Styles */
+         .search-form {
+            display: flex;
+            align-items: center;
+         }
+         .search-form input {
+            border-radius: 20px 0 0 20px;
+            border: 1px solid #3a7bd5;
+            padding: 5px 10px;
+            font-size: 14px;
+         }
+         .search-form button {
+            border-radius: 0 20px 20px 0;
+            background-image: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+            border: none;
+            padding: 5px 10px;
+            color: white;
+         }
+         .search-form button:hover {
+            background-position: right center;
+         }
+         @media (max-width: 768px) {
+            .search-form input {
+               width: 120px;
+            }
          }
       </style>
    </head>
@@ -65,14 +300,10 @@
                   <li><a class="btn btn-sm p-2 text-white" onClick="window.location.reload()" role="button">Home</a></li>
                   <li><a class="btn btn-sm p-2 text-white" href="#notes">Notes</a></li>
                   <li>
-                     <nav class="navbar navbar-light">
-                        <div class="container-fluid">
-                           <form class="d-flex" onsubmit="return false;">
-                              <input class="form-control me-2" type="search" id="searchInput" placeholder="Search notes..." aria-label="Search">
-                              <button class="btn btn-outline-success" type="submit">Search</button>
-                           </form>
-                        </div>
-                     </nav>
+                     <form class="search-form">
+                        <input type="text" id="searchInput" placeholder="Search notes..." />
+                        <button type="submit"><i class="bi bi-search"></i></button>
+                     </form>
                   </li>
                </ul>
             </nav>
@@ -80,42 +311,50 @@
       </header>
       <div>
          <section id="notes" class="jumbotron team">
-            <div id="emptyState" class="empty-state" data-aos="fade-up">
-               <i class="bi bi-search"></i>
-               <h3>No Notes Found</h3>
-               <p>Try a different search term to find the notes you're looking for!</p>
-            </div>
             <div class="container" data-aos="fade-up">
-               <div class="row gy-4" id="cardContainer">
+               <div class="row gy-4">
+                  <!-- Java Section -->
                   <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="200">
                      <div class="member">
-                        <img src="Images/java_image.png" class="img-fluid" alt="JAVA" />
+                        <img src="Images\java_image.png" class="img-fluid" alt="JAVA" />
                         <hr />
                         <div class="container" data-aos="fade-up">
-                           <div class="accordion accordion-flush" id="faqlist-java">
+                           <div class="accordion accordion-flush" id="faqlist" data-aos="fade-up" data-aos-delay="100">
                               <div class="accordion-item">
                                  <h3 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-java"></button>
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-5"></button>
                                  </h3>
-                                 <div id="faq-content-java" class="accordion-collapse collapse">
+                                 <div id="faq-content-5" class="accordion-collapse collapse" data-bs-parent="#faqlist">
                                     <div class="accordion-body">
                                        <ul class="list-group border">
                                           <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-blue" href="/notes/Java Terminology.pdf" role="button">Terminology</a></li>
                                           <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-blue" href="/notes/Collections.pdf" role="button">Collections</a></li>
                                           <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-blue" href="/notes/oops.pdf" role="button">Oops</a></li>
                                           <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://whimsical.com/java-F3wA8hstGi42DU8BZrsCUL" role="button">RoadMap</a></li>
-                                          <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://drive.google.com/file/d/1rdIMUCiW1yjA6_irliXu19zC_GPEcR66/view" role="button">Material</a></li>
+                                          <li class="list-group-item border"> <a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://drive.google.com/file/d/1rdIMUCiW1yjA6_irliXu19zC_GPEcR66/view" role="button">Material</a>
+                                          </li>
                                           <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://www.edureka.co/blog/java-collections/" role="button">Collection</a></li>
                                           <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad" href="/notes/roadmap.pdf" role="button">All Roadmap</a></li>
                                           <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad" href="/notes/backend.pdf" role="button">Backend map</a></li>
                                           <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad" href="/notes/java.pdf" role="button">Java Roadmap</a></li>
                                           <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="/notes/Core-JAVA.pdf" role="button">Core JAVA</a></li>
-                                          <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://enos.itcollege.ee/~jpoial/allalaadimised/reading/Java-Interview-Questions.pdf" role="button">Core JAVA Ques.</a></li>
-                                          <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="/notes/Core_java_interview_questions_and_answer.pdf" role="button">JAVA Ques. 2</a></li>
-                                          <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://www.geeksforgeeks.org/java-interview-questions/" role="button">GFG Ques. 3</a></li>
-                                          <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad" href="/notes/Core Java Interview Questions.pdf" role="button">JAVA Ques. 4</a></li>
-                                          <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad" href="https://www.javatpoint.com/corejava-interview-questions" role="button">Core JAVA Ques</a></li>
-                                          <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad" href="https://www.guru99.com/java-interview-questions-answers.html" role="button">Guru99 Ques</a></li>
+                                          <li class="list-group-item border"> <a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://enos.itcollege.ee/~jpoial/allalaadimised/reading/Java-Interview-Questions.pdf" role="button">
+                                             Core JAVA Ques.
+                                             </a>
+                                          </li>
+                                          <li class="list-group-item border">
+                                             <a target="_blank" class="btn btn-sm border btn-grad-yellow" href="/notes/Core_java_interview_questions_and_answer.pdf" role="button">JAVA Ques. 2</a>
+                                          </li>
+                                          <li class="list-group-item border">
+                                             <a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://www.geeksforgeeks.org/java-interview-questions/" role="button">GFG Ques. 3</a>
+                                          </li>
+                                          <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad" href="/notes/Core Java Interview Questions.pdf" role="button"> JAVA Ques. 4</a></li>
+                                          <li class="list-group-item border">
+                                             <a target="_blank" class="btn btn-sm btn-grad" href="https://www.javatpoint.com/corejava-interview-questions" role="button"> Core JAVA Ques</a>
+                                          </li>
+                                          <li class="list-group-item border">
+                                             <a target="_blank" class="btn btn-sm btn-grad" href="https://www.guru99.com/java-interview-questions-answers.html" role="button">Guru99 Ques</a>
+                                          </li>
                                        </ul>
                                     </div>
                                  </div>
@@ -124,22 +363,27 @@
                         </div>
                      </div>
                   </div>
+                  <!-- DSA Section -->
                   <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="100">
                      <div class="member">
-                        <img src="Images/dsa_image.png" class="img-fluid" alt="DSA" />
+                        <img src="Images\dsa_image.png" class="img-fluid" alt="DSA" />
                         <hr />
                         <div class="container" data-aos="fade-up">
-                           <div class="accordion accordion-flush" id="faqlist-dsa">
+                           <div class="accordion accordion-flush" id="faqlist" data-aos="fade-up" data-aos-delay="100">
                               <div class="accordion-item">
                                  <h3 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-dsa"></button>
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-5"></button>
                                  </h3>
-                                 <div id="faq-content-dsa" class="accordion-collapse collapse">
+                                 <div id="faq-content-5" class="accordion-collapse collapse" data-bs-parent="#faqlist">
                                     <div class="accordion-body">
                                        <ul class="list-group">
                                           <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="docs/DSA_COMPLETE ROADMAAP.pdf" role="button">Roadmap</a></li>
-                                          <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="docs/250+DSA QUESTIONS FOR PLACEMENTS.pdf" role="button">Practice Questions</a></li>
-                                          <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-warning" href="https://whimsical.com/master-roadmap-SzYF2dY2SqwtPQfY5A3mZS" role="button">Master RoadMap</a></li>
+                                          <li class="list-group-item border">
+                                             <a target="_blank" class="btn btn-sm border btn-grad-yellow" href="docs/250+DSA QUESTIONS FOR PLACEMENTS.pdf" role="button">Practice Questions</a>
+                                          </li>
+                                          <li class="list-group-item border">
+                                             <a target="_blank" class="btn btn-sm btn-warning" href="https://whimsical.com/master-roadmap-SzYF2dY2SqwtPQfY5A3mZS" role="button">Master RoadMap</a>
+                                          </li>
                                        </ul>
                                     </div>
                                  </div>
@@ -148,17 +392,18 @@
                         </div>
                      </div>
                   </div>
+                  <!-- EWM Section -->
                   <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="100">
                      <div class="member">
-                        <img src="Images/EWM.png" class="img-fluid" alt="EWM" />
+                        <img src="Images\EWM.png" class appear="no" class="img-fluid" alt="EWM" />
                         <hr />
                         <div class="container" data-aos="fade-up">
-                           <div class="accordion accordion-flush" id="faqlist-ewm">
+                           <div class="accordion accordion-flush" id="faqlist" data-aos="fade-up" data-aos-delay="100">
                               <div class="accordion-item">
                                  <h3 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-ewm"></button>
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-5"></button>
                                  </h3>
-                                 <div id="faq-content-ewm" class="accordion-collapse collapse">
+                                 <div id="faq-content-5" class="accordion-collapse collapse" data-bs-parent="#faqlist">
                                     <div class="accordion-body">
                                        <ul class="list-group">
                                           <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-blue" href="notes/Exception Handling.pdf" role="button">Exception Handling</a></li>
@@ -170,21 +415,26 @@
                         </div>
                      </div>
                   </div>
+                  <!-- CHM Section -->
                   <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="100">
                      <div class="member">
-                        <img src="Images/CHM.png" class="img-fluid" alt="CHM" />
+                        <img src="Images\CHM.png" class="img-fluid" alt="CHM" />
                         <hr />
                         <div class="container" data-aos="fade-up">
-                           <div class="accordion accordion-flush" id="faqlist-chm">
+                           <div class="accordion accordion-flush" id="faqlist" data-aos="fade-up" data-aos-delay="100">
                               <div class="accordion-item">
                                  <h3 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-chm"></button>
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-5"></button>
                                  </h3>
-                                 <div id="faq-content-chm" class="accordion-collapse collapse">
+                                 <div id="faq-content-5" class="accordion-collapse collapse" data-bs-parent="#faqlist">
                                     <div class="accordion-body">
                                        <ul class="list-group">
-                                          <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://www.tutorialspoint.com/hibernate/hibernate_tutorial.pdf" role="button">Hibernate 1</a></li>
-                                          <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-warning" href="https://whimsical.com/master-roadmap-SzYF2dY2SqwtPQfY5A3mZS" role="button">Master RoadMap</a></li>
+                                          <li class="list-group-item border">
+                                             <a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://www.tutorialspoint.com/hibernate/hibernate_tutorial.pdf" role="button">Hibernate 1</a>
+                                          </li>
+                                          <li class="list-group-item border">
+                                             <a target="_blank" class="btn btn-sm btn-warning" href="https://whimsical.com/master-roadmap-SzYF2dY2SqwtPQfY5A3mZS" role="button">Master RoadMap</a>
+                                          </li>
                                           <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-blue" href="notes/Multithreading.pdf" role="button">Multithreading</a></li>
                                        </ul>
                                     </div>
@@ -197,19 +447,20 @@
                </div>
             </div>
             <div>
+               <!-- SQL Section -->
                <div class="container" style="margin-top:15px;" data-aos="fade-up">
-                  <div class="row gy-4" id="cardContainer2">
+                  <div class="row gy-4">
                      <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="100">
                         <div class="member">
-                           <img src="Images/sql_image.png" class="img-fluid" alt="SQL" />
+                           <img src="Images\sql_image.png" class="img-fluid" alt="SQL" />
                            <hr />
                            <div class="container" data-aos="fade-up">
-                              <div class="accordion accordion-flush" id="faqlist-sql">
+                              <div class="accordion accordion-flush" id="faqlist" data-aos="fade-up" data-aos-delay="100">
                                  <div class="accordion-item">
                                     <h3 class="accordion-header">
-                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-sql"></button>
+                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-4"></button>
                                     </h3>
-                                    <div id="faq-content-sql" class="accordion-collapse collapse">
+                                    <div id="faq-content-4" class="accordion-collapse collapse" data-bs-parent="#faqlist">
                                        <div class="accordion-body">
                                           <ul class="list-group">
                                              <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="notes/PostgreSQL.pdf" role="button">PostgreSQL</a></li>
@@ -222,20 +473,23 @@
                            </div>
                         </div>
                      </div>
+                     <!-- Web Technology Section -->
                      <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="200">
                         <div class="member">
-                           <img src="Images/web_image.png" class="img-fluid" alt="Web Technology" />
+                           <img src="Images\web_image.png" class="img-fluid" alt="Web Technology" />
                            <hr />
                            <div class="container" data-aos="fade-up">
-                              <div class="accordion accordion-flush" id="faqlist-web">
+                              <div class="accordion accordion-flush" id="faqlist" data-aos="fade-up" data-aos-delay="100">
                                  <div class="accordion-item">
                                     <h3 class="accordion-header">
-                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-web"></button>
+                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-4"></button>
                                     </h3>
-                                    <div id="faq-content-web" class="accordion-collapse collapse">
+                                    <div id="faq-content-4" class="accordion-collapse collapse" data-bs-parent="#faqlist">
                                        <div class="accordion-body">
                                           <ul class="list-group">
-                                             <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="/notes/HTML Interview Questions.pdf" role="button">HTML Questions</a></li>
+                                             <li class="list-group-item border">
+                                                <a target="_blank" class="btn btn-sm border btn-grad-yellow" href="/notes/HTML Interview Questions.pdf" role="button">HTML Questions</a>
+                                             </li>
                                           </ul>
                                        </div>
                                     </div>
@@ -244,25 +498,40 @@
                            </div>
                         </div>
                      </div>
+                     <!-- Interview Section -->
                      <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="300">
                         <div class="member">
-                           <img src="Images/interview_image.png" class="img-fluid" alt="Interview" />
+                           <img src="Images\interview_image.png" class="img-fluid" alt="Interview" />
                            <hr />
                            <div class="container" data-aos="fade-up">
-                              <div class="accordion accordion-flush" id="faqlist-interview">
+                              <div class="accordion accordion-flush" id="faqlist" data-aos="fade-up" data-aos-delay="100">
                                  <div class="accordion-item">
                                     <h3 class="accordion-header">
-                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-interview"></button>
+                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-4"></button>
                                     </h3>
-                                    <div id="faq-content-interview" class="accordion-collapse collapse">
+                                    <div id="faq-content-4" class="accordion-collapse collapse" data-bs-parent="#faqlist">
                                        <div class="accordion-body">
                                           <ul class="list-group">
                                              <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-warning" href="/notes/hr_round_equestion.pdf" role="button">HR Round</a></li>
-                                             <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://testbook.com/interview/servlet-interview-questions" role="button">Servlet Questions</a></li>
-                                             <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://www.edureka.co/blog/interview-questions/servlet-interview-questions/" role="button">Servlet Questions 1</a></li>
-                                             <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://www.interviewbit.com/servlet-interview-questions/" role="button">Servlet Questions 2</a></li>
-                                             <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://career.guru99.com/top-50-servlet-interview-questions/" role="button">Servlet Questions 3</a></li>
-                                             <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://www.tutorialspoint.com/servlets/pdf/servlets_interview_questions.pdf" role="button">Servlet Questions 4</a></li>
+                                             <li class="list-group-item border">
+                                                <a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://testbook.com/interview/servlet-interview-questions" role="button">Servlet Questions</a>
+                                             </li>
+                                             <li class="list-group-item border">
+                                                <a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://www.edureka.co/blog/interview-questions/servlet-interview-questions/" role="button">
+                                                Servlet Questions 1
+                                                </a>
+                                             </li>
+                                             <li class="list-group-item border">
+                                                <a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://www.interviewbit.com/servlet-interview-questions/" role="button">Servlet Questions 2</a>
+                                             </li>
+                                             <li class="list-group-item border">
+                                                <a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://career.guru99.com/top-50-servlet-interview-questions/" role="button">Servlet Questions 3</a>
+                                             </li>
+                                             <li class="list-group-item border">
+                                                <a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://www.tutorialspoint.com/servlets/pdf/servlets_interview_questions.pdf" role="button">
+                                                Servlet Questions 4
+                                                </a>
+                                             </li>
                                              <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad" href="/notes/JAVA_UNIT-4_NOTES" role="button">Java Unit Notes</a></li>
                                              <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad" href="/notes/java_collections_1" role="button">Java collections 1</a></li>
                                              <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad" href="/notes/java_collections_2" role="button">Java collections 2</a></li>
@@ -274,21 +543,26 @@
                            </div>
                         </div>
                      </div>
+                     <!-- JavaScript/React Section -->
                      <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="400">
                         <div class="member">
-                           <img src="Images/JavaScript_react.png" class="img-fluid" alt="Left Notes" />
+                           <img src="Images\JavaScript_react.png" class="img-fluid" alt="Left Notes" />
                            <hr />
                            <div class="container" data-aos="fade-up">
-                              <div class="accordion accordion-flush" id="faqlist-react">
+                              <div class="accordion accordion-flush" id="faqlist" data-aos="fade-up" data-aos-delay="100">
                                  <div class="accordion-item">
                                     <h3 class="accordion-header">
-                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-react"></button>
+                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-4"></button>
                                     </h3>
-                                    <div id="faq-content-react" class="accordion-collapse collapse">
+                                    <div id="faq-content-4" class="accordion-collapse collapse" data-bs-parent="#faqlist">
                                        <div class="accordion-body">
                                           <ul class="list-group">
-                                             <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://medium.com/@rajanraj8979/roadmap-for-react-js-for-beginners-to-advance-522ce3588838" role="button">React roadmap-1</a></li>
-                                             <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://learningdaily.dev/the-best-react-developer-roadmap-for-2024-1aaf406c5a32" role="button">React roadmap-2</a></li>
+                                             <li class="list-group-item border">
+                                                <a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://medium.com/@rajanraj8979/roadmap-for-react-js-for-beginners-to-advance-522ce3588838" role="button">React roadmap-1</a>
+                                             </li>
+                                             <li class="list-group-item border">
+                                                <a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://learningdaily.dev/the-best-react-developer-roadmap-for-2024-1aaf406c5a32" role="button">React roadmap-2</a>
+                                             </li>
                                           </ul>
                                        </div>
                                     </div>
@@ -301,22 +575,25 @@
                </div>
             </div>
             <div>
+               <!-- DevOps Section -->
                <div class="container" style="margin-top:15px;" data-aos="fade-up">
-                  <div class="row gy-4" id="cardContainer3">
+                  <div class="row gy-4">
                      <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="100">
                         <div class="member">
-                           <img src="Images/Devops_Img.png" class="img-fluid" alt="DevOps" />
+                           <img src="Images\Devops_Img.png" class="img-fluid" alt="DevOps" />
                            <hr />
                            <div class="container" data-aos="fade-up">
-                              <div class="accordion accordion-flush" id="faqlist-devops">
+                              <div class="accordion accordion-flush" id="faqlist" data-aos="fade-up" data-aos-delay="100">
                                  <div class="accordion-item">
                                     <h3 class="accordion-header">
-                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-devops"></button>
+                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-3"></button>
                                     </h3>
-                                    <div id="faq-content-devops" class="accordion-collapse collapse">
+                                    <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist">
                                        <div class="accordion-body">
                                           <ul class="list-group">
-                                             <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://www.tutorialspoint.com/postman/postman_tutorial.pdf" role="button">Postman Tutorial</a></li>
+                                             <li class="list-group-item border">
+                                                <a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://www.tutorialspoint.com/postman/postman_tutorial.pdf" role="button">Postman Tutorial</a>
+                                             </li>
                                           </ul>
                                        </div>
                                     </div>
@@ -325,23 +602,32 @@
                            </div>
                         </div>
                      </div>
+                     <!-- Go Section -->
                      <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="300">
                         <div class="member">
-                           <img src="Images/Go.png" class="img-fluid" alt="Go" />
+                           <img src="Images\Go.png" class="img-fluid" alt="Go" />
                            <hr />
                            <div class="container" data-aos="fade-up">
-                              <div class="accordion accordion-flush" id="faqlist-go">
+                              <div class="accordion accordion-flush" id="faqlist" data-aos="fade-up" data-aos-delay="100">
                                  <div class="accordion-item">
                                     <h3 class="accordion-header">
-                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-go"></button>
+                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-3"></button>
                                     </h3>
-                                    <div id="faq-content-go" class="accordion-collapse collapse">
+                                    <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist">
                                        <div class="accordion-body">
                                           <ul class="list-group">
-                                             <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="/notes/RoadmapGolang.pdf" role="button">Golang Roadmap</a></li>
-                                             <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad" href="/notes/golang_tutorial.pdf" role="button">Golang Tutorial</a></li>
-                                             <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad" href="/notes/Angular.pdf" role="button">Angular</a></li>
-                                             <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-blue" href="/notes/Temporal_workflow.pdf" role="button">Temporal workflow</a></li>
+                                             <li class="list-group-item border">
+                                                <a target="_blank" class="btn btn-sm border btn-grad-yellow" href="/notes/RoadmapGolang.pdf" role="button">Golang Roadmap</a>
+                                             </li>
+                                             <li class="list-group-item border">
+                                                <a target="_blank" class="btn btn-sm btn-grad" href="/notes/golang_tutorial.pdf" role="button">Golang Tutorial</a>
+                                             </li>
+                                             <li class="list-group-item border">
+                                                <a target="_blank" class="btn btn-sm btn-grad" href="/notes/Angular.pdf" role="button">Angular</a>
+                                             </li>
+                                  	     <li class="list-group-item border">
+                                                <a target="_blank" class="btn btn-sm border btn-grad-blue" href="/notes/Temporal_workflow.pdf" role="button">Temporal workflow</a>
+                                             </li>						  
                                           </ul>
                                        </div>
                                     </div>
@@ -350,22 +636,23 @@
                            </div>
                         </div>
                      </div>
+                     <!-- Spring Section -->
                      <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="400">
                         <div class="member">
-                           <img src="Images/spring_image.png" class="img-fluid" alt="Spring" />
+                           <img src="Images\spring_image.png" class="img-fluid" alt="Spring" />
                            <hr />
                            <div class="container" data-aos="fade-up">
-                              <div class="accordion accordion-flush" id="faqlist-spring">
+                              <div class="accordion accordion-flush" id="faqlist" data-aos="fade-up" data-aos-delay="100">
                                  <div class="accordion-item">
                                     <h3 class="accordion-header">
-                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-spring"></button>
+                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-3"></button>
                                     </h3>
-                                    <div id="faq-content-spring" class="accordion-collapse collapse">
+                                    <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist">
                                        <div class="accordion-body">
                                           <ul class="list-group">
                                              <li class="list-group-item border">
                                                 <a target="_blank" class="btn btn-sm border btn-grad-yellow" href="/notes/spring_boot_questions_and_answer.pdf" role="button">Spring & Spring boot</a>
-                                                <a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://leverageedu.com/blog/hi/common-english-words-used-in-daily-life-with-hindi-meaning/" role="button">Common words in english</a>
+                                                <a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://leverageedu.com/blog/hi/common-english-words-used-in-daily-life-with-hindi-meaning/" role="button">Commond words in english</a>
                                                 <a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://infinitylearn.com/surge/english/word-meaning-english-to-hindi/" role="button">100 words in english</a>
                                                 <a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://hindimediumhelp.blogspot.com/2020/12/English-Words-Hindi-Meaning.html" role="button">100+ words</a>
                                              </li>
@@ -377,16 +664,17 @@
                            </div>
                         </div>
                      </div>
+                     <!-- Personal Section -->
                      <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="400">
                         <div class="member">
-                           <img src="Images/personal_image.png" class="img-fluid" alt="Left Notes" />
+                           <img src="Images\personal_image.png" class="img-fluid" alt="Left Notes" />
                            <hr />
                            <div class="container" data-aos="fade-up">
-                              <div class="accordion accordion-flush" id="faqlist-personal">
+                              <div class="accordion accordion-flush" id="faqlist" data-aos="fade-up" data-aos-delay="100">
                                  <div class="accordion-item">
                                     <input
                                        onclick="window.open('https://jstrieb.github.io/link-lock/#eyJ2IjoiMC4wLjEiLCJlIjoiY2Rrb0piQnlnbXpSanpSNEttbGMwenhoV1hPVmFTTVpGVDRkRzlNbzQ2OEVCOWV0N1FONGpIMUh4Vmo0YzA4SWd4SFplbGttbzh4MjRHQlhPZDBMNmtVPSIsImgiOiI4MTcqKio5NiIsInMiOiI0elRLeWlFMERYUWhPalNpcTk0RDR3PT0iLCJpIjoielNVaEpacUJXU1p5UFVZNCJ9','mywindow', 
-                                       'menubar=1,resizable=1, position: fixed, top: 50%, left: 50%, transform: translate(-50%, -50%), width: 50%')"
+                                       'menubar=1,resizable=1,   position: fixed,     top: 50%,     left: 50%,     transform: translate(-50%, -50%),     width: 50%')"
                                        type="button"
                                        value="➕"
                                        />
@@ -396,48 +684,64 @@
                         </div>
                      </div>
                   </div>
+                  <!-- Footer with Feedback Link -->
                   <div class="text-center py-4">
                      <p>
                         <span class="developer-container">
                            Developed by <a href="https://github.com/rohitshukla001" target="_blank">Rohit Shukla</a> ↗
                            <img src="https://info.rohitshukla.net/images/project/rohitshukla.jpg" alt="Rohit Shukla" class="developer-image">
                         </span>
-                        <p>
-                           <span class="feedback-btn" onclick="toggleFeedbackForm()">
-                              <span class="feedback-icon">✉</span> Share Your Feedback
-                           </span>
-                        </p>
-                     </p>
+<p>
+      <span class="feedback-btn" onclick="toggleFeedbackForm()">
+         <span class="feedback-icon">✉</span> Share Your Feedback
+      </span>
+   </p>
+                                             </p>
                   </div>
                </div>
             </div>
          </section>
       </div>
-      <div id="feedbackPopup" class="feedback-popup">
-         <div class="popup-header">
-            <h4>Submit Feedback</h4>
-            <span class="close-btn" onclick="toggleFeedbackForm()">×</span>
-         </div>
-         <form id="feedbackForm">
-            <div class="form-group">
-               <label for="name">Name:</label>
-               <input type="text" class="form-control" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-               <label for="email">Email:</label>
-               <input type="email" class="form-control" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-               <label for="message">Message:</label>
-               <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-submit">Submit</button>
-         </form>
-         <p id="formMessage" class="mt-2"></p>
+
+      <!-- Feedback Popup -->
+<div id="feedbackPopup" class="feedback-popup">
+   <div class="popup-header">
+      <h4>Submit Feedback</h4>
+      <span class="close-btn" onclick="toggleFeedbackForm()">×</span>
+   </div>
+   <form id="feedbackForm">
+      <div class="form-group">
+         <label for="name">Name:</label>
+         <input type="text" class="form-control" id="name" name="name" required>
       </div>
+      <div class="form-group">
+         <label for="email">Email:</label>
+         <input type="email" class="form-control" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+         <label for="message">Message:</label>
+         <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-submit">Submit</button>
+   </form>
+   <p id="formMessage" class="mt-2"></p>
+</div>
+
       <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
       <div id="preloader"></div>
-            <script type="text/javascript">
+      <!-- JS Files -->
+      <script src="notes/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <script src="notes/assets/vendor/aos/aos.js"></script>
+      <script src="notes/assets/vendor/glightbox/js/glightbox.min.js"></script>
+      <script src="notes/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+      <script src="notes/assets/vendor/swiper/swiper-bundle.min.js"></script>
+      <script src="notes/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+      <script src="notes/assets/vendor/php-email-form/validate.js"></script>
+      <script src="notes/assets/js/main.js"></script>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      <script type="text/javascript">
          (function() {
             emailjs.init("dnQ7CtoblL4arIed7"); 
          })();
@@ -475,6 +779,26 @@
                   document.getElementById('formMessage').innerHTML = '<span style="color:red;">Failed to send feedback: ' + error.text + '</span>';
                });
          });
+
+         // Search functionality
+         document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.trim().toLowerCase();
+            const cards = document.querySelectorAll('.card-section');
+            
+            cards.forEach(card => {
+               const buttons = card.querySelectorAll('.list-group-item a');
+               let hasMatch = false;
+               
+               buttons.forEach(button => {
+                  const text = button.textContent.trim().toLowerCase();
+                  if (text.includes(searchTerm)) {
+                     hasMatch = true;
+                  }
+               });
+               
+               card.style.display = hasMatch || searchTerm === '' ? '' : 'none';
+            });
+         });
       </script>
    </body>
-</html>   
+</html>
