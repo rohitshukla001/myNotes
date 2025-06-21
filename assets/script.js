@@ -1,16 +1,16 @@
 document.addEventListener('DOMContentLoaded', function() {
    (function() {
-      emailjs.init("dnQ7CtoblL4arIed7");
+      emailjs.init("dnQ7CtoblL4arIed7"); 
    })();
    if (typeof AOS !== 'undefined') {
       AOS.init();
    }
-   window.toggleFeedbackForm = function() {
+   function toggleFeedbackForm() {
       var popup = document.getElementById('feedbackPopup');
       if (popup) {
-         popup.classList.toggle('active');
+         popup.classList.toggle('show'); // Updated to match CSS
       }
-   };
+   }
    document.getElementById('feedbackForm')?.addEventListener('submit', function(event) {
       event.preventDefault();
       var currentDate = new Date().toLocaleString();
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
          name: document.getElementById('name').value,
          email: document.getElementById('email').value,
          message: document.getElementById('message').value,
-         submission_date: currentDate
+         submission_date: currentDate 
       };
       emailjs.send("rohitvendasta@gmail.com", "template_euenjja", formData)
          .then(function(response) {
