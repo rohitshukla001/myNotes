@@ -286,47 +286,9 @@
             background-position: right center;
             color: white;
          }
-         /* Hamburger Menu Styles */
-         .navbar-toggler {
-            border: none;
-            font-size: 1.5rem;
-            color: white;
-            padding: 0.5rem;
-         }
-         .navbar-toggler:focus {
-            outline: none;
-            box-shadow: none;
-         }
-         .navbar-collapse {
-            background-color: #000000;
-         }
-         @media (min-width: 992px) {
-            .navbar-toggler {
-               display: none;
-            }
-            .navbar-nav {
-               display: flex !important;
-            }
-         }
-         @media (max-width: 991px) {
-            .navbar-nav {
-               padding: 1rem;
-               display: none;
-            }
-            .navbar-nav.show {
-               display: block;
-            }
-            .navbar-nav li {
-               margin-bottom: 0.5rem;
-            }
+         @media (max-width: 768px) {
             .navbar .form-control {
-               width: 100%;
-               border-radius: 20px;
-               margin-bottom: 0.5rem;
-            }
-            .navbar .btn-outline-success {
-               border-radius: 20px;
-               width: 100%;
+               width: 120px;
             }
          }
          /* Empty State Styles */
@@ -392,21 +354,20 @@
                <img src="Images/noteslogo.png" width="200" alt="Logo" class="logo" />
             </a>
             <nav id="navbar" class="navbar">
-               <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                  <i class="bi bi-list"></i>
-               </button>
-               <div class="collapse navbar-collapse" id="navbarNav">
-                  <ul class="navbar-nav text-white ms-auto">
-                     <li class="nav-item"><a class="btn btn-sm p-2 text-white nav-link" onClick="window.location.reload()" role="button">Home</a></li>
-                     <li class="nav-item"><a class="btn btn-sm p-2 text-white nav-link" href="#notes">Notes</a></li>
-                     <li class="nav-item">
-                        <form class="d-flex" onsubmit="return false;">
-                           <input class="form-control me-2" type="search" id="searchInput" placeholder="Search notes..." aria-label="Search">
-                           <button class="btn btn-outline-success" type="submit">Search</button>
-                        </form>
-                     </li>
-                  </ul>
-               </div>
+               <ul class="text-white d-flex align-items-center">
+                  <li><a class="btn btn-sm p-2 text-white" onClick="window.location.reload()" role="button">Home</a></li>
+                  <li><a class="btn btn-sm p-2 text-white" href="#notes">Notes</a></li>
+                  <li>
+                     <nav class="navbar navbar-light">
+                        <div class="container-fluid">
+                           <form class="d-flex" onsubmit="return false;">
+                              <input class="form-control me-2" type="search" id="searchInput" placeholder="Search notes..." aria-label="Search">
+                              <button class="btn btn-outline-success" type="submit">Search</button>
+                           </form>
+                        </div>
+                     </nav>
+                  </li>
+               </ul>
             </nav>
          </div>
       </header>
