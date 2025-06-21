@@ -796,7 +796,7 @@
                   }
                });
                
-               if (hasMatch && searchTerm !== '') {
+               if (hasMatch) {
                   card.style.display = '';
                   const accordionCollapse = card.querySelector('.accordion-collapse');
                   if (accordionCollapse) {
@@ -808,11 +808,6 @@
                   if (accordionCollapse) {
                      accordionCollapse.classList.remove('show');
                   }
-               }
-               
-               // Show all cards if search term is empty
-               if (searchTerm === '') {
-                  card.style.display = '';
                }
             });
             
