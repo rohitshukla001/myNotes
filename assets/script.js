@@ -7,9 +7,11 @@ document.addEventListener('DOMContentLoaded', function() {
    }
    function toggleFeedbackForm() {
       var popup = document.getElementById('feedbackPopup');
-      popup.classList.toggle('show'); // Changed from 'active' to 'show'
+      if (popup) {
+         popup.classList.toggle('show'); // Updated to match CSS
+      }
    }
-   document.getElementById('feedbackForm').addEventListener('submit', function(event) {
+   document.getElementById('feedbackForm')?.addEventListener('submit', function(event) {
       event.preventDefault();
       var currentDate = new Date().toLocaleString();
       var formData = {
@@ -22,12 +24,11 @@ document.addEventListener('DOMContentLoaded', function() {
          .then(function(response) {
             document.getElementById('formMessage').innerHTML = '<span style="color:green;">Feedback sent successfully!</span>';
             document.getElementById('feedbackForm').reset();
-            setTimeout(toggleFeedbackForm, 2000); // Closes popup after 2 seconds
+            setTimeout(toggleFeedbackForm, 2000);
          }, function(error) {
             document.getElementById('formMessage').innerHTML = '<span style="color:red;">Failed to send feedback: ' + error.text + '</span>';
          });
    });
-   // Store original card HTML
    const cardContainers = [
       document.getElementById('cardContainer'),
       document.getElementById('cardContainer2'),
@@ -35,15 +36,12 @@ document.addEventListener('DOMContentLoaded', function() {
    ];
    const originalCards = cardContainers.map(container => container.innerHTML);
    const emptyState = document.getElementById('emptyState');
-   // Search functionality
    document.getElementById('searchInput').addEventListener('input', function(e) {
       const searchTerm = e.target.value.trim().toLowerCase();
-      // Hide empty state and clear all card containers
       emptyState.style.display = 'none';
       cardContainers.forEach(container => {
          container.innerHTML = '';
       });
-      // If search term is empty, restore all cards with accordions collapsed
       if (searchTerm === '') {
          cardContainers.forEach((container, index) => {
             container.innerHTML = originalCards[index];
@@ -57,10 +55,8 @@ document.addEventListener('DOMContentLoaded', function() {
          }
          return;
       }
-      // Create a temporary container to parse original cards
       const tempContainer = document.createElement('div');
       let hasMatches = false;
-      // Restore and filter cards for each container
       cardContainers.forEach((container, index) => {
          tempContainer.innerHTML = originalCards[index];
          const cards = tempContainer.querySelectorAll('.card-section');
@@ -83,11 +79,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
          });
       });
-      // Show empty state if no matches found
       if (!hasMatches) {
          emptyState.style.display = 'block';
       }
-      // Refresh AOS animations
       if (typeof AOS !== 'undefined') {
          AOS.refresh();
       }
