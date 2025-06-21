@@ -424,23 +424,27 @@
       </style>
    </head>
    <body>
-<header id="header" class="header" style="background-color:#000000;">
-  <nav class="navbar navbar-expand-lg navbar-dark container-fluid container-xl">
-    <a onClick="window.location.reload()" class="navbar-brand d-flex align-items-center">
-      <img src="Images/noteslogo.png" style="max-width: 150px;" alt="Logo" />
+<header id="header" class="header bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark container-fluid">
+    <!-- Logo -->
+    <a class="navbar-brand" onClick="window.location.reload()">
+      <img src="Images/noteslogo.png" alt="Logo" style="max-height: 50px;" />
     </a>
+
+    <!-- Hamburger -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
+    <!-- Collapsible Nav Content -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-white">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="btn btn-sm p-2 text-white" onClick="window.location.reload()" role="button">Home</a>
+          <a class="nav-link text-white" onClick="window.location.reload()" role="button">Home</a>
         </li>
         <li class="nav-item">
-          <a class="btn btn-sm p-2 text-white" href="#notes">Notes</a>
+          <a class="nav-link text-white" href="#notes">Notes</a>
         </li>
       </ul>
       <form class="d-flex" onsubmit="return false;">
@@ -450,6 +454,7 @@
     </div>
   </nav>
 </header>
+
 
 
       <div>
