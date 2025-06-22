@@ -1,934 +1,774 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8" />
-      <meta name="robots" content="noindex, nofollow">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" crossorigin="anonymous" />
-      <title>Notes Website</title>
-      <link href="notes/bootstrap.min.css" rel="stylesheet" />
-      <link href="notes/bootstrap-icons.css" rel="stylesheet" />
-      <link href="notes/style.css" rel="stylesheet" />
-      <link
-         href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-         rel="stylesheet"
-         />
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" crossorigin="anonymous" />
-      <link href="notes/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" crossorigin="anonymous" />
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3.2.0/dist/css/glightbox.min.css" crossorigin="anonymous" />
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.css" crossorigin="anonymous" />
-      <link href="notes/assets/css/main.css" rel="stylesheet" />
-      <link rel="shortcut icon" href="notes/favi.png" />
-      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-      <style>
-         /* -------------------------------------------------------------------------- */
-         /* Buttons */
-         /* -------------------------------------------------------------------------- */
-         .feedback-btn {
-           align-items: center;
-           animation: pulse 2s infinite ease-in-out;
-           background-image: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
-           background-size: 200% auto;
-           border-radius: 8px;
-           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-           color: white;
-           cursor: pointer;
-           display: inline-flex;
-           font-size: 16px;
-           font-weight: bold;
-           padding: 10px 20px;
-           text-transform: uppercase;
-           transition: all 0.3s ease;
-         }
-         
-         .feedback-btn:hover {
-           background-position: right center;
-           box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
-           color: white;
-           text-decoration: none;
-           transform: scale(1.05);
-         }
-         
-         .feedback-icon {
-           font-size: 18px;
-           margin-right: 8px;
-         }
-         
-         /* Gradient Button Variants */
-         .btn-grad,
-         .btn-grad-blue,
-         .btn-grad-yellow {
-           background-size: 200% auto;
-           box-shadow: 0 0 20px #eee;
-           display: block;
-           transition: 0.5s;
-         }
-         
-         .btn-grad {
-           background-image: linear-gradient(to right, #EFEFBB 0%, #D4D3DD 51%, #EFEFBB 100%);
-           color: black;
-         }
-         
-         .btn-grad:hover {
-           background-position: right center;
-           color: black;
-           text-decoration: none;
-         }
-         
-         .btn-grad-blue {
-           background-image: linear-gradient(to right, #00d2ff 0%, #3a7bd5 51%, #00d2ff 100%);
-           color: white;
-         }
-         
-         .btn-grad-blue:hover {
-           background-position: right center;
-           color: #fff;
-           text-decoration: none;
-         }
-         
-         .btn-grad-yellow {
-           background-image: linear-gradient(to right, #8e9eab 0%, #eef2f3 51%, #8e9eab 100%);
-           color: black;
-         }
-         
-         .btn-grad-yellow:hover {
-           background-position: right center;
-           color: black;
-           text-decoration: none;
-         }
-         
-         /* -------------------------------------------------------------------------- */
-         /* Developer Hover Card */
-         /* -------------------------------------------------------------------------- */
-         .developer-container {
-           display: inline-block;
-           position: relative;
-         }
-         
-         .developer-image {
-           border-radius: 8px;
-           bottom: calc(100% + 10px);
-           box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-           display: none;
-           left: 50%;
-           opacity: 0;
-           position: absolute;
-           transform: translateX(-50%) translateY(10px) scale(0.9);
-           transition: all 0.6s ease-in-out;
-           width: 250px;
-         }
-         
-         .developer-container:hover .developer-image {
-           display: block;
-           opacity: 1;
-           transform: translateX(-50%) translateY(0) scale(1);
-         }
-         
-         /* -------------------------------------------------------------------------- */
-         /* Feedback Popup */
-         /* -------------------------------------------------------------------------- */
-         .feedback-link {
-           color: #3a7bd5;
-           cursor: pointer;
-           margin-left: 10px;
-         }
-         
-         .feedback-link:hover {
-           color: #00d2ff;
-           text-decoration: underline;
-         }
-         
-         .feedback-popup {
-           background: #fff;
-           border-radius: 10px;
-           box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-           display: none;
-           left: 50%;
-           opacity: 0;
-           padding: 0;
-           position: fixed;
-           top: 50%;
-           transform: translate(-50%, -50%);
-           transition: opacity 0.3s ease, transform 0.3s ease;
-           width: 350px;
-           z-index: 1000;
-         }
-         
-         .feedback-popup.active {
-           display: block;
-           opacity: 1;
-           transform: translate(-50%, -50%) scale(1);
-         }
-         
-         .feedback-popup:not(.active) {
-           transform: translate(-50%, -50%) scale(0.95);
-         }
-         
-         .popup-header {
-           background-image: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
-           border-radius: 10px 10px 0 0;
-           color: white;
-           padding: 15px 20px;
-           position: relative;
-         }
-         
-         .popup-header h4 {
-           font-size: 20px;
-           font-weight: bold;
-           margin: 0;
-           text-transform: uppercase;
-         }
-         
-         .popup-header .close-btn {
-           color: #fff;
-           cursor: pointer;
-           font-size: 28px;
-           position: absolute;
-           right: 20px;
-           top: 50%;
-           transform: translateY(-50%);
-           transition: color 0.3s ease, transform 0.3s ease;
-         }
-         
-         .popup-header .close-btn:hover {
-           color: #f0f0f0;
-           transform: translateY(-50%) rotate(90deg);
-         }
-         
-         .feedback-popup .form-group {
-           margin: 20px;
-         }
-         
-         .feedback-popup .form-group label {
-           color: #3a7bd5;
-           display: block;
-           font-weight: 600;
-           margin-bottom: 5px;
-         }
-         
-         .feedback-popup .form-control {
-           border: 1px solid #ddd;
-           border-radius: 6px;
-           font-size: 14px;
-           padding: 8px 12px;
-           transition: border-color 0.3s ease, box-shadow 0.3s ease;
-           width: 100%;
-         }
-         
-         .feedback-popup .form-control:focus {
-           border-color: #3a7bd5;
-           box-shadow: 0 0 5px rgba(58, 123, 213, 0.5);
-           outline: none;
-         }
-         
-         .feedback-popup .btn-submit {
-           background-image: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
-           background-size: 200% auto;
-           border: none;
-           border-radius: 6px;
-           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-           color: white;
-           cursor: pointer;
-           display: block;
-           font-size: 16px;
-           font-weight: bold;
-           margin: 0 20px 20px;
-           padding: 10px;
-           text-transform: uppercase;
-           transition: all 0.3s ease;
-           width: calc(100% - 40px);
-         }
-         
-         .feedback-popup .btn-submit:hover {
-           background-position: right center;
-           box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
-         }
-         
-         .feedback-popup #formMessage {
-           margin-bottom: 15px;
-           text-align: center;
-         }
-         
-         /* -------------------------------------------------------------------------- */
-         /* Scroll to Top */
-         /* -------------------------------------------------------------------------- */
-         .scroll-top {
-           background: #3a7bd5;
-           border-radius: 50%;
-           bottom: 20px;
-           color: white;
-           height: 40px;
-           position: fixed;
-           right: 20px;
-           width: 40px;
-           z-index: 1000;
-         }
-         
-         .scroll-top:hover {
-           background: #00d2ff;
-         }
-         
-         /* -------------------------------------------------------------------------- */
-         /* Navbar Search Bar */
-         /* -------------------------------------------------------------------------- */
-         .navbar.navbar-light {
-           background-color: transparent !important;
-           padding: 0;
-         }
-         
-         .navbar .form-control {
-           background-color: #fff;
-           border: 1px solid #3a7bd5;
-           border-radius: 20px 0 0 20px;
-           color: #333;
-           font-size: 14px;
-           padding: 5px 10px;
-         }
-         
-         .navbar .form-control:focus {
-           border-color: #00d2ff;
-           box-shadow: 0 0 5px rgba(0, 210, 255, 0.5);
-         }
-         
-         .navbar .btn-outline-success {
-           background-image: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
-           background-size: 200% auto;
-           border: none;
-           border-radius: 0 20px 20px 0;
-           color: white;
-           font-size: 14px;
-           padding: 5px 15px;
-           transition: all 0.3s ease;
-         }
-         
-         .navbar .btn-outline-success:hover {
-           background-position: right center;
-           color: white;
-         }
-         
-         /* -------------------------------------------------------------------------- */
-         /* Empty State */
-         /* -------------------------------------------------------------------------- */
-         .empty-state {
-           animation: pulse-empty 2s infinite ease-in-out;
-           background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
-           border-radius: 15px;
-           box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-           display: none;
-           margin: 20px auto;
-           max-width: 600px;
-           padding: 50px 20px;
-           text-align: center;
-         }
-         
-         .empty-state i {
-           animation: bounce 1.5s infinite;
-           color: #3a7bd5;
-           font-size: 60px;
-           margin-bottom: 20px;
-         }
-         
-         .empty-state h3 {
-           color: #333;
-           font-size: 24px;
-           font-weight: 600;
-           margin-bottom: 10px;
-         }
-         
-         .empty-state p {
-           color: #666;
-           font-size: 16px;
-           margin: 0;
-         }
-         
-         /* -------------------------------------------------------------------------- */
-         /* Animations */
-         /* -------------------------------------------------------------------------- */
-         @keyframes pulse {
-           0% {
-             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-           }
-           50% {
-             box-shadow: 0 4px 16px rgba(0, 210, 255, 0.4);
-           }
-           100% {
-             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-           }
-         }
-         
-         @keyframes pulse-empty {
-           0% {
-             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-           }
-           50% {
-             box-shadow: 0 8px 25px rgba(58, 123, 213, 0.2);
-           }
-           100% {
-             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-           }
-         }
-         
-         @keyframes bounce {
-           0%, 20%, 50%, 80%, 100% {
-             transform: translateY(0);
-           }
-           40% {
-             transform: translateY(-10px);
-           }
-           60% {
-             transform: translateY(-5px);
-           }
-         }
-         
-         /* -------------------------------------------------------------------------- */
-         /* Responsive */
-         /* -------------------------------------------------------------------------- */
-         @media (max-width: 576px) {
-           .feedback-btn {
-             font-size: 14px;
-             padding: 8px 16px;
-           }
-         
-           .feedback-icon {
-             font-size: 16px;
-           }
-         
-           .feedback-popup {
-             width: 90%;
-           }
-         
-           .popup-header h4 {
-             font-size: 18px;
-           }
-         
-           .feedback-popup .btn-submit {
-             font-size: 14px;
-             padding: 8px;
-           }
-         
-           .empty-state {
-             margin: 15px;
-             padding: 30px 15px;
-           }
-         
-           .empty-state i {
-             font-size: 50px;
-           }
-         
-           .empty-state h3 {
-             font-size: 20px;
-           }
-         
-           .empty-state p {
-             font-size: 14px;
-           }
-         }
-      </style>
-   </head>
-   <body>
-      <header id="header" class="header d-flex align-items-center" style="background-color:#000000;">
-         <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-            <a onClick="window.location.reload()" class="logo d-flex align-items-center">
-            <img src="Images/noteslogo.png" width="200" alt="Logo" class="logo" />
-            </a>
-            <nav id="navbar" class="navbar">
-               <ul class="text-white d-flex align-items-center">
-                  <li><a class="btn btn-sm p-2 text-white" onClick="window.location.reload()" role="button">Home</a></li>
-                  <li><a class="btn btn-sm p-2 text-white" href="#notes">Notes</a></li>
-                  <li>
-                     <nav class="navbar navbar-light">
-                        <div class="container-fluid">
-                           <form class="d-flex" onsubmit="return false;">
-                              <input class="form-control me-2" type="search" id="searchInput" placeholder="Search notes..." aria-label="Search">
-                              <button class="btn btn-outline-success" type="submit">Search</button>
-                           </form>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes Website</title>
+    <link rel="shortcut icon" href="notes/favi.png" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .navbar {
+            background: linear-gradient(90deg, #0a1a2e, #1e3a5f);
+            padding: 0.8rem 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid rgba(30, 58, 95, 0.5);
+        }
+        .navbar-brand img {
+            width: 180px;
+            transition: transform 0.3s ease;
+        }
+        .navbar-brand img:hover {
+            transform: scale(1.05);
+        }
+        .nav-link {
+            color: #efefef !important;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease, transform 0.2s ease;
+            position: relative;
+            font-size: 0.9rem;
+        }
+        .nav-link:hover,
+        .nav-link.active {
+            color: #efefef !important;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            transform: translateY(-1px);
+            font-weight: bold;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background: rgba(163, 191, 250, 0.7);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 50%;
+        }
+        .search-form {
+            display: flex;
+            align-items: center;
+            width: 280px;
+            margin-left: 1rem;
+        }
+        .search-input {
+            flex-grow: 1;
+            padding: 0.5rem 1rem;
+            border: none;
+            font-size: 0.9rem;
+            color: #333;
+            background: rgba(255, 255, 255, 0.9);
+            outline: none;
+            transition: box-shadow 0.3s ease;
+        }
+        .search-input:focus {
+            box-shadow: 0 0 10px rgba(163, 191, 250, 0.5);
+        }
+        .search-input::placeholder {
+            color: #666;
+        }
+        .search-btn {
+            padding: 0.5rem 1.3rem;
+            background: linear-gradient(45deg, #0a1a2e, #1e3a5f);
+            border: none;
+            border-radius: 0 20px 20px 0;
+            color: #a3bffa;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .search-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(30, 58, 95, 0.7);
+            color: #fff;
+        }
+        .nav-item {
+            font-size: 0.85rem;
+        }
+        .card {
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: linear-gradient(145deg, #ffffff, #f8f8f8);
+            overflow: hidden;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 16px 50px rgba(0, 0, 0, 0.25);
+        }
+        .card-img-top {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+        .expand-btn {
+            /* color: linear-gradient(90deg, #0a1a2e, #1e3a5f); */
+            color: #0077cc;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        .expand-btn:hover {
+            color: #1e3a5f;
+        }
+        .card-expanded-content {
+            display: none;
+            margin-top: 1rem;
+        }
+        .card-expanded .card-expanded-content {
+            display: block;
+        }
+        .card-expanded-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .card-expanded-content li {
+            margin-bottom: 0.5rem;
+        }
+        .card-expanded-content a {
+            display: block;
+            padding: 0.5rem 1rem;
+            background-color: #23282a;
+            color: #fff;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .card-expanded-content a:hover {
+            background-color: #0077cc;
+            transform: translateX(5px);
+        }
+        .empty-state {
+            display: none;
+            text-align: center;
+            padding: 3rem 1rem;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            margin: 2rem auto;
+            max-width: 600px;
+        }
+        .empty-state.show {
+            display: block;
+        }
+        .empty-state h3 {
+            color: #333;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .empty-state p {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .empty-state .btn {
+            background-color: #00aaff;
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .empty-state .btn:hover {
+            background-color: #0077cc;
+        }
+        .feedback-btn {
+            align-items: center;
+            animation: pulse 2s infinite ease-in-out;
+            background-image: linear-gradient(135deg, #0a1a2e 0%, #1e3a5f 100%);
+            background-size: 200% auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            color: #efefef;
+            cursor: pointer;
+            display: inline-flex;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+        .feedback-btn:hover {
+            background-position: right center;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+            color: #efefef;
+            text-decoration: none;
+            transform: scale(1.05);
+        }
+        .feedback-icon {
+            font-size: 18px;
+            margin-right: 8px;
+        }
+        .btn-grad,
+        .btn-grad-blue,
+        .btn-grad-yellow {
+            background-size: 200% auto;
+            box-shadow: 0 0 20px #eee;
+            display: block;
+            transition: 0.5s;
+        }
+        .btn-grad {
+            background-image: linear-gradient(to right, #EFEFBB 0%, #D4D3DD 51%, #EFEFBB 100%);
+            color: black;
+        }
+        .btn-grad:hover {
+            background-position: right center;
+            color: black;
+            text-decoration: none;
+        }
+        .btn-grad-blue {
+            background-image: linear-gradient(to right, #00d2ff 0%, #3a7bd5 51%, #00d2ff 100%);
+            color: white;
+        }
+        .btn-grad-blue:hover {
+            background-position: right center;
+            color: #fff;
+            text-decoration: none;
+        }
+        .btn-grad-yellow {
+            background-image: linear-gradient(to right, #8e9eab 0%, #eef2f3 51%, #8e9eab 100%);
+            color: black;
+        }
+        .btn-grad-yellow:hover {
+            background-position: right center;
+            color: black;
+            text-decoration: none;
+        }
+        .developer-container {
+            display: inline-block;
+            position: relative;
+        }
+        .developer-image {
+            border-radius: 8px;
+            bottom: calc(100% + 10px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            display: none;
+            left: 50%;
+            opacity: 0;
+            position: absolute;
+            transform: translateX(-50%) translateY(10px) scale(0.9);
+            transition: all 0.6s ease-in-out;
+            width: 250px;
+        }
+        .developer-container:hover .developer-image {
+            display: block;
+            opacity: 1;
+            transform: translateX(-50%) translateY(0) scale(1);
+        }
+        .feedback-link {
+            color: #1e3a5f;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .feedback-link:hover {
+            color: #0a1a2e;
+            text-decoration: underline;
+        }
+        .feedback-popup {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            display: none;
+            left: 50%;
+            opacity: 0;
+            padding: 0;
+            position: fixed;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            width: 350px;
+            z-index: 1000;
+        }
+        .feedback-popup.active {
+            display: block;
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        .feedback-popup:not(.active) {
+            transform: translate(-50%, -50%) scale(0.95);
+        }
+        .popup-header {
+            background-image: linear-gradient(135deg, #0a1a2e 0%, #1e3a5f 100%);
+            border-radius: 10px 10px 0 0;
+            color: #efefef;
+            padding: 15px 20px;
+            position: relative;
+        }
+        .popup-header h4 {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 0;
+            text-transform: uppercase;
+        }
+        .popup-header .close-btn {
+            color: #efefef;
+            cursor: pointer;
+            font-size: 28px;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .popup-header .close-btn:hover {
+            color: #efefef;
+            transform: translateY(-50%) rotate(90deg);
+        }
+        .feedback-popup .form-group {
+            margin: 20px;
+        }
+        .feedback-popup .form-group label {
+            color: #1e3a5f;
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        .feedback-popup .form-control {
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            padding: 8px 12px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+        }
+        .feedback-popup .form-control:focus {
+            border-color: #1e3a5f;
+            box-shadow: 0 0 5px rgba(30, 58, 95, 0.5);
+            outline: none;
+        }
+        .feedback-popup .btn-submit {
+            background-image: linear-gradient(135deg, #0a1a2e 0%, #1e3a5f 100%);
+            background-size: 200% auto;
+            border: none;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            color: #efefef;
+            cursor: pointer;
+            display: block;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 0 20px 20px;
+            padding: 10px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            width: calc(100% - 40px);
+        }
+        .feedback-popup .btn-submit:hover {
+            background-position: right center;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+            color: #fff;
+        }
+        .feedback-popup #formMessage {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            }
+            50% {
+                box-shadow: 0 4px 16px rgba(30, 58, 95, 0.4);
+            }
+            100% {
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            }
+        }
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.5rem 1rem;
+            }
+            .navbar-brand img {
+                width: 140px;
+            }
+            .search-form {
+                width: 100%;
+                margin: 0.5rem 0;
+            }
+            .card-img-top {
+                height: 150px;
+            }
+            .nav-link {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+            .search-form {
+                width: 100%;
+            }
+            .search-input {
+                flex-grow: 1;
+            }
+            .empty-state {
+                padding: 2rem 0.5rem;
+            }
+            .empty-state h3 {
+                font-size: 1.2rem;
+            }
+            .empty-state p {
+                font-size: 0.9rem;
+            }
+        }
+        @media (max-width: 576px) {
+            .navbar-brand img {
+                width: 110px;
+            }
+            .search-input {
+                font-size: 0.8rem;
+            }
+            .search-btn {
+                padding: 0.4rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"> <img src="Images/noteslogo.png" alt="Logo" class="nav-logo"> </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"> <a class="nav-link active" aria-current="page" href="#">HOME</a> </li>
+                </ul>
+                <form class="search-form d-flex"> <input type="text" class="form-control search-input" placeholder="Search notes..." aria-label="Search"> <button type="submit" class="search-btn">Search</button> </form>
+            </div>
+        </div>
+    </nav>
+    <!-- Card Section -->
+    <div class="container my-5">
+        <div class="row g-4">
+            <!-- Card 1: Java -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100">
+                    <img src="Images/java_image.png" class="card-img-top" alt="JAVA">
+                    <div class="card-body">
+                        <button class="btn btn-link expand-btn" onclick="toggleCard(this)">↓ Show Resources</button>
+                        <div class="card-expanded-content">
+                            <ul>
+                                <li><a href="/notes/Java Terminology.pdf" target="_blank">Terminology</a></li>
+                                <li><a href="/notes/Collections.pdf" target="_blank">Collections</a></li>
+                                <li><a href="/notes/oops.pdf" target="_blank">Oops</a></li>
+                                <li><a href="https://whimsical.com/java-F3wA8hstGi42DU8BZrsCUL" target="_blank">RoadMap</a></li>
+                                <li><a href="https://drive.google.com/file/d/1rdIMUCiW1yjA6_irliXu19zC_GPEcR66/view" target="_blank">Material</a></li>
+                                <li><a href="https://www.edureka.co/blog/java-collections/" target="_blank">Collection</a></li>
+                                <li><a href="/notes/roadmap.pdf" target="_blank">All Roadmap</a></li>
+                                <li><a href="/notes/backend.pdf" target="_blank">Backend map</a></li>
+                                <li><a href="/notes/java.pdf" target="_blank">Java Roadmap</a></li>
+                                <li><a href="/notes/Core-JAVA.pdf" target="_blank">Core JAVA</a></li>
+                                <li><a href="https://enos.itcollege.ee/~jpoial/allalaadimised/reading/Java-Interview-Questions.pdf" target="_blank">Core JAVA Ques.</a></li>
+                                <li><a href="/notes/Core_java_interview_questions_and_answer.pdf" target="_blank">JAVA Ques. 2</a></li>
+                                <li><a href="https://www.geeksforgeeks.org/java-interview-questions/" target="_blank">GFG Ques. 3</a></li>
+                                <li><a href="/notes/Core Java Interview Questions.pdf" target="_blank">JAVA Ques. 4</a></li>
+                                <li><a href="https://www.javatpoint.com/corejava-interview-questions" target="_blank">Core JAVA Ques</a></li>
+                                <li><a href="https://www.guru99.com/java-interview-questions-answers.html" target="_blank">Guru99 Ques</a></li>
+                            </ul>
                         </div>
-                     </nav>
-                  </li>
-               </ul>
-            </nav>
-         </div>
-      </header>
-      <div>
-         <section id="notes" class="jumbotron team">
+                    </div>
+                </div>
+            </div>
+            <!-- Card 2: DSA -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100">
+                    <img src="Images/dsa_image.png" class="card-img-top" alt="DSA">
+                    <div class="card-body">
+                        <button class="btn btn-link expand-btn" onclick="toggleCard(this)">↓ Show Resources</button>
+                        <div class="card-expanded-content">
+                            <ul>
+                                <li><a href="docs/DSA_COMPLETE ROADMAAP.pdf" target="_blank">Roadmap</a></li>
+                                <li><a href="docs/250+DSA QUESTIONS FOR PLACEMENTS.pdf" target="_blank">Practice Questions</a></li>
+                                <li><a href="https://whimsical.com/master-roadmap-SzYF2dY2SqwtPQfY5A3mZS" target="_blank">Master RoadMap</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 3: EWM -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100">
+                    <img src="Images/EWM.png" class="card-img-top" alt="EWM">
+                    <div class="card-body">
+                        <button class="btn btn-link expand-btn" onclick="toggleCard(this)">↓ Show Resources</button>
+                        <div class="card-expanded-content">
+                            <ul>
+                                <li><a href="notes/Exception Handling.pdf" target="_blank">Exception Handling</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 4: CHM -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100">
+                    <img src="Images/CHM.png" class="card-img-top" alt="CHM">
+                    <div class="card-body">
+                        <button class="btn btn-link expand-btn" onclick="toggleCard(this)">↓ Show Resources</button>
+                        <div class="card-expanded-content">
+                            <ul>
+                                <li><a href="https://www.tutorialspoint.com/hibernate/hibernate_tutorial.pdf" target="_blank">Hibernate 1</a></li>
+                                <li><a href="https://whimsical.com/master-roadmap-SzYF2dY2SqwtPQfY5A3mZS" target="_blank">Master RoadMap</a></li>
+                                <li><a href="notes/Multithreading.pdf" target="_blank">Multithreading</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 5: SQL -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100">
+                    <img src="Images/sql_image.png" class="card-img-top" alt="SQL">
+                    <div class="card-body">
+                        <button class="btn btn-link expand-btn" onclick="toggleCard(this)">↓ Show Resources</button>
+                        <div class="card-expanded-content">
+                            <ul>
+                                <li><a href="notes/PostgreSQL.pdf" target="_blank">PostgreSQL</a></li>
+                                <li><a href="notes/SQL.pdf" target="_blank">SQL</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 6: Web Technology -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100">
+                    <img src="Images/web_image.png" class="card-img-top" alt="Web Technology">
+                    <div class="card-body">
+                        <button class="btn btn-link expand-btn" onclick="toggleCard(this)">↓ Show Resources</button>
+                        <div class="card-expanded-content">
+                            <ul>
+                                <li><a href="/notes/HTML Interview Questions.pdf" target="_blank">HTML Questions</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 7: Interview -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100">
+                    <img src="Images/interview_image.png" class="card-img-top" alt="Interview">
+                    <div class="card-body">
+                        <button class="btn btn-link expand-btn" onclick="toggleCard(this)">↓ Show Resources</button>
+                        <div class="card-expanded-content">
+                            <ul>
+                                <li><a href="/notes/hr_round_equestion.pdf" target="_blank">HR Round</a></li>
+                                <li><a href="https://testbook.com/interview/servlet-interview-questions" target="_blank">Servlet Questions</a></li>
+                                <li><a href="https://www.edureka.co/blog/interview-questions/servlet-interview-questions/" target="_blank">Servlet Questions 1</a></li>
+                                <li><a href="https://www.interviewbit.com/servlet-interview-questions/" target="_blank">Servlet Questions 2</a></li>
+                                <li><a href="https://career.guru99.com/top-50-servlet-interview-questions/" target="_blank">Servlet Questions 3</a></li>
+                                <li><a href="https://www.tutorialspoint.com/servlets/pdf/servlets_interview_questions.pdf" target="_blank">Servlet Questions 4</a></li>
+                                <li><a href="/notes/JAVA_UNIT-4_NOTES" target="_blank">Java Unit Notes</a></li>
+                                <li><a href="/notes/java_collections_1" target="_blank">Java collections 1</a></li>
+                                <li><a href="/notes/java_collections_2" target="_blank">Java collections 2</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 8: JavaScript/React -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100">
+                    <img src="Images/JavaScript_react.png" class="card-img-top" alt="Left Notes">
+                    <div class="card-body">
+                        <button class="btn btn-link expand-btn" onclick="toggleCard(this)">↓ Show Resources</button>
+                        <div class="card-expanded-content">
+                            <ul>
+                                <li><a href="https://medium.com/@rajanraj8979/roadmap-for-react-js-for-beginners-to-advance-522ce3588838" target="_blank">React roadmap-1</a></li>
+                                <li><a href="https://learningdaily.dev/the-best-react-developer-roadmap-for-2024-1aaf406c5a32" target="_blank">React roadmap-2</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 9: DevOps -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100">
+                    <img src="Images/Devops_Img.png" class="card-img-top" alt="DevOps">
+                    <div class="card-body">
+                        <button class="btn btn-link expand-btn" onclick="toggleCard(this)">↓ Show Resources</button>
+                        <div class="card-expanded-content">
+                            <ul>
+                                <li><a href="https://www.tutorialspoint.com/postman/postman_tutorial.pdf" target="_blank">Postman Tutorial</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 10: Go -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100">
+                    <img src="Images/Go.png" class="card-img-top" alt="Go">
+                    <div class="card-body">
+                        <button class="btn btn-link expand-btn" onclick="toggleCard(this)">↓ Show Resources</button>
+                        <div class="card-expanded-content">
+                            <ul>
+                                <li><a href="/notes/RoadmapGolang.pdf" target="_blank">Golang Roadmap</a></li>
+                                <li><a href="/notes/golang_tutorial.pdf" target="_blank">Golang Tutorial</a></li>
+                                <li><a href="/notes/Angular.pdf" target="_blank">Angular</a></li>
+                                <li><a href="/notes/Temporal_workflow.pdf" target="_blank">Temporal workflow</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 11: Spring -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100">
+                    <img src="Images/spring_image.png" class="card-img-top" alt="Spring">
+                    <div class="card-body">
+                        <button class="btn btn-link expand-btn" onclick="toggleCard(this)">↓ Show Resources</button>
+                        <div class="card-expanded-content">
+                            <ul>
+                                <li><a href="/notes/spring_boot_questions_and_answer.pdf" target="_blank">Spring & Spring boot</a></li>
+                                <li><a href="https://leverageedu.com/blog/hi/common-english-words-used-in-daily-life-with-hindi-meaning/" target="_blank">Common words in english</a></li>
+                                <li><a href="https://infinitylearn.com/surge/english/word-meaning-english-to-hindi/" target="_blank">100 words in english</a></li>
+                                <li><a href="https://hindimediumhelp.blogspot.com/2020/12/English-Words-Hindi-Meaning.html" target="_blank">100+ words</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 12: Personal -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100">
+                    <img src="Images/personal_image.png" class="card-img-top" alt="Left Notes">
+                    <div class="card-body">
+                        <button class="btn btn-link expand-btn" onclick="toggleCard(this)">↓ Show Resources</button>
+                        <div class="card-expanded-content">
+                            <ul>
+                                <li><a href="https://jstrieb.github.io/link-lock/#eyJ2IjoiMC4wLjEiLCJlIjoiY2Rkb0piQnlnbXpSanpSNEttbGMwenhoV1hPVmFTTVpGVDRkRzlNbzQ2OEVCOWV0N1FONGpIMUh4Vmo0YzA4SWd4SFplbGttbzh4MjRHQlhPZDBMNmtVPSIsImgiOiI4MTcqKio5NiIsInMiOiI0elRLeWlFMERYUWhPalNpcTk0RDR3PT0iLCJpIjoielNVaEpacUJXU1p5UFVZNCJ9" target="_blank">Personal Notes</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- Empty State -->
-            <div id="emptyState" class="empty-state" data-aos="fade-up">
-               <i class="bi bi-search"></i>
-               <h3>No Notes Found</h3>
-               <p>Try a different search term to find the notes you're looking for!</p>
+            <div class="empty-state">
+                <h3>No Results Found</h3>
+                <p>It seems we couldn’t find any notes matching your search. Please try a different keyword or check your spelling.</p>
+                <a href="#" class="btn" onclick="document.querySelector('.search-input').value = ''; filterCards(); return false;">Clear Search</a>
             </div>
-            <div class="container" data-aos="fade-up">
-               <div class="row gy-4" id="cardContainer">
-                  <!-- Java Section -->
-                  <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="200">
-                     <div class="member">
-                        <img src="Images/java_image.png" class="img-fluid" alt="JAVA" />
-                        <hr />
-                        <div class="container" data-aos="fade-up">
-                           <div class="accordion accordion-flush" id="faqlist-java">
-                              <div class="accordion-item">
-                                 <h3 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-java"></button>
-                                 </h3>
-                                 <div id="faq-content-java" class="accordion-collapse collapse" data-bs-parent="#faqlist-java">
-                                    <div class="accordion-body">
-                                       <ul class="list-group border">
-                                          <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-blue" href="/notes/Java Terminology.pdf" role="button">Terminology</a></li>
-                                          <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-blue" href="/notes/Collections.pdf" role="button">Collections</a></li>
-                                          <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-blue" href="/notes/oops.pdf" role="button">Oops</a></li>
-                                          <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://whimsical.com/java-F3wA8hstGi42DU8BZrsCUL" role="button">RoadMap</a></li>
-                                          <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://drive.google.com/file/d/1rdIMUCiW1yjA6_irliXu19zC_GPEcR66/view" role="button">Material</a></li>
-                                          <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://www.edureka.co/blog/java-collections/" role="button">Collection</a></li>
-                                          <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad" href="/notes/roadmap.pdf" role="button">All Roadmap</a></li>
-                                          <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad" href="/notes/backend.pdf" role="button">Backend map</a></li>
-                                          <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad" href="/notes/java.pdf" role="button">Java Roadmap</a></li>
-                                          <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="/notes/Core-JAVA.pdf" role="button">Core JAVA</a></li>
-                                          <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://enos.itcollege.ee/~jpoial/allalaadimised/reading/Java-Interview-Questions.pdf" role="button">Core JAVA Ques.</a></li>
-                                          <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="/notes/Core_java_interview_questions_and_answer.pdf" role="button">JAVA Ques. 2</a></li>
-                                          <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://www.geeksforgeeks.org/java-interview-questions/" role="button">GFG Ques. 3</a></li>
-                                          <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad" href="/notes/Core Java Interview Questions.pdf" role="button">JAVA Ques. 4</a></li>
-                                          <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad" href="https://www.javatpoint.com/corejava-interview-questions" role="button">Core JAVA Ques</a></li>
-                                          <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad" href="https://www.guru99.com/java-interview-questions-answers.html" role="button">Guru99 Ques</a></li>
-                                       </ul>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <!-- DSA Section -->
-                  <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="100">
-                     <div class="member">
-                        <img src="Images/dsa_image.png" class="img-fluid" alt="DSA" />
-                        <hr />
-                        <div class="container" data-aos="fade-up">
-                           <div class="accordion accordion-flush" id="faqlist-dsa">
-                              <div class="accordion-item">
-                                 <h3 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-dsa"></button>
-                                 </h3>
-                                 <div id="faq-content-dsa" class="accordion-collapse collapse" data-bs-parent="#faqlist-dsa">
-                                    <div class="accordion-body">
-                                       <ul class="list-group">
-                                          <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="docs/DSA_COMPLETE ROADMAAP.pdf" role="button">Roadmap</a></li>
-                                          <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="docs/250+DSA QUESTIONS FOR PLACEMENTS.pdf" role="button">Practice Questions</a></li>
-                                          <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-warning" href="https://whimsical.com/master-roadmap-SzYF2dY2SqwtPQfY5A3mZS" role="button">Master RoadMap</a></li>
-                                       </ul>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <!-- EWM Section -->
-                  <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="100">
-                     <div class="member">
-                        <img src="Images/EWM.png" class="img-fluid" alt="EWM" />
-                        <hr />
-                        <div class="container" data-aos="fade-up">
-                           <div class="accordion accordion-flush" id="faqlist-ewm">
-                              <div class="accordion-item">
-                                 <h3 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-ewm"></button>
-                                 </h3>
-                                 <div id="faq-content-ewm" class="accordion-collapse collapse" data-bs-parent="#faqlist-ewm">
-                                    <div class="accordion-body">
-                                       <ul class="list-group">
-                                          <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-blue" href="notes/Exception Handling.pdf" role="button">Exception Handling</a></li>
-                                       </ul>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <!-- CHM Section -->
-                  <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="100">
-                     <div class="member">
-                        <img src="Images/CHM.png" class="img-fluid" alt="CHM" />
-                        <hr />
-                        <div class="container" data-aos="fade-up">
-                           <div class="accordion accordion-flush" id="faqlist-chm">
-                              <div class="accordion-item">
-                                 <h3 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-chm"></button>
-                                 </h3>
-                                 <div id="faq-content-chm" class="accordion-collapse collapse" data-bs-parent="#faqlist-chm">
-                                    <div class="accordion-body">
-                                       <ul class="list-group">
-                                          <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://www.tutorialspoint.com/hibernate/hibernate_tutorial.pdf" role="button">Hibernate 1</a></li>
-                                          <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-warning" href="https://whimsical.com/master-roadmap-SzYF2dY2SqwtPQfY5A3mZS" role="button">Master RoadMap</a></li>
-                                          <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad-blue" href="notes/Multithreading.pdf" role="button">Multithreading</a></li>
-                                       </ul>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div>
-               <!-- SQL Section -->
-               <div class="container" style="margin-top:15px;" data-aos="fade-up">
-                  <div class="row gy-4" id="cardContainer2">
-                     <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="100">
-                        <div class="member">
-                           <img src="Images/sql_image.png" class="img-fluid" alt="SQL" />
-                           <hr />
-                           <div class="container" data-aos="fade-up">
-                              <div class="accordion accordion-flush" id="faqlist-sql">
-                                 <div class="accordion-item">
-                                    <h3 class="accordion-header">
-                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-sql"></button>
-                                    </h3>
-                                    <div id="faq-content-sql" class="accordion-collapse collapse" data-bs-parent="#faqlist-sql">
-                                       <div class="accordion-body">
-                                          <ul class="list-group">
-                                             <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="notes/PostgreSQL.pdf" role="button">PostgreSQL</a></li>
-                                             <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-blue" href="notes/SQL.pdf" role="button">SQL</a></li>
-                                          </ul>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <!-- Web Technology Section -->
-                     <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="200">
-                        <div class="member">
-                           <img src="Images/web_image.png" class="img-fluid" alt="Web Technology" />
-                           <hr />
-                           <div class="container" data-aos="fade-up">
-                              <div class="accordion accordion-flush" id="faqlist-web">
-                                 <div class="accordion-item">
-                                    <h3 class="accordion-header">
-                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-web"></button>
-                                    </h3>
-                                    <div id="faq-content-web" class="accordion-collapse collapse" data-bs-parent="#faqlist-web">
-                                       <div class="accordion-body">
-                                          <ul class="list-group">
-                                             <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="/notes/HTML Interview Questions.pdf" role="button">HTML Questions</a></li>
-                                          </ul>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <!-- Interview Section -->
-                     <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="300">
-                        <div class="member">
-                           <img src="Images/interview_image.png" class="img-fluid" alt="Interview" />
-                           <hr />
-                           <div class="container" data-aos="fade-up">
-                              <div class="accordion accordion-flush" id="faqlist-interview">
-                                 <div class="accordion-item">
-                                    <h3 class="accordion-header">
-                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-interview"></button>
-                                    </h3>
-                                    <div id="faq-content-interview" class="accordion-collapse collapse" data-bs-parent="#faqlist-interview">
-                                       <div class="accordion-body">
-                                          <ul class="list-group">
-                                             <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-warning" href="/notes/hr_round_equestion.pdf" role="button">HR Round</a></li>
-                                             <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://testbook.com/interview/servlet-interview-questions" role="button">Servlet Questions</a></li>
-                                             <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://www.edureka.co/blog/interview-questions/servlet-interview-questions/" role="button">Servlet Questions 1</a></li>
-                                             <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://www.interviewbit.com/servlet-interview-questions/" role="button">Servlet Questions 2</a></li>
-                                             <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://career.guru99.com/top-50-servlet-interview-questions/" role="button">Servlet Questions 3</a></li>
-                                             <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://www.tutorialspoint.com/servlets/pdf/servlets_interview_questions.pdf" role="button">Servlet Questions 4</a></li>
-                                             <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad" href="/notes/JAVA_UNIT-4_NOTES" role="button">Java Unit Notes</a></li>
-                                             <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad" href="/notes/java_collections_1" role="button">Java collections 1</a></li>
-                                             <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad" href="/notes/java_collections_2" role="button">Java collections 2</a></li>
-                                          </ul>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <!-- JavaScript/React Section -->
-                     <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="400">
-                        <div class="member">
-                           <img src="Images/JavaScript_react.png" class="img-fluid" alt="Left Notes" />
-                           <hr />
-                           <div class="container" data-aos="fade-up">
-                              <div class="accordion accordion-flush" id="faqlist-react">
-                                 <div class="accordion-item">
-                                    <h3 class="accordion-header">
-                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-react"></button>
-                                    </h3>
-                                    <div id="faq-content-react" class="accordion-collapse collapse" data-bs-parent="#faqlist-react">
-                                       <div class="accordion-body">
-                                          <ul class="list-group">
-                                             <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://medium.com/@rajanraj8979/roadmap-for-react-js-for-beginners-to-advance-522ce3588838" role="button">React roadmap-1</a></li>
-                                             <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://learningdaily.dev/the-best-react-developer-roadmap-for-2024-1aaf406c5a32" role="button">React roadmap-2</a></li>
-                                          </ul>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div>
-               <!-- DevOps Section -->
-               <div class="container" style="margin-top:15px;" data-aos="fade-up">
-                  <div class="row gy-4" id="cardContainer3">
-                     <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="100">
-                        <div class="member">
-                           <img src="Images/Devops_Img.png" class="img-fluid" alt="DevOps" />
-                           <hr />
-                           <div class="container" data-aos="fade-up">
-                              <div class="accordion accordion-flush" id="faqlist-devops">
-                                 <div class="accordion-item">
-                                    <h3 class="accordion-header">
-                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-devops"></button>
-                                    </h3>
-                                    <div id="faq-content-devops" class="accordion-collapse collapse" data-bs-parent="#faqlist-devops">
-                                       <div class="accordion-body">
-                                          <ul class="list-group">
-                                             <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://www.tutorialspoint.com/postman/postman_tutorial.pdf" role="button">Postman Tutorial</a></li>
-                                          </ul>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <!-- Go Section -->
-                     <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="300">
-                        <div class="member">
-                           <img src="Images/Go.png" class="img-fluid" alt="Go" />
-                           <hr />
-                           <div class="container" data-aos="fade-up">
-                              <div class="accordion accordion-flush" id="faqlist-go">
-                                 <div class="accordion-item">
-                                    <h3 class="accordion-header">
-                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-go"></button>
-                                    </h3>
-                                    <div id="faq-content-go" class="accordion-collapse collapse" data-bs-parent="#faqlist-go">
-                                       <div class="accordion-body">
-                                          <ul class="list-group">
-                                             <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-yellow" href="/notes/RoadmapGolang.pdf" role="button">Golang Roadmap</a></li>
-                                             <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad" href="/notes/golang_tutorial.pdf" role="button">Golang Tutorial</a></li>
-                                             <li class="list-group-item border"><a target="_blank" class="btn btn-sm btn-grad" href="/notes/Angular.pdf" role="button">Angular</a></li>
-                                             <li class="list-group-item border"><a target="_blank" class="btn btn-sm border btn-grad-blue" href="/notes/Temporal_workflow.pdf" role="button">Temporal workflow</a></li>
-                                          </ul>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <!-- Spring Section -->
-                     <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="400">
-                        <div class="member">
-                           <img src="Images/spring_image.png" class="img-fluid" alt="Spring" />
-                           <hr />
-                           <div class="container" data-aos="fade-up">
-                              <div class="accordion accordion-flush" id="faqlist-spring">
-                                 <div class="accordion-item">
-                                    <h3 class="accordion-header">
-                                       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-spring"></button>
-                                    </h3>
-                                    <div id="faq-content-spring" class="accordion-collapse collapse" data-bs-parent="#faqlist-spring">
-                                       <div class="accordion-body">
-                                          <ul class="list-group">
-                                             <li class="list-group-item border">
-                                                <a target="_blank" class="btn btn-sm border btn-grad-yellow" href="/notes/spring_boot_questions_and_answer.pdf" role="button">Spring & Spring boot</a>
-                                                <a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://leverageedu.com/blog/hi/common-english-words-used-in-daily-life-with-hindi-meaning/" role="button">Common words in english</a>
-                                                <a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://infinitylearn.com/surge/english/word-meaning-english-to-hindi/" role="button">100 words in english</a>
-                                                <a target="_blank" class="btn btn-sm border btn-grad-yellow" href="https://hindimediumhelp.blogspot.com/2020/12/English-Words-Hindi-Meaning.html" role="button">100+ words</a>
-                                             </li>
-                                          </ul>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     <!-- Personal Section -->
-                     <div class="col-xl-3 col-md-6 d-flex card-section" data-aos="fade-up" data-aos-delay="400">
-                        <div class="member">
-                           <img src="Images/personal_image.png" class="img-fluid" alt="Left Notes" />
-                           <hr />
-                           <div class="container" data-aos="fade-up">
-                              <div class="accordion accordion-flush" id="faqlist-personal">
-                                 <div class="accordion-item">
-                                    <input
-                                       onclick="window.open('https://jstrieb.github.io/link-lock/#eyJ2IjoiMC4wLjEiLCJlIjoiY2Rrb0piQnlnbXpSanpSNEttbGMwenhoV1hPVmFTTVpGVDRkRzlNbzQ2OEVCOWV0N1FONGpIMUh4Vmo0YzA4SWd4SFplbGttbzh4MjRHQlhPZDBMNmtVPSIsImgiOiI4MTcqKio5NiIsInMiOiI0elRLeWlFMERYUWhPalNpcTk0RDR3PT0iLCJpIjoielNVaEpacUJXU1p5UFVZNCJ9','mywindow', 
-                                       'menubar=1,resizable=1, position: fixed, top: 50%, left: 50%, transform: translate(-50%, -50%), width: 50%')"
-                                       type="button"
-                                       value="➕"
-                                       />
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <!-- Footer with Feedback Link -->
-                  <div class="text-center py-4">
-                     <p>
-                        <span class="developer-container">
-                        Developed by <a href="https://github.com/rohitshukla001" target="_blank">Rohit Shukla</a> ↗
-                        <img src="https://info.rohitshukla.net/images/project/rohitshukla.jpg" alt="Rohit Shukla" class="developer-image">
-                        </span>
-                     <p>
-                        <span class="feedback-btn" onclick="toggleFeedbackForm()">
-                        <span class="feedback-icon">✉</span> Share Your Feedback
-                        </span>
-                     </p>
-                     </p>
-                  </div>
-               </div>
-            </div>
-         </section>
-      </div>
-      <!-- Feedback Popup -->
-      <div id="feedbackPopup" class="feedback-popup">
-         <div class="popup-header">
+        </div>
+    </div>
+    <!-- Footer with Feedback Link -->
+    <div class="text-center py-4">
+        <p> <span class="developer-container"> Developed by <a href="https://github.com/rohitshukla001" target="_blank">Rohit Shukla</a> ↗ <img src="https://info.rohitshukla.net/images/project/rohitshukla.jpg" alt="Rohit Shukla" class="developer-image"> </span>
+        <p> <span class="feedback-btn" onclick="toggleFeedbackForm()"> <span class="feedback-icon">✉</span> Share Your Feedback </span> </p>
+        </p>
+    </div>
+    <!-- Feedback Popup -->
+    <div id="feedbackPopup" class="feedback-popup">
+        <div class="popup-header">
             <h4>Submit Feedback</h4>
             <span class="close-btn" onclick="toggleFeedbackForm()">×</span>
-         </div>
-         <form id="feedbackForm">
-            <div class="form-group">
-               <label for="name">Name:</label>
-               <input type="text" class="form-control" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-               <label for="email">Email:</label>
-               <input type="email" class="form-control" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-               <label for="message">Message:</label>
-               <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
-            </div>
+        </div>
+        <form id="feedbackForm">
+            <div class="form-group"> <label for="name">Name:</label> <input type="text" class="form-control" id="name" name="name" required> </div>
+            <div class="form-group"> <label for="email">Email:</label> <input type="email" class="form-control" id="email" name="email" required> </div>
+            <div class="form-group"> <label for="message">Message:</label> <textarea class="form-control" id="message" name="message" rows="3" required></textarea> </div>
             <button type="submit" class="btn btn-submit">Submit</button>
-         </form>
-         <p id="formMessage" class="mt-2"></p>
-      </div>
-      <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-      <div id="preloader"></div>
-      <!-- JS Files -->
-      <script src="notes/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-      <script src="notes/assets/vendor/aos/aos.js"></script>
-      <script src="notes/assets/vendor/glightbox/js/glightbox.min.js"></script>
-      <script src="notes/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-      <script src="notes/assets/vendor/swiper/swiper-bundle.min.js"></script>
-      <script src="notes/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-      <script src="notes/assets/js/main.js"></script>
-      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
-      <script type="text/javascript">
-         (function() {
-            emailjs.init("dnQ7CtoblL4arIed7"); 
-         })();
-         if (typeof AOS !== 'undefined') {
-            AOS.init();
-         }
-         function toggleFeedbackForm() {
+        </form>
+        <p id="formMessage" class="mt-2"></p>
+    </div>
+    <script>
+        // Toggle card expansion
+        function toggleCard(button) {
+            const card = button.closest('.card');
+            card.classList.toggle('card-expanded');
+            button.textContent = card.classList.contains('card-expanded') ? '↑ Collapse' : '↓ Show Resources';
+        }
+
+        // Search functionality
+        const searchForm = document.querySelector('.search-form');
+        const searchInput = document.querySelector('.search-input');
+        const cards = document.querySelectorAll('.card');
+        const emptyState = document.querySelector('.empty-state');
+
+        searchForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            filterCards();
+        });
+
+        searchInput.addEventListener('input', filterCards);
+
+        function filterCards() {
+            const query = searchInput.value.trim().toLowerCase();
+            let hasResults = false;
+
+            cards.forEach(card => {
+                const button = card.querySelector('.expand-btn');
+                const links = card.querySelectorAll('.card-expanded-content a');
+                const buttonText = button.textContent.toLowerCase();
+                let linkTextMatch = false;
+
+                links.forEach(link => {
+                    if (link.textContent.toLowerCase().includes(query)) {
+                        linkTextMatch = true;
+                    }
+                });
+
+                if (query === '' || buttonText.includes(query) || linkTextMatch) {
+                    card.closest('.col-12').style.display = 'block';
+                    if (query !== '') hasResults = true;
+                } else {
+                    card.closest('.col-12').style.display = 'none';
+                }
+            });
+
+            emptyState.classList.toggle('show', query !== '' && !hasResults);
+        }
+
+        // Toggle Feedback Form
+        function toggleFeedbackForm() {
             var popup = document.getElementById('feedbackPopup');
             popup.classList.toggle('active');
-         }
-         document.getElementById('feedbackForm').addEventListener('submit', function(event) {
+        }
+
+        // Feedback Form Submission
+        document.getElementById('feedbackForm').addEventListener('submit', function(event) {
             event.preventDefault();
             var currentDate = new Date().toLocaleString();
             var formData = {
-               name: document.getElementById('name').value,
-               email: document.getElementById('email').value,
-               message: document.getElementById('message').value,
-               submission_date: currentDate 
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                message: document.getElementById('message').value,
+                submission_date: currentDate 
             };
             emailjs.send("rohitvendasta@gmail.com", "template_euenjja", formData)
-               .then(function(response) {
-                  document.getElementById('formMessage').innerHTML = '<span style="color:green;">Feedback sent successfully!</span>';
-                  document.getElementById('feedbackForm').reset();
-                  setTimeout(toggleFeedbackForm, 2000);
-               }, function(error) {
-                  document.getElementById('formMessage').innerHTML = '<span style="color:red;">Failed to send feedback: ' + error.text + '</span>';
-               });
-         });
-         // Store original card HTML
-         const cardContainers = [
-            document.getElementById('cardContainer'),
-            document.getElementById('cardContainer2'),
-            document.getElementById('cardContainer3')
-         ];
-         const originalCards = cardContainers.map(container => container.innerHTML);
-         const emptyState = document.getElementById('emptyState');
-         // Search functionality
-         document.getElementById('searchInput').addEventListener('input', function(e) {
-            const searchTerm = e.target.value.trim().toLowerCase();
-            // Hide empty state and clear all card containers
-            emptyState.style.display = 'none';
-            cardContainers.forEach(container => {
-               container.innerHTML = '';
-            });
-            // If search term is empty, restore all cards with accordions collapsed
-            if (searchTerm === '') {
-               cardContainers.forEach((container, index) => {
-                  container.innerHTML = originalCards[index];
-                  const accordions = container.querySelectorAll('.accordion-collapse');
-                  accordions.forEach(accordion => {
-                     accordion.classList.remove('show');
-                  });
-               });
-               if (typeof AOS !== 'undefined') {
-                  AOS.refresh();
-               }
-               return;
-            }
-            // Create a temporary container to parse original cards
-            const tempContainer = document.createElement('div');
-            let hasMatches = false;
-            // Restore and filter cards for each container
-            cardContainers.forEach((container, index) => {
-               tempContainer.innerHTML = originalCards[index];
-               const cards = tempContainer.querySelectorAll('.card-section');
-               cards.forEach(card => {
-                  const buttons = card.querySelectorAll('.list-group-item a');
-                  let hasMatch = false;
-                  buttons.forEach(button => {
-                     const text = button.textContent.trim().toLowerCase();
-                     if (text.includes(searchTerm)) {
-                        hasMatch = true;
-                        hasMatches = true;
-                     }
-                  });
-                  if (hasMatch) {
-                     container.appendChild(card.cloneNode(true));
-                     const accordionCollapse = card.querySelector('.accordion-collapse');
-                     if (accordionCollapse) {
-                        accordionCollapse.classList.add('show');
-                     }
-                  }
-               });
-            });
-            // Show empty state if no matches found
-            if (!hasMatches) {
-               emptyState.style.display = 'block';
-            }
-            // Refresh AOS animations
-            if (typeof AOS !== 'undefined') {
-               AOS.refresh();
-            }
-         });
-      </script>
-   </body>
+                .then(function(response) {
+                    document.getElementById('formMessage').innerHTML = '<span style="color:green;">Feedback sent successfully!</span>';
+                    document.getElementById('feedbackForm').reset();
+                    setTimeout(toggleFeedbackForm, 2000);
+                }, function(error) {
+                    document.getElementById('formMessage').innerHTML = '<span style="color:red;">Failed to send feedback: ' + error.text + '</span>';
+                });
+        });
+
+        // Initialize EmailJS with the user ID from the original code
+        (function() {
+            emailjs.init("dnQ7CtoblL4arIed7"); 
+        })();
+    </script>
+</body>
 </html>
