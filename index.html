@@ -265,28 +265,73 @@
         .empty-state {
             display: none;
             text-align: center;
-            padding: 3rem 1rem;
-            background-color: #f9f9f9;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            margin: 2rem auto;
+            padding: 3rem 2rem;
+            background-color: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin: 4rem auto;
             max-width: 600px;
+            transition: all 0.4s ease;
+            animation: fadeInUp 0.6s ease both;
         }
 
         .empty-state.show {
             display: block;
         }
 
+        .empty-state img {
+            max-width: 150px;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+            transition: transform 0.4s ease;
+        }
+
+        .empty-state:hover img {
+            transform: scale(1.05);
+        }
+
         .empty-state h3 {
-            color: #333;
-            font-size: 1.5rem;
+            color: #222;
+            font-size: 1.8rem;
+            font-weight: 600;
             margin-bottom: 1rem;
         }
 
         .empty-state p {
             color: #666;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .empty-state .common-btn {
+            display: inline-block;
+            background-color: #0d6efd;
+            color: #fff;
+            padding: 0.7rem 1.5rem;
+            border-radius: 10px;
             font-size: 1rem;
-            margin-bottom: 1.5rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .empty-state .common-btn:hover {
+            background-color: #0846a8;
+            transform: translateY(-2px);
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .feedback-btn {
@@ -453,7 +498,6 @@
             color: #ffffff;
             transform: translateY(-50%) rotate(90deg) scale(1.1);
         }
-
 
         .feedback-popup .form-group {
             margin: 20px;
@@ -830,12 +874,13 @@
             </div>
             <!-- Empty State -->
             <div class="empty-state">
+                <img src="Images/folder.png" alt="No Results" />
                 <h3>No Results Found</h3>
-                <p>It seems we couldn’t find any notes matching your search. Please try a different keyword or check
-                    your spelling.</p>
+                <p>We couldn't find any notes matching your search. Try a different keyword or check your spelling.</p>
                 <a href="#" class="common-btn"
-                    onclick="document.querySelector('.search-input').value = ''; filterCards(); return false;">Clear
-                    Search</a>
+                    onclick="document.querySelector('.search-input').value = ''; filterCards(); return false;">
+                    Clear Search
+                </a>
             </div>
         </div>
     </div>
