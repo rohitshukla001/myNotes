@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +13,7 @@
         body {
             font-family: 'Inter', sans-serif;
         }
+
         .navbar {
             background: linear-gradient(90deg, #0a1a2e, #1e3a5f);
             padding: 0.8rem 1.5rem;
@@ -21,13 +23,16 @@
             z-index: 1000;
             border-bottom: 2px solid rgba(30, 58, 95, 0.5);
         }
+
         .navbar-brand img {
             width: 180px;
             transition: transform 0.3s ease;
         }
+
         .navbar-brand img:hover {
             transform: scale(1.05);
         }
+
         .nav-link {
             color: #efefef !important;
             font-weight: 500;
@@ -38,6 +43,7 @@
             position: relative;
             font-size: 0.9rem;
         }
+
         .nav-link:hover,
         .nav-link.active {
             color: #efefef !important;
@@ -46,6 +52,7 @@
             transform: translateY(-1px);
             font-weight: bold;
         }
+
         .nav-link::after {
             content: '';
             position: absolute;
@@ -57,16 +64,19 @@
             transition: all 0.3s ease;
             transform: translateX(-50%);
         }
+
         .nav-link:hover::after,
         .nav-link.active::after {
             width: 50%;
         }
+
         .search-form {
             display: flex;
             align-items: center;
             width: 280px;
             margin-left: 1rem;
         }
+
         .search-input {
             flex-grow: 1;
             padding: 0.5rem 1rem;
@@ -77,42 +87,59 @@
             outline: none;
             transition: box-shadow 0.3s ease;
         }
+
         .search-input:focus {
             box-shadow: 0 0 10px rgba(163, 191, 250, 0.5);
         }
+
         .search-input::placeholder {
             color: #666;
         }
-        .search-btn {
+
+        .common-btn {
             padding: 0.5rem 1.3rem;
-            background: linear-gradient(45deg, #0a1a2e, #1e3a5f);
+            background: linear-gradient(90deg, #0a1a2e, #1e3a5f);
+            background-size: 200% auto;
             border: none;
-            border-radius: 0 20px 20px 0;
-            color: #a3bffa;
+            border-radius: 8px;
+            color: #efefef;
             font-weight: 500;
+            font-size: 0.9rem;
             cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            transition: box-shadow 0.3s ease, background-position 0.3s ease;
         }
-        .search-btn:hover {
-            transform: translateY(-2px);
+
+        .search-button {
+            margin-left: 8px;
+        }
+
+        .common-btn:hover {
             box-shadow: 0 4px 12px rgba(30, 58, 95, 0.7);
             color: #fff;
+            background-position: right center;
         }
+
         .nav-item {
             font-size: 0.85rem;
         }
+
         .card {
             border: none;
             border-radius: 20px;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            background: linear-gradient(145deg, #ffffff, #f8f8f8);
+            background: linear-gradient(145deg, #dedede, #ffffff);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             overflow: hidden;
+            transform: scale(1);
         }
+
         .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 16px 50px rgba(0, 0, 0, 0.25);
+            transform: scale(1.03);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
         }
+
         .card-img-top {
             width: 100%;
             height: 200px;
@@ -120,47 +147,121 @@
             border-top-left-radius: 20px;
             border-top-right-radius: 20px;
         }
-        .expand-btn {
-            /* color: linear-gradient(90deg, #0a1a2e, #1e3a5f); */
-            color: #0077cc;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
-        }
-        .expand-btn:hover {
-            color: #1e3a5f;
-        }
+
         .card-expanded-content {
             display: none;
             margin-top: 1rem;
         }
+
         .card-expanded .card-expanded-content {
             display: block;
         }
+
         .card-expanded-content ul {
             list-style: none;
             padding: 0;
             margin: 0;
         }
+
         .card-expanded-content li {
             margin-bottom: 0.5rem;
         }
-        .card-expanded-content a {
+
+        /* Button Styles for Card Links */
+        .card-btn-1 {
             display: block;
             padding: 0.5rem 1rem;
-            background-color: #23282a;
-            color: #fff;
+            background: linear-gradient(45deg, #0a1a2e, #2a4a7f);
+            color: #efefef;
             border-radius: 8px;
             text-decoration: none;
             font-size: 0.9rem;
             font-weight: 500;
-            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 2px 8px rgba(30, 58, 95, 0.5);
+            transition: box-shadow 0.3s ease, color 0.3s ease;
         }
-        .card-expanded-content a:hover {
-            background-color: #0077cc;
-            transform: translateX(5px);
+
+        .card-btn-1:hover {
+            box-shadow: 0 4px 12px rgba(30, 58, 95, 0.7);
+            color: #fff;
         }
+
+        .card-btn-2 {
+            display: block;
+            padding: 0.5rem 1rem;
+            background-color: #1e3a5f;
+            color: #efefef;
+            border: 2px solid #a3bffa;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(30, 58, 95, 0.5);
+            transition: box-shadow 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+        }
+
+        .card-btn-2:hover {
+            background-color: #2a4a7f;
+            border-color: #fff;
+            box-shadow: 0 4px 12px rgba(30, 58, 95, 0.7);
+            color: #fff;
+        }
+
+        .card-btn-3 {
+            display: block;
+            padding: 0.5rem 1rem;
+            background: linear-gradient(45deg, #2a4a7f, #4a6a9f);
+            color: #efefef;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(30, 58, 95, 0.5);
+            transition: box-shadow 0.3s ease, color 0.3s ease;
+        }
+
+        .card-btn-3:hover {
+            box-shadow: 0 4px 12px rgba(30, 58, 95, 0.7);
+            color: #fff;
+        }
+
+        .card-btn-4 {
+            display: block;
+            padding: 0.5rem 1rem;
+            background-color: #0a1a2e;
+            color: #a3bffa;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(30, 58, 95, 0.5);
+            transition: box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .card-btn-4:hover {
+            background-color: #1e3a5f;
+            box-shadow: 0 4px 12px rgba(30, 58, 95, 0.7);
+            color: #fff;
+        }
+
+        /* New Toggle Link Style */
+        .card-toggle-link {
+            display: inline-block;
+            color: #1e3a5f;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .card-toggle-link:hover {
+            color: #0a1a2e;
+            text-decoration: none;
+        }
+
         .empty-state {
             display: none;
             text-align: center;
@@ -171,30 +272,23 @@
             margin: 2rem auto;
             max-width: 600px;
         }
+
         .empty-state.show {
             display: block;
         }
+
         .empty-state h3 {
             color: #333;
             font-size: 1.5rem;
             margin-bottom: 1rem;
         }
+
         .empty-state p {
             color: #666;
             font-size: 1rem;
             margin-bottom: 1.5rem;
         }
-        .empty-state .btn {
-            background-color: #00aaff;
-            color: #fff;
-            padding: 0.75rem 1.5rem;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-        }
-        .empty-state .btn:hover {
-            background-color: #0077cc;
-        }
+
         .feedback-btn {
             align-items: center;
             animation: pulse 2s infinite ease-in-out;
@@ -211,6 +305,7 @@
             text-transform: uppercase;
             transition: all 0.3s ease;
         }
+
         .feedback-btn:hover {
             background-position: right center;
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
@@ -218,10 +313,12 @@
             text-decoration: none;
             transform: scale(1.05);
         }
+
         .feedback-icon {
             font-size: 18px;
             margin-right: 8px;
         }
+
         .btn-grad,
         .btn-grad-blue,
         .btn-grad-yellow {
@@ -230,37 +327,45 @@
             display: block;
             transition: 0.5s;
         }
+
         .btn-grad {
             background-image: linear-gradient(to right, #EFEFBB 0%, #D4D3DD 51%, #EFEFBB 100%);
             color: black;
         }
+
         .btn-grad:hover {
             background-position: right center;
             color: black;
             text-decoration: none;
         }
+
         .btn-grad-blue {
             background-image: linear-gradient(to right, #00d2ff 0%, #3a7bd5 51%, #00d2ff 100%);
             color: white;
         }
+
         .btn-grad-blue:hover {
             background-position: right center;
             color: #fff;
             text-decoration: none;
         }
+
         .btn-grad-yellow {
             background-image: linear-gradient(to right, #8e9eab 0%, #eef2f3 51%, #8e9eab 100%);
             color: black;
         }
+
         .btn-grad-yellow:hover {
             background-position: right center;
             color: black;
             text-decoration: none;
         }
+
         .developer-container {
             display: inline-block;
             position: relative;
         }
+
         .developer-image {
             border-radius: 8px;
             bottom: calc(100% + 10px);
@@ -273,20 +378,24 @@
             transition: all 0.6s ease-in-out;
             width: 250px;
         }
+
         .developer-container:hover .developer-image {
             display: block;
             opacity: 1;
             transform: translateX(-50%) translateY(0) scale(1);
         }
+
         .feedback-link {
             color: #1e3a5f;
             cursor: pointer;
             margin-left: 10px;
         }
+
         .feedback-link:hover {
             color: #0a1a2e;
             text-decoration: underline;
         }
+
         .feedback-popup {
             background: #fff;
             border-radius: 10px;
@@ -302,14 +411,17 @@
             width: 350px;
             z-index: 1000;
         }
+
         .feedback-popup.active {
             display: block;
             opacity: 1;
             transform: translate(-50%, -50%) scale(1);
         }
+
         .feedback-popup:not(.active) {
             transform: translate(-50%, -50%) scale(0.95);
         }
+
         .popup-header {
             background-image: linear-gradient(135deg, #0a1a2e 0%, #1e3a5f 100%);
             border-radius: 10px 10px 0 0;
@@ -317,12 +429,14 @@
             padding: 15px 20px;
             position: relative;
         }
+
         .popup-header h4 {
             font-size: 20px;
             font-weight: bold;
             margin: 0;
             text-transform: uppercase;
         }
+
         .popup-header .close-btn {
             color: #efefef;
             cursor: pointer;
@@ -333,19 +447,23 @@
             transform: translateY(-50%);
             transition: color 0.3s ease, transform 0.3s ease;
         }
+
         .popup-header .close-btn:hover {
             color: #efefef;
             transform: translateY(-50%) rotate(90deg);
         }
+
         .feedback-popup .form-group {
             margin: 20px;
         }
+
         .feedback-popup .form-group label {
             color: #1e3a5f;
             display: block;
             font-weight: 600;
             margin-bottom: 5px;
         }
+
         .feedback-popup .form-control {
             border: 1px solid #ddd;
             border-radius: 6px;
@@ -354,106 +472,112 @@
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
             width: 100%;
         }
+
         .feedback-popup .form-control:focus {
             border-color: #1e3a5f;
             box-shadow: 0 0 5px rgba(30, 58, 95, 0.5);
             outline: none;
         }
-        .feedback-popup .btn-submit {
-            background-image: linear-gradient(135deg, #0a1a2e 0%, #1e3a5f 100%);
-            background-size: 200% auto;
-            border: none;
-            border-radius: 6px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-            color: #efefef;
-            cursor: pointer;
-            display: block;
-            font-size: 16px;
-            font-weight: bold;
-            margin: 0 20px 20px;
-            padding: 10px;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-            width: calc(100% - 40px);
-        }
-        .feedback-popup .btn-submit:hover {
-            background-position: right center;
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
-            color: #fff;
-        }
+
         .feedback-popup #formMessage {
             margin-bottom: 15px;
             text-align: center;
         }
+
         @keyframes pulse {
             0% {
                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             }
+
             50% {
                 box-shadow: 0 4px 16px rgba(30, 58, 95, 0.4);
             }
+
             100% {
                 box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
             }
         }
+
         @media (max-width: 768px) {
             .navbar {
                 padding: 0.5rem 1rem;
             }
+
             .navbar-brand img {
                 width: 140px;
             }
+
             .search-form {
                 width: 100%;
                 margin: 0.5rem 0;
             }
+
             .card-img-top {
                 height: 150px;
             }
+
             .nav-link {
                 padding: 0.4rem 0.8rem;
                 font-size: 0.8rem;
             }
+
             .search-form {
                 width: 100%;
             }
+
             .search-input {
                 flex-grow: 1;
             }
+
             .empty-state {
                 padding: 2rem 0.5rem;
             }
+
             .empty-state h3 {
                 font-size: 1.2rem;
             }
+
             .empty-state p {
                 font-size: 0.9rem;
             }
+
+            .common-btn {
+                padding: 0.4rem 1rem;
+                font-size: 0.8rem;
+            }
         }
+
         @media (max-width: 576px) {
             .navbar-brand img {
                 width: 110px;
             }
+
             .search-input {
                 font-size: 0.8rem;
             }
-            .search-btn {
+
+            .common-btn {
                 padding: 0.4rem 1rem;
             }
         }
     </style>
 </head>
+
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#"> <img src="Images/noteslogo.png" alt="Logo" class="nav-logo"> </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span
+                    class="navbar-toggler-icon"></span> </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item"> <a class="nav-link active" aria-current="page" href="#">HOME</a> </li>
                 </ul>
-                <form class="search-form d-flex"> <input type="text" class="form-control search-input" placeholder="Search notes..." aria-label="Search"> <button type="submit" class="search-btn">Search</button> </form>
+                <form class="search-form d-flex"> <input type="text" class="form-control search-input"
+                        placeholder="Search notes..." aria-label="Search"> <button type="submit"
+                        class="common-btn search-button">Search</button> </form>
             </div>
         </div>
     </nav>
@@ -465,25 +589,35 @@
                 <div class="card h-100">
                     <img src="Images/java_image.png" class="card-img-top" alt="JAVA">
                     <div class="card-body">
-                        <button class="btn btn-link expand-btn" onclick="toggleCard(this)">↓ Show Resources</button>
+                        <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
+                            Resources</a>
                         <div class="card-expanded-content">
                             <ul>
                                 <li><a href="/notes/Java Terminology.pdf" target="_blank">Terminology</a></li>
                                 <li><a href="/notes/Collections.pdf" target="_blank">Collections</a></li>
                                 <li><a href="/notes/oops.pdf" target="_blank">Oops</a></li>
-                                <li><a href="https://whimsical.com/java-F3wA8hstGi42DU8BZrsCUL" target="_blank">RoadMap</a></li>
-                                <li><a href="https://drive.google.com/file/d/1rdIMUCiW1yjA6_irliXu19zC_GPEcR66/view" target="_blank">Material</a></li>
-                                <li><a href="https://www.edureka.co/blog/java-collections/" target="_blank">Collection</a></li>
+                                <li><a href="https://whimsical.com/java-F3wA8hstGi42DU8BZrsCUL"
+                                        target="_blank">RoadMap</a></li>
+                                <li><a href="https://drive.google.com/file/d/1rdIMUCiW1yjA6_irliXu19zC_GPEcR66/view"
+                                        target="_blank">Material</a></li>
+                                <li><a href="https://www.edureka.co/blog/java-collections/"
+                                        target="_blank">Collection</a></li>
                                 <li><a href="/notes/roadmap.pdf" target="_blank">All Roadmap</a></li>
                                 <li><a href="/notes/backend.pdf" target="_blank">Backend map</a></li>
                                 <li><a href="/notes/java.pdf" target="_blank">Java Roadmap</a></li>
                                 <li><a href="/notes/Core-JAVA.pdf" target="_blank">Core JAVA</a></li>
-                                <li><a href="https://enos.itcollege.ee/~jpoial/allalaadimised/reading/Java-Interview-Questions.pdf" target="_blank">Core JAVA Ques.</a></li>
-                                <li><a href="/notes/Core_java_interview_questions_and_answer.pdf" target="_blank">JAVA Ques. 2</a></li>
-                                <li><a href="https://www.geeksforgeeks.org/java-interview-questions/" target="_blank">GFG Ques. 3</a></li>
-                                <li><a href="/notes/Core Java Interview Questions.pdf" target="_blank">JAVA Ques. 4</a></li>
-                                <li><a href="https://www.javatpoint.com/corejava-interview-questions" target="_blank">Core JAVA Ques</a></li>
-                                <li><a href="https://www.guru99.com/java-interview-questions-answers.html" target="_blank">Guru99 Ques</a></li>
+                                <li><a href="https://enos.itcollege.ee/~jpoial/allalaadimised/reading/Java-Interview-Questions.pdf"
+                                        target="_blank">Core JAVA Ques.</a></li>
+                                <li><a href="/notes/Core_java_interview_questions_and_answer.pdf" target="_blank">JAVA
+                                        Ques. 2</a></li>
+                                <li><a href="https://www.geeksforgeeks.org/java-interview-questions/"
+                                        target="_blank">GFG Ques. 3</a></li>
+                                <li><a href="/notes/Core Java Interview Questions.pdf" target="_blank">JAVA Ques. 4</a>
+                                </li>
+                                <li><a href="https://www.javatpoint.com/corejava-interview-questions"
+                                        target="_blank">Core JAVA Ques</a></li>
+                                <li><a href="https://www.guru99.com/java-interview-questions-answers.html"
+                                        target="_blank">Guru99 Ques</a></li>
                             </ul>
                         </div>
                     </div>
@@ -494,12 +628,15 @@
                 <div class="card h-100">
                     <img src="Images/dsa_image.png" class="card-img-top" alt="DSA">
                     <div class="card-body">
-                        <button class="btn btn-link expand-btn" onclick="toggleCard(this)">↓ Show Resources</button>
+                        <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
+                            Resources</a>
                         <div class="card-expanded-content">
                             <ul>
                                 <li><a href="docs/DSA_COMPLETE ROADMAAP.pdf" target="_blank">Roadmap</a></li>
-                                <li><a href="docs/250+DSA QUESTIONS FOR PLACEMENTS.pdf" target="_blank">Practice Questions</a></li>
-                                <li><a href="https://whimsical.com/master-roadmap-SzYF2dY2SqwtPQfY5A3mZS" target="_blank">Master RoadMap</a></li>
+                                <li><a href="docs/250+DSA QUESTIONS FOR PLACEMENTS.pdf" target="_blank">Practice
+                                        Questions</a></li>
+                                <li><a href="https://whimsical.com/master-roadmap-SzYF2dY2SqwtPQfY5A3mZS"
+                                        target="_blank">Master RoadMap</a></li>
                             </ul>
                         </div>
                     </div>
@@ -510,7 +647,8 @@
                 <div class="card h-100">
                     <img src="Images/EWM.png" class="card-img-top" alt="EWM">
                     <div class="card-body">
-                        <button class="btn btn-link expand-btn" onclick="toggleCard(this)">↓ Show Resources</button>
+                        <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
+                            Resources</a>
                         <div class="card-expanded-content">
                             <ul>
                                 <li><a href="notes/Exception Handling.pdf" target="_blank">Exception Handling</a></li>
@@ -524,11 +662,14 @@
                 <div class="card h-100">
                     <img src="Images/CHM.png" class="card-img-top" alt="CHM">
                     <div class="card-body">
-                        <button class="btn btn-link expand-btn" onclick="toggleCard(this)">↓ Show Resources</button>
+                        <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
+                            Resources</a>
                         <div class="card-expanded-content">
                             <ul>
-                                <li><a href="https://www.tutorialspoint.com/hibernate/hibernate_tutorial.pdf" target="_blank">Hibernate 1</a></li>
-                                <li><a href="https://whimsical.com/master-roadmap-SzYF2dY2SqwtPQfY5A3mZS" target="_blank">Master RoadMap</a></li>
+                                <li><a href="https://www.tutorialspoint.com/hibernate/hibernate_tutorial.pdf"
+                                        target="_blank">Hibernate 1</a></li>
+                                <li><a href="https://whimsical.com/master-roadmap-SzYF2dY2SqwtPQfY5A3mZS"
+                                        target="_blank">Master RoadMap</a></li>
                                 <li><a href="notes/Multithreading.pdf" target="_blank">Multithreading</a></li>
                             </ul>
                         </div>
@@ -540,7 +681,8 @@
                 <div class="card h-100">
                     <img src="Images/sql_image.png" class="card-img-top" alt="SQL">
                     <div class="card-body">
-                        <button class="btn btn-link expand-btn" onclick="toggleCard(this)">↓ Show Resources</button>
+                        <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
+                            Resources</a>
                         <div class="card-expanded-content">
                             <ul>
                                 <li><a href="notes/PostgreSQL.pdf" target="_blank">PostgreSQL</a></li>
@@ -555,10 +697,12 @@
                 <div class="card h-100">
                     <img src="Images/web_image.png" class="card-img-top" alt="Web Technology">
                     <div class="card-body">
-                        <button class="btn btn-link expand-btn" onclick="toggleCard(this)">↓ Show Resources</button>
+                        <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
+                            Resources</a>
                         <div class="card-expanded-content">
                             <ul>
-                                <li><a href="/notes/HTML Interview Questions.pdf" target="_blank">HTML Questions</a></li>
+                                <li><a href="/notes/HTML Interview Questions.pdf" target="_blank">HTML Questions</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -569,15 +713,21 @@
                 <div class="card h-100">
                     <img src="Images/interview_image.png" class="card-img-top" alt="Interview">
                     <div class="card-body">
-                        <button class="btn btn-link expand-btn" onclick="toggleCard(this)">↓ Show Resources</button>
+                        <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
+                            Resources</a>
                         <div class="card-expanded-content">
                             <ul>
                                 <li><a href="/notes/hr_round_equestion.pdf" target="_blank">HR Round</a></li>
-                                <li><a href="https://testbook.com/interview/servlet-interview-questions" target="_blank">Servlet Questions</a></li>
-                                <li><a href="https://www.edureka.co/blog/interview-questions/servlet-interview-questions/" target="_blank">Servlet Questions 1</a></li>
-                                <li><a href="https://www.interviewbit.com/servlet-interview-questions/" target="_blank">Servlet Questions 2</a></li>
-                                <li><a href="https://career.guru99.com/top-50-servlet-interview-questions/" target="_blank">Servlet Questions 3</a></li>
-                                <li><a href="https://www.tutorialspoint.com/servlets/pdf/servlets_interview_questions.pdf" target="_blank">Servlet Questions 4</a></li>
+                                <li><a href="https://testbook.com/interview/servlet-interview-questions"
+                                        target="_blank">Servlet Questions</a></li>
+                                <li><a href="https://www.edureka.co/blog/interview-questions/servlet-interview-questions/"
+                                        target="_blank">Servlet Questions 1</a></li>
+                                <li><a href="https://www.interviewbit.com/servlet-interview-questions/"
+                                        target="_blank">Servlet Questions 2</a></li>
+                                <li><a href="https://career.guru99.com/top-50-servlet-interview-questions/"
+                                        target="_blank">Servlet Questions 3</a></li>
+                                <li><a href="https://www.tutorialspoint.com/servlets/pdf/servlets_interview_questions.pdf"
+                                        target="_blank">Servlet Questions 4</a></li>
                                 <li><a href="/notes/JAVA_UNIT-4_NOTES" target="_blank">Java Unit Notes</a></li>
                                 <li><a href="/notes/java_collections_1" target="_blank">Java collections 1</a></li>
                                 <li><a href="/notes/java_collections_2" target="_blank">Java collections 2</a></li>
@@ -591,11 +741,14 @@
                 <div class="card h-100">
                     <img src="Images/JavaScript_react.png" class="card-img-top" alt="Left Notes">
                     <div class="card-body">
-                        <button class="btn btn-link expand-btn" onclick="toggleCard(this)">↓ Show Resources</button>
+                        <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
+                            Resources</a>
                         <div class="card-expanded-content">
                             <ul>
-                                <li><a href="https://medium.com/@rajanraj8979/roadmap-for-react-js-for-beginners-to-advance-522ce3588838" target="_blank">React roadmap-1</a></li>
-                                <li><a href="https://learningdaily.dev/the-best-react-developer-roadmap-for-2024-1aaf406c5a32" target="_blank">React roadmap-2</a></li>
+                                <li><a href="https://medium.com/@rajanraj8979/roadmap-for-react-js-for-beginners-to-advance-522ce3588838"
+                                        target="_blank">React roadmap-1</a></li>
+                                <li><a href="https://learningdaily.dev/the-best-react-developer-roadmap-for-2024-1aaf406c5a32"
+                                        target="_blank">React roadmap-2</a></li>
                             </ul>
                         </div>
                     </div>
@@ -606,10 +759,12 @@
                 <div class="card h-100">
                     <img src="Images/Devops_Img.png" class="card-img-top" alt="DevOps">
                     <div class="card-body">
-                        <button class="btn btn-link expand-btn" onclick="toggleCard(this)">↓ Show Resources</button>
+                        <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
+                            Resources</a>
                         <div class="card-expanded-content">
                             <ul>
-                                <li><a href="https://www.tutorialspoint.com/postman/postman_tutorial.pdf" target="_blank">Postman Tutorial</a></li>
+                                <li><a href="https://www.tutorialspoint.com/postman/postman_tutorial.pdf"
+                                        target="_blank">Postman Tutorial</a></li>
                             </ul>
                         </div>
                     </div>
@@ -620,7 +775,8 @@
                 <div class="card h-100">
                     <img src="Images/Go.png" class="card-img-top" alt="Go">
                     <div class="card-body">
-                        <button class="btn btn-link expand-btn" onclick="toggleCard(this)">↓ Show Resources</button>
+                        <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
+                            Resources</a>
                         <div class="card-expanded-content">
                             <ul>
                                 <li><a href="/notes/RoadmapGolang.pdf" target="_blank">Golang Roadmap</a></li>
@@ -637,13 +793,18 @@
                 <div class="card h-100">
                     <img src="Images/spring_image.png" class="card-img-top" alt="Spring">
                     <div class="card-body">
-                        <button class="btn btn-link expand-btn" onclick="toggleCard(this)">↓ Show Resources</button>
+                        <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
+                            Resources</a>
                         <div class="card-expanded-content">
                             <ul>
-                                <li><a href="/notes/spring_boot_questions_and_answer.pdf" target="_blank">Spring & Spring boot</a></li>
-                                <li><a href="https://leverageedu.com/blog/hi/common-english-words-used-in-daily-life-with-hindi-meaning/" target="_blank">Common words in english</a></li>
-                                <li><a href="https://infinitylearn.com/surge/english/word-meaning-english-to-hindi/" target="_blank">100 words in english</a></li>
-                                <li><a href="https://hindimediumhelp.blogspot.com/2020/12/English-Words-Hindi-Meaning.html" target="_blank">100+ words</a></li>
+                                <li><a href="/notes/spring_boot_questions_and_answer.pdf" target="_blank">Spring &
+                                        Spring boot</a></li>
+                                <li><a href="https://leverageedu.com/blog/hi/common-english-words-used-in-daily-life-with-hindi-meaning/"
+                                        target="_blank">Common words in english</a></li>
+                                <li><a href="https://infinitylearn.com/surge/english/word-meaning-english-to-hindi/"
+                                        target="_blank">100 words in english</a></li>
+                                <li><a href="https://hindimediumhelp.blogspot.com/2020/12/English-Words-Hindi-Meaning.html"
+                                        target="_blank">100+ words</a></li>
                             </ul>
                         </div>
                     </div>
@@ -654,10 +815,12 @@
                 <div class="card h-100">
                     <img src="Images/personal_image.png" class="card-img-top" alt="Left Notes">
                     <div class="card-body">
-                        <button class="btn btn-link expand-btn" onclick="toggleCard(this)">↓ Show Resources</button>
+                        <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
+                            Resources</a>
                         <div class="card-expanded-content">
                             <ul>
-                                <li><a href="https://jstrieb.github.io/link-lock/#eyJ2IjoiMC4wLjEiLCJlIjoiY2Rkb0piQnlnbXpSanpSNEttbGMwenhoV1hPVmFTTVpGVDRkRzlNbzQ2OEVCOWV0N1FONGpIMUh4Vmo0YzA4SWd4SFplbGttbzh4MjRHQlhPZDBMNmtVPSIsImgiOiI4MTcqKio5NiIsInMiOiI0elRLeWlFMERYUWhPalNpcTk0RDR3PT0iLCJpIjoielNVaEpacUJXU1p5UFVZNCJ9" target="_blank">Personal Notes</a></li>
+                                <li><a href="https://jstrieb.github.io/link-lock/#eyJ2IjoiMC4wLjEiLCJlIjoiY2Rkb0piQnlnbXpSanpSNEttbGMwenhoV1hPVmFTTVpGVDRkRzlNbzQ2OEVCOWV0N1FONGpIMUh4Vmo0YzA4SWd4SFplbGttbzh4MjRHQlhPZDBMNmtVPSIsImgiOiI4MTcqKio5NiIsInMiOiI0elRLeWlFMERYUWhPalNpcTk0RDR3PT0iLCJpIjoielNVaEpacUJXU1p5UFVZNCJ9"
+                                        target="_blank">Personal Notes</a></li>
                             </ul>
                         </div>
                     </div>
@@ -666,15 +829,22 @@
             <!-- Empty State -->
             <div class="empty-state">
                 <h3>No Results Found</h3>
-                <p>It seems we couldn’t find any notes matching your search. Please try a different keyword or check your spelling.</p>
-                <a href="#" class="btn" onclick="document.querySelector('.search-input').value = ''; filterCards(); return false;">Clear Search</a>
+                <p>It seems we couldn’t find any notes matching your search. Please try a different keyword or check
+                    your spelling.</p>
+                <a href="#" class="common-btn"
+                    onclick="document.querySelector('.search-input').value = ''; filterCards(); return false;">Clear
+                    Search</a>
             </div>
         </div>
     </div>
     <!-- Footer with Feedback Link -->
     <div class="text-center py-4">
-        <p> <span class="developer-container"> Developed by <a href="https://github.com/rohitshukla001" target="_blank">Rohit Shukla</a> ↗ <img src="https://info.rohitshukla.net/images/project/rohitshukla.jpg" alt="Rohit Shukla" class="developer-image"> </span>
-        <p> <span class="feedback-btn" onclick="toggleFeedbackForm()"> <span class="feedback-icon">✉</span> Share Your Feedback </span> </p>
+        <p> <span class="developer-container"> Developed by <a href="https://github.com/rohitshukla001"
+                    target="_blank">Rohit Shukla</a> ↗ <img
+                    src="https://info.rohitshukla.net/images/project/rohitshukla.jpg" alt="Rohit Shukla"
+                    class="developer-image"> </span>
+        <p> <span class="feedback-btn" onclick="toggleFeedbackForm()"> <span class="feedback-icon">✉</span> Share Your
+                Feedback </span> </p>
         </p>
     </div>
     <!-- Feedback Popup -->
@@ -684,91 +854,92 @@
             <span class="close-btn" onclick="toggleFeedbackForm()">×</span>
         </div>
         <form id="feedbackForm">
-            <div class="form-group"> <label for="name">Name:</label> <input type="text" class="form-control" id="name" name="name" required> </div>
-            <div class="form-group"> <label for="email">Email:</label> <input type="email" class="form-control" id="email" name="email" required> </div>
-            <div class="form-group"> <label for="message">Message:</label> <textarea class="form-control" id="message" name="message" rows="3" required></textarea> </div>
-            <button type="submit" class="btn btn-submit">Submit</button>
+            <div class="form-group"> <label for="name">Name:</label> <input type="text" class="form-control" id="name"
+                    name="name" required> </div>
+            <div class="form-group"> <label for="email">Email:</label> <input type="email" class="form-control"
+                    id="email" name="email" required> </div>
+            <div class="form-group"> <label for="message">Message:</label> <textarea class="form-control" id="message"
+                    name="message" rows="3" required></textarea> </div>
+            <button type="submit" class="common-btn">Submit</button>
         </form>
         <p id="formMessage" class="mt-2"></p>
     </div>
     <script>
         // Toggle card expansion
-        function toggleCard(button) {
-            const card = button.closest('.card');
+        function toggleCard(link) {
+            const card = link.closest('.card');
             card.classList.toggle('card-expanded');
-            button.textContent = card.classList.contains('card-expanded') ? '↑ Collapse' : '↓ Show Resources';
+            link.textContent = card.classList.contains('card-expanded') ? '↑ Collapse' : '↓ Show Resources';
         }
-
         // Search functionality
         const searchForm = document.querySelector('.search-form');
         const searchInput = document.querySelector('.search-input');
         const cards = document.querySelectorAll('.card');
         const emptyState = document.querySelector('.empty-state');
-
         searchForm.addEventListener('submit', (e) => {
             e.preventDefault();
             filterCards();
         });
-
         searchInput.addEventListener('input', filterCards);
-
         function filterCards() {
             const query = searchInput.value.trim().toLowerCase();
             let hasResults = false;
-
             cards.forEach(card => {
-                const button = card.querySelector('.expand-btn');
+                const link = card.querySelector('.card-toggle-link');
                 const links = card.querySelectorAll('.card-expanded-content a');
-                const buttonText = button.textContent.toLowerCase();
+                const linkText = link.textContent.toLowerCase();
                 let linkTextMatch = false;
-
                 links.forEach(link => {
                     if (link.textContent.toLowerCase().includes(query)) {
                         linkTextMatch = true;
                     }
                 });
-
-                if (query === '' || buttonText.includes(query) || linkTextMatch) {
+                if (query === '' || linkText.includes(query) || linkTextMatch) {
                     card.closest('.col-12').style.display = 'block';
                     if (query !== '') hasResults = true;
                 } else {
                     card.closest('.col-12').style.display = 'none';
                 }
             });
-
             emptyState.classList.toggle('show', query !== '' && !hasResults);
         }
-
         // Toggle Feedback Form
         function toggleFeedbackForm() {
             var popup = document.getElementById('feedbackPopup');
             popup.classList.toggle('active');
         }
-
         // Feedback Form Submission
-        document.getElementById('feedbackForm').addEventListener('submit', function(event) {
+        document.getElementById('feedbackForm').addEventListener('submit', function (event) {
             event.preventDefault();
             var currentDate = new Date().toLocaleString();
             var formData = {
                 name: document.getElementById('name').value,
                 email: document.getElementById('email').value,
                 message: document.getElementById('message').value,
-                submission_date: currentDate 
+                submission_date: currentDate
             };
             emailjs.send("rohitvendasta@gmail.com", "template_euenjja", formData)
-                .then(function(response) {
+                .then(function (response) {
                     document.getElementById('formMessage').innerHTML = '<span style="color:green;">Feedback sent successfully!</span>';
                     document.getElementById('feedbackForm').reset();
                     setTimeout(toggleFeedbackForm, 2000);
-                }, function(error) {
+                }, function (error) {
                     document.getElementById('formMessage').innerHTML = '<span style="color:red;">Failed to send feedback: ' + error.text + '</span>';
                 });
         });
-
         // Initialize EmailJS with the user ID from the original code
-        (function() {
-            emailjs.init("dnQ7CtoblL4arIed7"); 
+        (function () {
+            emailjs.init("dnQ7CtoblL4arIed7");
         })();
+        // Randomly assign button classes to card links
+        document.addEventListener('DOMContentLoaded', () => {
+            const buttonClasses = ['card-btn-1', 'card-btn-2', 'card-btn-3', 'card-btn-4'];
+            document.querySelectorAll('.card-expanded-content a').forEach(link => {
+                const randomClass = buttonClasses[Math.floor(Math.random() * buttonClasses.length)];
+                link.classList.add(randomClass);
+            });
+        });
     </script>
 </body>
+
 </html>
