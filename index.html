@@ -409,6 +409,7 @@
         .developer-container {
             display: inline-block;
             position: relative;
+            text-decoration: none;
         }
 
         .developer-image {
@@ -426,6 +427,7 @@
 
         .developer-container:hover .developer-image {
             display: block;
+            text-decoration: none;
             opacity: 1;
             transform: translateX(-50%) translateY(0) scale(1);
         }
@@ -619,7 +621,7 @@
                     class="navbar-toggler-icon"></span> </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"> <a class="nav-link active" aria-current="page" href="#">HOME</a> </li>
+                    <li class="nav-item"> <a class="nav-link active" aria-current="page" href="/">HOME</a> </li>
                 </ul>
                 <form class="search-form d-flex"> <input type="text" class="form-control search-input"
                         placeholder="Search notes..." aria-label="Search"> <button type="submit"
@@ -887,7 +889,7 @@
     <!-- Footer with Feedback Link -->
     <div class="text-center py-4">
         <p> <span class="developer-container"> Developed by <a href="https://github.com/rohitshukla001"
-                    target="_blank">Rohit Shukla</a> ↗ <img
+                    target="_blank" class="developer-container">Rohit Shukla</a> ↗ <img
                     src="https://info.rohitshukla.net/images/project/rohitshukla.jpg" alt="Rohit Shukla"
                     class="developer-image"> </span>
         <p> <span class="feedback-btn" onclick="toggleFeedbackForm()"> <span class="feedback-icon">✉</span> Share Your
