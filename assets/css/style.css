@@ -7,20 +7,12 @@ body {
 /* ========================================
    Navbar Styles
    ======================================== */
-
-.card-expanded-content li:has(ul) > a {
+.has-sublist > a {
     display: inline-block;
-    background-color: #e7f1ff;   /* soft blue */
+    background-color: #e7f1ff;
     color: #0d6efd;
     padding: 6px 12px;
     border-radius: 6px;
-    font-weight: 500;
-    text-decoration: none;
-    margin-top: 8px;
-}
-
-.card-expanded-content li:has(ul) > a:hover {
-    background-color: #d0e2ff;
 }
 
 .card-expanded-content span {
