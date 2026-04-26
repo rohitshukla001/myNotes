@@ -17,6 +17,11 @@ body {
     border-bottom: 2px solid rgba(30, 58, 95, 0.5);
 }
 
+.card-expanded-content ul ul {
+    margin-left: 15px;
+    list-style-type: circle;
+}
+
 .navbar-brand img {
     width: 180px;
     transition: transform 0.3s ease;
