@@ -1,383 +1,393 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notes Website</title>
-    <link rel="shortcut icon" href="notes/favi.png" />
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- EmailJS -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-</head>
-
-<body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container-fluid">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Notes Website</title>
+      <link rel="shortcut icon" href="notes/favi.png" />
+      <!-- Bootstrap CSS -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+      <!-- Custom CSS -->
+      <link rel="stylesheet" href="assets/css/style.css">
+      <!-- Bootstrap JS -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+      <!-- EmailJS -->
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+   </head>
+   <body>
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-dark">
+         <div class="container-fluid">
             <a class="navbar-brand" href="#"> <img src="images/notes-logo.png" alt="Logo" class="nav-logo"> </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span
-                    class="navbar-toggler-icon"></span> </button>
+               aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span
+               class="navbar-toggler-icon"></span> </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"> <a class="nav-link active" aria-current="page" href="/">HOME</a> </li>
-                </ul>
-                <form class="search-form d-flex"> <input type="text" class="form-control search-input"
-                        placeholder="Search notes..." aria-label="Search"> <button type="submit"
-                        class="common-btn search-button">Search</button> </form>
+               <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                  <li class="nav-item"> <a class="nav-link active" aria-current="page" href="/">HOME</a> </li>
+               </ul>
+               <form class="search-form d-flex"> <input type="text" class="form-control search-input"
+                  placeholder="Search notes..." aria-label="Search"> <button type="submit"
+                  class="common-btn search-button">Search</button> </form>
             </div>
-        </div>
-    </nav>
-    <!-- Card Section -->
-    <div class="container my-5">
-        <div class="row g-4">
+         </div>
+      </nav>
+      <!-- Card Section -->
+      <div class="container my-5">
+         <div class="row g-4">
             <!-- Card 1:  -->
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100">
-                    <img src="images/java-image.png" class="card-img-top" alt="JAVA">
-                    <div class="card-body">
-                        <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
-                            Resources</a>
-                        <div class="card-expanded-content">
-                            <ul>
-                                <li><a href="/notes/java-terminology.pdf" target="_blank">Terminology</a></li>
-                                <li><a href="/notes/collections.pdf" target="_blank">Collections</a></li>
-                                <li><a href="/notes/oops.pdf" target="_blank">Oops</a></li>
-                                <li><a href="https://whimsical.com/java-F3wA8hstGi42DU8BZrsCUL"
-                                        target="_blank">RoadMap</a></li>
-                                <li><a href="https://drive.google.com/file/d/1rdIMUCiW1yjA6_irliXu19zC_GPEcR66/view"
-                                        target="_blank">Material</a></li>
-                                <li><a href="https://www.edureka.co/blog/java-collections/"
-                                        target="_blank">Collection</a></li>
-                                <li><a href="/notes/roadmap.pdf" target="_blank">All Roadmap</a></li>
-                                <li><a href="/notes/backend.pdf" target="_blank">Backend map</a></li>
-                                <li><a href="/notes/java.pdf" target="_blank">Java Roadmap</a></li>
-                                <li><a href="/notes/core-java.pdf" target="_blank">Core JAVA</a></li>
-                                <li><a href="https://enos.itcollege.ee/~jpoial/allalaadimised/reading/Java-Interview-Questions.pdf"
-                                        target="_blank">Core JAVA Ques.</a></li>
-                                <li><a href="/notes/core-java-interview-questions-and-answer.pdf" target="_blank">JAVA
-                                        Ques. 2</a></li>
-                                <li><a href="https://www.geeksforgeeks.org/java-interview-questions/"
-                                        target="_blank">GFG Ques. 3</a></li>
-                                <li><a href="/notes/core-java-interview-questions.pdf" target="_blank">JAVA Ques. 4</a>
-                                </li>
-                                <li><a href="https://www.javatpoint.com/corejava-interview-questions"
-                                        target="_blank">Core JAVA Ques</a></li>
-                                <li><a href="https://www.guru99.com/java-interview-questions-answers.html"
-                                        target="_blank">Guru99 Ques</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+               <div class="card h-100">
+                  <img src="images/java-image.png" class="card-img-top" alt="JAVA">
+                  <div class="card-body">
+                     <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
+                     Resources</a>
+                     <div class="card-expanded-content">
+                        <ul>
+                           <li><a href="/notes/java-terminology.pdf" target="_blank">Terminology</a></li>
+                           <li><a href="/notes/collections.pdf" target="_blank">Collections</a></li>
+                           <li><a href="/notes/oops.pdf" target="_blank">Oops</a></li>
+                           <li><a href="https://whimsical.com/java-F3wA8hstGi42DU8BZrsCUL"
+                              target="_blank">RoadMap</a></li>
+                           <li><a href="https://drive.google.com/file/d/1rdIMUCiW1yjA6_irliXu19zC_GPEcR66/view"
+                              target="_blank">Material</a></li>
+                           <li><a href="https://www.edureka.co/blog/java-collections/"
+                              target="_blank">Collection</a></li>
+                           <li><a href="/notes/roadmap.pdf" target="_blank">All Roadmap</a></li>
+                           <li><a href="/notes/backend.pdf" target="_blank">Backend map</a></li>
+                           <li><a href="/notes/java.pdf" target="_blank">Java Roadmap</a></li>
+                           <li><a href="/notes/core-java.pdf" target="_blank">Core JAVA</a></li>
+                           <li><a href="https://enos.itcollege.ee/~jpoial/allalaadimised/reading/Java-Interview-Questions.pdf"
+                              target="_blank">Core JAVA Ques.</a></li>
+                           <li><a href="/notes/core-java-interview-questions-and-answer.pdf" target="_blank">JAVA
+                              Ques. 2</a>
+                           </li>
+                           <li><a href="https://www.geeksforgeeks.org/java-interview-questions/"
+                              target="_blank">GFG Ques. 3</a></li>
+                           <li><a href="/notes/core-java-interview-questions.pdf" target="_blank">JAVA Ques. 4</a>
+                           </li>
+                           <li><a href="https://www.javatpoint.com/corejava-interview-questions"
+                              target="_blank">Core JAVA Ques</a></li>
+                           <li><a href="https://www.guru99.com/java-interview-questions-answers.html"
+                              target="_blank">Guru99 Ques</a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
             </div>
             <!-- Card 2: DSA -->
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100">
-                    <img src="images/dsa-image.png" class="card-img-top" alt="DSA">
-                    <div class="card-body">
-                        <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
-                            Resources</a>
-                        <div class="card-expanded-content">
-                            <ul>
-                                <li><a href="docs/dsa-complete-roadmap.pdf" target="_blank">Roadmap</a></li>
-                                <li><a href="docs/250-plus-dsa-questions-for-placements.pdf" target="_blank">Practice
-                                        Questions</a></li>
-                                <li><a href="https://whimsical.com/master-roadmap-SzYF2dY2SqwtPQfY5A3mZS"
-                                        target="_blank">Master RoadMap</a></li>
-                                <li><a href="notes/dsa-topics.pdf"
-                                        target="_blank">DSA Topics</a></li>
-                                <li><a href="notes/path-to-google-alt.pdf"
-                                        target="_blank">Path to Google</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+               <div class="card h-100">
+                  <img src="images/dsa-image.png" class="card-img-top" alt="DSA">
+                  <div class="card-body">
+                     <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
+                     Resources</a>
+                     <div class="card-expanded-content">
+                        <ul>
+                           <li><a href="docs/dsa-complete-roadmap.pdf" target="_blank">Roadmap</a></li>
+                           <li><a href="docs/250-plus-dsa-questions-for-placements.pdf" target="_blank">Practice
+                              Questions</a>
+                           </li>
+                           <li><a href="https://whimsical.com/master-roadmap-SzYF2dY2SqwtPQfY5A3mZS"
+                              target="_blank">Master RoadMap</a></li>
+                           <li><a href="notes/dsa-topics.pdf"
+                              target="_blank">DSA Topics</a></li>
+                           <li><a href="notes/path-to-google-alt.pdf"
+                              target="_blank">Path to Google</a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
             </div>
             <!-- Card 3: AI -->
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100">
-                    <img src="images/ai.png" class="card-img-top" alt="AI">
-                    <div class="card-body">
-                        <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">
-                            ↓ Show Resources
-                        </a>
-                        <div class="card-expanded-content">
-                            <ul>
-                              <li><a href="docs/Roadmap.pdf" target="_blank">Roadmap</a></li>
-                                <li><a href="docs/Roadmap2.pdf" target="_blank">Roadmap 2</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+               <div class="card h-100">
+                  <img src="images/ai.png" class="card-img-top" alt="AI">
+                  <div class="card-body">
+                     <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">
+                     ↓ Show Resources
+                     </a>
+                     <div class="card-expanded-content">
+                        <ul>
+                           <li><a href="docs/Roadmap.pdf" target="_blank">Roadmap</a></li>
+                           <li><a href="docs/Roadmap2.pdf" target="_blank">Roadmap 2</a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
             </div>
             <!-- Card 4: Java + -->
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100">
-                    <img src="images/java-image-plus.png" class="card-img-top" alt="Java Advanced">
-                    <div class="card-body">
-                        <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">
-                            ↓ Show Resources
-                        </a>
-                        <div class="card-expanded-content">
-                            <ul>
-                                <li>
-                                    <span>Collection Framework </span>
-                                    <ul style="margin-top:5px;">
-                                        <li><a href="/notes/Collections_firstTier.pdf" target="_blank">First Tier</a></li>
-                                        <li><a href="/notes/Collections_secondTier.pdf" target="_blank">Second Tier</a></li>
-                                        <li><a href="/notes/Collections_thirdTier.pdf" target="_blank">Third Tier</a></li>
-                                    </ul>
-                                </li>
-                                 <li>
-                                    <span>Stream API </span>
-                                    <ul style="margin-top:5px;">
-                                        <li><a href="/notes/StreamAPI_allTier.pdf" target="_blank">All Tier</a></li>
-                                        <li><a href="/notes/StreamAPI_firstTier.pdf" target="_blank">First Tier</a></li>
-                                        <li><a href="/notes/StreamAPI_secondTier.pdf" target="_blank">Second Tier</a></li>
-                                        <li><a href="/notes/StreamAPI_thirdTier.pdf" target="_blank">Third Tier</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <span>Java 8+ Features</span>
-                                    <ul style="margin-top:5px;">
-                                        <li><a href="/notes/Java8_Features_Tier1.pdf" target="_blank">First Tier</a></li>
-                                        <li><a href="/notes/Java8_Features_Tier2.pdf" target="_blank">Second Tier</a></li>
-                                        <li><a href="/notes/Java8_Features_Tier3.pdf" target="_blank">Third Tier</a></li>
-                                    </ul>
-                                </li>
-                                <li class="has-sublist">
+               <div class="card h-100">
+                  <img src="images/java-image-plus.png" class="card-img-top" alt="Java Advanced">
+                  <div class="card-body">
+                     <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">
+                     ↓ Show Resources
+                     </a>
+                     <div class="card-expanded-content">
+                        <ul>
+                           <li>
+                              <details>
+                                 <summary>Collection Framework</summary>
+                                 <ul style="margin-top:5px;">
+                                    <li><a href="/notes/Collections_firstTier.pdf" target="_blank">First Tier</a></li>
+                                    <li><a href="/notes/Collections_secondTier.pdf" target="_blank">Second Tier</a></li>
+                                    <li><a href="/notes/Collections_thirdTier.pdf" target="_blank">Third Tier</a></li>
+                                 </ul>
+                              </details>
+                           </li>
+                           <li>
+                              <details>
+                                 <summary>Stream API </summary>
+                                 <ul style="margin-top:5px;">
+                                    <li><a href="/notes/StreamAPI_allTier.pdf" target="_blank">All Tier</a></li>
+                                    <li><a href="/notes/StreamAPI_firstTier.pdf" target="_blank">First Tier</a></li>
+                                    <li><a href="/notes/StreamAPI_secondTier.pdf" target="_blank">Second Tier</a></li>
+                                    <li><a href="/notes/StreamAPI_thirdTier.pdf" target="_blank">Third Tier</a></li>
+                                 </ul>
+                              </details>
+                           </li>
+                           <li>
+                              <details>
+                                 <summary>Java 8+ Features</summary>
+                                 <ul style="margin-top:5px;">
+                                    <li><a href="/notes/Java8_Features_Tier1.pdf" target="_blank">First Tier</a></li>
+                                    <li><a href="/notes/Java8_Features_Tier2.pdf" target="_blank">Second Tier</a></li>
+                                    <li><a href="/notes/Java8_Features_Tier3.pdf" target="_blank">Third Tier</a></li>
+                                 </ul>
+                              </details>
+                           </li>
+                           <li >
+                              <details>
+                                 <summary> Exception Handling</summary>
+                                 <ul style="margin-top:5px;">
                                     <a href="notes/exception-handling.pdf" target="_blank">
-                                        Exception Handling
+                                    Exception Handling
                                     </a>
-                                    <ul style="margin-top:5px;">
-                                        <li><a href="/notes/exception_handling.pdf" target="_blank">Exception Handling in detail</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="https://www.tutorialspoint.com/hibernate/hibernate_tutorial.pdf"
-                                       target="_blank">
-                                        Hibernate Tutorial
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="https://whimsical.com/master-roadmap-SzYF2dY2SqwtPQfY5A3mZS"
-                                       target="_blank">
-                                        Master Roadmap
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="notes/multithreading.pdf" target="_blank">
-                                        Multithreading
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                                    <li><a href="/notes/exception_handling.pdf" target="_blank">Exception Handling in detail</a></li>
+                                 </ul>
+                              </details>
+                           </li>
+                           <li>
+                              <a href="https://www.tutorialspoint.com/hibernate/hibernate_tutorial.pdf"
+                                 target="_blank">
+                              Hibernate Tutorial
+                              </a>
+                           </li>
+                           <li>
+                              <a href="https://whimsical.com/master-roadmap-SzYF2dY2SqwtPQfY5A3mZS"
+                                 target="_blank">
+                              Master Roadmap
+                              </a>
+                           </li>
+                           <li>
+                              <a href="notes/multithreading.pdf" target="_blank">
+                              Multithreading
+                              </a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
             </div>
             <!-- Card 5: SQL -->
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100">
-                    <img src="images/sql-image.png" class="card-img-top" alt="SQL">
-                    <div class="card-body">
-                        <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
-                            Resources</a>
-                        <div class="card-expanded-content">
-                            <ul>
-                                <li><a href="notes/postgresql.pdf" target="_blank">PostgreSQL</a></li>
-                                <li><a href="notes/sql.pdf" target="_blank">SQL</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+               <div class="card h-100">
+                  <img src="images/sql-image.png" class="card-img-top" alt="SQL">
+                  <div class="card-body">
+                     <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
+                     Resources</a>
+                     <div class="card-expanded-content">
+                        <ul>
+                           <li><a href="notes/postgresql.pdf" target="_blank">PostgreSQL</a></li>
+                           <li><a href="notes/sql.pdf" target="_blank">SQL</a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
             </div>
             <!-- Card 6: Web Technology -->
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100">
-                    <img src="images/web-image.png" class="card-img-top" alt="Web Technology">
-                    <div class="card-body">
-                        <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
-                            Resources</a>
-                        <div class="card-expanded-content">
-                            <ul>
-                                <li><a href="/notes/html-interview-questions.pdf" target="_blank">HTML Questions</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+               <div class="card h-100">
+                  <img src="images/web-image.png" class="card-img-top" alt="Web Technology">
+                  <div class="card-body">
+                     <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
+                     Resources</a>
+                     <div class="card-expanded-content">
+                        <ul>
+                           <li><a href="/notes/html-interview-questions.pdf" target="_blank">HTML Questions</a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
             </div>
             <!-- Card 7: Interview -->
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100">
-                    <img src="images/interview-image.png" class="card-img-top" alt="Interview">
-                    <div class="card-body">
-                        <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
-                            Resources</a>
-                        <div class="card-expanded-content">
-                            <ul>
-                                <li><a href="/notes/path-to-google.pdf" target="_blank">My Roadmap</a></li>
-                                <li><a href="/notes/hr-round-question.pdf" target="_blank">HR Round</a></li>
-                                <li><a href="https://testbook.com/interview/servlet-interview-questions"
-                                        target="_blank">Servlet Questions</a></li>
-                                <li><a href="https://www.edureka.co/blog/interview-questions/servlet-interview-questions/"
-                                        target="_blank">Servlet Questions 1</a></li>
-                                <li><a href="https://www.interviewbit.com/servlet-interview-questions/"
-                                        target="_blank">Servlet Questions 2</a></li>
-                                <li><a href="https://career.guru99.com/top-50-servlet-interview-questions/"
-                                        target="_blank">Servlet Questions 3</a></li>
-                                <li><a href="https://www.tutorialspoint.com/servlets/pdf/servlets_interview_questions.pdf"
-                                        target="_blank">Servlet Questions 4</a></li>
-                                <li><a href="/notes/java-unit-4-notes.pdf" target="_blank">Java Unit Notes</a></li>
-                                <li><a href="/notes/java-collections-1.pdf" target="_blank">Java collections 1</a></li>
-                                <li><a href="/notes/java-collections-2.pdf" target="_blank">Java collections 2</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+               <div class="card h-100">
+                  <img src="images/interview-image.png" class="card-img-top" alt="Interview">
+                  <div class="card-body">
+                     <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
+                     Resources</a>
+                     <div class="card-expanded-content">
+                        <ul>
+                           <li><a href="/notes/path-to-google.pdf" target="_blank">My Roadmap</a></li>
+                           <li><a href="/notes/hr-round-question.pdf" target="_blank">HR Round</a></li>
+                           <li><a href="https://testbook.com/interview/servlet-interview-questions"
+                              target="_blank">Servlet Questions</a></li>
+                           <li><a href="https://www.edureka.co/blog/interview-questions/servlet-interview-questions/"
+                              target="_blank">Servlet Questions 1</a></li>
+                           <li><a href="https://www.interviewbit.com/servlet-interview-questions/"
+                              target="_blank">Servlet Questions 2</a></li>
+                           <li><a href="https://career.guru99.com/top-50-servlet-interview-questions/"
+                              target="_blank">Servlet Questions 3</a></li>
+                           <li><a href="https://www.tutorialspoint.com/servlets/pdf/servlets_interview_questions.pdf"
+                              target="_blank">Servlet Questions 4</a></li>
+                           <li><a href="/notes/java-unit-4-notes.pdf" target="_blank">Java Unit Notes</a></li>
+                           <li><a href="/notes/java-collections-1.pdf" target="_blank">Java collections 1</a></li>
+                           <li><a href="/notes/java-collections-2.pdf" target="_blank">Java collections 2</a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
             </div>
             <!-- Card 8: JavaScript/React -->
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100">
-                    <img src="images/javascript-react.png" class="card-img-top" alt="JavaScript React">
-                    <div class="card-body">
-                        <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
-                            Resources</a>
-                        <div class="card-expanded-content">
-                            <ul>
-                                <li><a href="https://medium.com/@rajanraj8979/roadmap-for-react-js-for-beginners-to-advance-522ce3588838"
-                                        target="_blank">React roadmap-1</a></li>
-                                <li><a href="https://learningdaily.dev/the-best-react-developer-roadmap-for-2024-1aaf406c5a32"
-                                        target="_blank">React roadmap-2</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+               <div class="card h-100">
+                  <img src="images/javascript-react.png" class="card-img-top" alt="JavaScript React">
+                  <div class="card-body">
+                     <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
+                     Resources</a>
+                     <div class="card-expanded-content">
+                        <ul>
+                           <li><a href="https://medium.com/@rajanraj8979/roadmap-for-react-js-for-beginners-to-advance-522ce3588838"
+                              target="_blank">React roadmap-1</a></li>
+                           <li><a href="https://learningdaily.dev/the-best-react-developer-roadmap-for-2024-1aaf406c5a32"
+                              target="_blank">React roadmap-2</a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
             </div>
             <!-- Card 9: System Design and DevOps -->
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100">
-                    <img src="images/SD-and-devops-img.png" class="card-img-top" alt="SD and DevOps">
-                    <div class="card-body">
-                        <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
-                            Resources</a>
-                        <div class="card-expanded-content">
-                            <ul>
-                                  <li><a href="/notes/system_design_concepts.pdf"
-                                        target="_blank">System Design concepts</a></li>
-                                <li><a href="https://www.tutorialspoint.com/postman/postman_tutorial.pdf"
-                                        target="_blank">Postman Tutorial</a></li>
-                                <li><a href="/notes/redis.pdf"
-                                        target="_blank">Redis</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+               <div class="card h-100">
+                  <img src="images/SD-and-devops-img.png" class="card-img-top" alt="SD and DevOps">
+                  <div class="card-body">
+                     <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
+                     Resources</a>
+                     <div class="card-expanded-content">
+                        <ul>
+                           <li><a href="/notes/system_design_concepts.pdf"
+                              target="_blank">System Design concepts</a></li>
+                           <li><a href="https://www.tutorialspoint.com/postman/postman_tutorial.pdf"
+                              target="_blank">Postman Tutorial</a></li>
+                           <li><a href="/notes/redis.pdf"
+                              target="_blank">Redis</a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
             </div>
             <!-- Card 10: Go -->
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100">
-                    <img src="images/go.png" class="card-img-top" alt="Go">
-                    <div class="card-body">
-                        <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
-                            Resources</a>
-                        <div class="card-expanded-content">
-                            <ul>
-                                <li><a href="/notes/roadmap-golang.pdf" target="_blank">Golang Roadmap</a></li>
-                                <li><a href="/notes/golang-tutorial.pdf" target="_blank">Golang Tutorial</a></li>
-                                <li><a href="/notes/angular.pdf" target="_blank">Angular</a></li>
-                                <li><a href="/notes/temporal-workflow.pdf" target="_blank">Temporal workflow</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+               <div class="card h-100">
+                  <img src="images/go.png" class="card-img-top" alt="Go">
+                  <div class="card-body">
+                     <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
+                     Resources</a>
+                     <div class="card-expanded-content">
+                        <ul>
+                           <li><a href="/notes/roadmap-golang.pdf" target="_blank">Golang Roadmap</a></li>
+                           <li><a href="/notes/golang-tutorial.pdf" target="_blank">Golang Tutorial</a></li>
+                           <li><a href="/notes/angular.pdf" target="_blank">Angular</a></li>
+                           <li><a href="/notes/temporal-workflow.pdf" target="_blank">Temporal workflow</a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
             </div>
             <!-- Card 11: Spring -->
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100">
-                    <img src="images/spring-image.png" class="card-img-top" alt="Spring">
-                    <div class="card-body">
-                        <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
-                            Resources</a>
-                        <div class="card-expanded-content">
-                            <ul>
-                                <li><a href="/notes/spring-boot-questions-and-answer.pdf" target="_blank">Spring &
-                                        Spring boot</a></li>
-                                <li><a href="https://leverageedu.com/blog/hi/common-english-words-used-in-daily-life-with-hindi-meaning/"
-                                        target="_blank">Common words in english</a></li>
-                                <li><a href="https://infinitylearn.com/surge/english/word-meaning-english-to-hindi/"
-                                        target="_blank">100 words in english</a></li>
-                                <li><a href="https://hindimediumhelp.blogspot.com/2020/12/English-Words-Hindi-Meaning.html"
-                                        target="_blank">100+ words</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+               <div class="card h-100">
+                  <img src="images/spring-image.png" class="card-img-top" alt="Spring">
+                  <div class="card-body">
+                     <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
+                     Resources</a>
+                     <div class="card-expanded-content">
+                        <ul>
+                           <li><a href="/notes/spring-boot-questions-and-answer.pdf" target="_blank">Spring &
+                              Spring boot</a>
+                           </li>
+                           <li><a href="https://leverageedu.com/blog/hi/common-english-words-used-in-daily-life-with-hindi-meaning/"
+                              target="_blank">Common words in english</a></li>
+                           <li><a href="https://infinitylearn.com/surge/english/word-meaning-english-to-hindi/"
+                              target="_blank">100 words in english</a></li>
+                           <li><a href="https://hindimediumhelp.blogspot.com/2020/12/English-Words-Hindi-Meaning.html"
+                              target="_blank">100+ words</a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
             </div>
             <!-- Card 12: Personal -->
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100">
-                    <img src="images/personal-image.png" class="card-img-top" alt="Personal">
-                    <div class="card-body">
-                        <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
-                            Resources</a>
-                        <div class="card-expanded-content">
-                            <ul>
-                                <li><a href="https://jstrieb.github.io/link-lock/#eyJ2IjoiMC4wLjEiLCJlIjoiY2Rkb0piQnlnbXpSanpSNEttbGMwenhoV1hPVmFTTVpGVDRkRzlNbzQ2OEVCOWV0N1FONGpIMUh4Vmo0YzA4SWd4SFplbGttbzh4MjRHQlhPZDBMNmtVPSIsImgiOiI4MTcqKio5NiIsInMiOiI0elRLeWlFMERYUWhPalNpcTk0RDR3PT0iLCJpIjoielNVaEpacUJXU1p5UFVZNCJ9"
-                                        target="_blank">Personal Notes</a></li>
-                                <li><a href="/notes/tamil.pdf" target="_blank">Tamil</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+               <div class="card h-100">
+                  <img src="images/personal-image.png" class="card-img-top" alt="Personal">
+                  <div class="card-body">
+                     <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
+                     Resources</a>
+                     <div class="card-expanded-content">
+                        <ul>
+                           <li><a href="https://jstrieb.github.io/link-lock/#eyJ2IjoiMC4wLjEiLCJlIjoiY2Rkb0piQnlnbXpSanpSNEttbGMwenhoV1hPVmFTTVpGVDRkRzlNbzQ2OEVCOWV0N1FONGpIMUh4Vmo0YzA4SWd4SFplbGttbzh4MjRHQlhPZDBMNmtVPSIsImgiOiI4MTcqKio5NiIsInMiOiI0elRLeWlFMERYUWhPalNpcTk0RDR3PT0iLCJpIjoielNVaEpacUJXU1p5UFVZNCJ9"
+                              target="_blank">Personal Notes</a></li>
+                           <li><a href="/notes/tamil.pdf" target="_blank">Tamil</a></li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
             </div>
             <!-- Empty State -->
             <div class="empty-state">
-                <img src="images/folder.png" alt="No Results" />
-                <h3>No Results Found</h3>
-                <p>We couldn't find any notes matching your search. Try a different keyword or check your spelling.</p>
-                <a href="#" class="common-btn"
-                    onclick="document.querySelector('.search-input').value = ''; filterCards(); return false;">
-                    Clear Search
-                </a>
+               <img src="images/folder.png" alt="No Results" />
+               <h3>No Results Found</h3>
+               <p>We couldn't find any notes matching your search. Try a different keyword or check your spelling.</p>
+               <a href="#" class="common-btn"
+                  onclick="document.querySelector('.search-input').value = ''; filterCards(); return false;">
+               Clear Search
+               </a>
             </div>
-        </div>
-    </div>
-    <!-- Footer with Feedback Link -->
-    <div class="text-center py-4">
-        <p> <span class="developer-container"> Developed by <a href="https://github.com/rohitshukla001"
-                    target="_blank" class="developer-container">Rohit Shukla</a> ↗ <img
-                    src="https://info.rohitshukla.net/images/project/rohit-shukla.png" alt="Rohit Shukla"
-                    class="developer-image"> </span>
-        <p> <span class="feedback-btn" onclick="toggleFeedbackForm()"> <span class="feedback-icon">✉</span> Share Your
-                Feedback </span> </p>
-        </p>
-    </div>
-    <!-- Feedback Popup -->
-    <div id="feedbackPopup" class="feedback-popup">
-        <div class="popup-header">
+         </div>
+      </div>
+      <!-- Footer with Feedback Link -->
+      <div class="text-center py-4">
+         <p> <span class="developer-container"> Developed by <a href="https://github.com/rohitshukla001"
+            target="_blank" class="developer-container">Rohit Shukla</a> ↗ <img
+            src="https://info.rohitshukla.net/images/project/rohit-shukla.png" alt="Rohit Shukla"
+            class="developer-image"> </span>
+         <p> <span class="feedback-btn" onclick="toggleFeedbackForm()"> <span class="feedback-icon">✉</span> Share Your
+            Feedback </span> 
+         </p>
+         </p>
+      </div>
+      <!-- Feedback Popup -->
+      <div id="feedbackPopup" class="feedback-popup">
+         <div class="popup-header">
             <h4>Submit Feedback</h4>
             <span class="close-btn" onclick="toggleFeedbackForm()">×</span>
-        </div>
-        <form id="feedbackForm">
+         </div>
+         <form id="feedbackForm">
             <div class="form-group"> <label for="name">Name:</label> <input type="text" class="form-control" id="name"
-                    name="name" required> </div>
+               name="name" required> </div>
             <div class="form-group"> <label for="email">Email:</label> <input type="email" class="form-control"
-                    id="email" name="email" required> </div>
+               id="email" name="email" required> </div>
             <div class="form-group"> <label for="message">Message:</label> <textarea class="form-control" id="message"
-                    name="message" rows="3" required></textarea> </div>
+               name="message" rows="3" required></textarea> </div>
             <button type="submit" class="common-btn search-button">Submit</button>
-        </form>
-        <p id="formMessage" class="mt-2"></p>
-    </div>
-    <!-- Custom JavaScript -->
-    <script src="assets/js/script.js"></script>
-</body>
-
+         </form>
+         <p id="formMessage" class="mt-2"></p>
+      </div>
+      <!-- Custom JavaScript -->
+      <script src="assets/js/script.js"></script>
+   </body>
 </html>
