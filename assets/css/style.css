@@ -7,6 +7,27 @@ body {
 /* ========================================
    Navbar Styles
    ======================================== */
+details summary {
+    list-style: none;
+    display: inline-block;
+    background-color: #E0EDFF;
+    color: #0B0B2D;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+details summary:hover {
+    background-color: #C2D6F0;
+}
+
+/* Remove default arrow */
+details summary::-webkit-details-marker {
+    display: none;
+}
 .card-expanded-content span {
     display: inline-block;
     background-color: #E0EDFF;   /* Bootstrap primary */
