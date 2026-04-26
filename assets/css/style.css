@@ -7,6 +7,22 @@ body {
 /* ========================================
    Navbar Styles
    ======================================== */
+
+.card-expanded-content span {
+    display: inline-block;
+    background-color: #0d6efd;   /* Bootstrap primary */
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 8px;
+    cursor: default;             /* important: not clickable */
+}
+
+.card-expanded-content span:hover {
+    background-color: #0b5ed7;
+}
 .navbar {
     background: linear-gradient(90deg, #0a1a2e, #1e3a5f);
     padding: 0.8rem 1.5rem;
