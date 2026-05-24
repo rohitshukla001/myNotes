@@ -92,13 +92,11 @@ document.getElementById('feedbackForm').addEventListener('submit', function (eve
 })();
 
 // ========================================
-// Randomly Assign Button Classes to Card Links
+// Apply Card Button Style to Card Links
 // ========================================
 document.addEventListener('DOMContentLoaded', () => {
-    const buttonClasses = ['card-btn-1', 'card-btn-2', 'card-btn-3', 'card-btn-4'];
     document.querySelectorAll('.card-expanded-content a').forEach(link => {
-        const randomClass = buttonClasses[Math.floor(Math.random() * buttonClasses.length)];
-        link.classList.add(randomClass);
+        link.classList.add('card-btn');
     });
 });
 
