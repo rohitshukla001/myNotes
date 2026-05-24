@@ -178,8 +178,8 @@ details summary::-webkit-details-marker {
 }
 
 .card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transform: scale(1.015);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .card-img-top {
