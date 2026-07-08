@@ -1,171 +1,547 @@
-@page {
-  size: A4;
-  margin: 8mm 8mm 8mm 8mm;
+/* ============================================================
+   PDF stylesheet
+   Single source of truth for generated PDF documents.
+
+   Target engine: WeasyPrint 60+ (also works with Prince XML).
+   Chrome / Puppeteer honours most rules but ignores the
+   margin-box running header and counter(pages). Engine-specific
+   behaviour is flagged inline.
+
+   Retheme by editing the tokens in :root. Everything else
+   references those variables and should not need touching.
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   1. Design tokens
+   ------------------------------------------------------------ */
+:root {
+  /* Ink and surfaces */
+  --color-text:         #1a1d21;
+  --color-text-muted:   #5b6067;
+  --color-heading:      #14181c;
+  --color-surface:      #ffffff;
+  --color-surface-alt:  #f4f5f7;
+  --color-border:       #d8dce1;
+  --color-border-soft:  #e6e9ed;
+
+  /* Accent */
+  --color-accent:        #2f5d8a;
+  --color-accent-strong: #1e3f5f;
+  --color-link:          #235a86;
+
+  /* Callout families: border colour + background tint */
+  --color-note:          #2f5d8a;
+  --color-note-bg:       #eef4fa;
+  --color-tip:           #2f7d4f;
+  --color-tip-bg:        #eef7f0;
+  --color-warning:       #9c6b12;
+  --color-warning-bg:    #fdf6e9;
+  --color-danger:        #b3382f;
+  --color-danger-bg:     #fbeeed;
+  --color-important:     #6b4c9a;
+  --color-important-bg:  #f3eff9;
+
+  /* Typography */
+  --font-body: "Inter", "Segoe UI", "Helvetica Neue", Arial,
+  "Liberation Sans", "DejaVu Sans", sans-serif;
+  --font-heading: var(--font-body);
+  --font-mono: "JetBrains Mono", "Fira Code", "SFMono-Regular",
+  Consolas, "Liberation Mono", "DejaVu Sans Mono", monospace;
+
+  --fs-base: 11pt;
+  --lh-base: 1.5;
+
+  /* Type scale (~1.22 ratio) */
+  --fs-h1:    24pt;
+  --fs-h2:    18pt;
+  --fs-h3:    14pt;
+  --fs-h4:    12pt;
+  --fs-h5:    11pt;
+  --fs-h6:    10pt;
+  --fs-small: 9pt;
+  --fs-code:  9.5pt;
+
+  /* Spacing scale */
+  --space-1: 2pt;
+  --space-2: 4pt;
+  --space-3: 8pt;
+  --space-4: 12pt;
+  --space-5: 16pt;
+  --space-6: 24pt;
+  --space-7: 32pt;
+
+  --radius: 3pt;
 }
 
-html {
-  font-size: 11pt;
+
+/* ------------------------------------------------------------
+   2. Embedded fonts (optional)
+   Uncomment and point at real files to bundle fonts into the
+   PDF instead of relying on system fonts. WeasyPrint reads
+   local paths and http(s) URLs.
+   ------------------------------------------------------------ */
+/*
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  src: url("fonts/Inter-Regular.woff2") format("woff2");
 }
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  src: url("fonts/Inter-SemiBold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400;
+  src: url("fonts/JetBrainsMono-Regular.woff2") format("woff2");
+}
+*/
+
+
+/* ------------------------------------------------------------
+   3. Page layout
+   ------------------------------------------------------------ */
+@page {
+  size: A4;                       /* switch to "Letter" for US paper */
+  margin: 11mm 10mm 12mm 10mm;    /* halved from 22/20/24/20 */
+
+  /* Running header pulls the current document title.
+     Ignored by Chrome / Puppeteer. */
+  @top-center {
+    content: string(doc-title);
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    font-size: 8pt;
+    color: #5b6067;
+    padding-bottom: 4pt;
+  }
+
+  /* Page number, e.g. "3 / 12" */
+  @bottom-right {
+    content: counter(page) " / " counter(pages);
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    font-size: 8pt;
+    color: #5b6067;
+  }
+
+  /* Optional footer label, set via an element with .doc-footer */
+  @bottom-left {
+    content: string(doc-footer);
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    font-size: 8pt;
+    color: #5b6067;
+  }
+}
+
+/* First page carries no running header, so a cover or title
+   block sits clean at the top. */
+@page :first {
+  @top-center { content: none; }
+}
+
+/* Landscape variant. Add class="page-landscape" to a wrapper
+   element to start a rotated page. */
+@page landscape { size: A4 landscape; }
+.page-landscape { page: landscape; }
+
+
+/* ------------------------------------------------------------
+   4. Base and reset
+   ------------------------------------------------------------ */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { font-size: var(--fs-base); }
 
 body {
-  font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #1a1a1a;
-  line-height: 1.5;
-  max-width: 100%;
   margin: 0;
-  padding: 0;
-  -webkit-print-color-adjust: exact;
-  print-color-adjust: exact;
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  line-height: var(--lh-base);
+  color: var(--color-text);
+  background: var(--color-surface);
+  hyphens: auto;
+  text-rendering: optimizeLegibility;
 }
 
-/* Callout boxes for revision scanning */
-.callout {
-  border-radius: 6px;
-  padding: 8px 12px;
-  margin: 0.8em 0;
-  border-left: 4px solid;
-  page-break-inside: avoid;
-  font-size: 0.97em;
-}
-.callout p { margin: 0.3em 0; }
-.callout-title {
-  display: block;
-  font-weight: 700;
-  font-size: 0.82em;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  margin-bottom: 3px;
-}
-.callout.concept { background: #eef4ff; border-color: #0a58ca; }
-.callout.concept .callout-title { color: #0a58ca; }
-.callout.trap { background: #fff1f0; border-color: #d1242f; }
-.callout.trap .callout-title { color: #d1242f; }
-.callout.tip { background: #eafaf1; border-color: #1a7f37; }
-.callout.tip .callout-title { color: #1a7f37; }
 
-/* Inline colour helpers */
-.c-blue { color: #0a58ca; }
-.c-red { color: #d1242f; }
-.c-green { color: #1a7f37; }
-u { text-decoration: underline; }
+/* ------------------------------------------------------------
+   5. Typography: body text and inline elements
+   ------------------------------------------------------------ */
+p {
+  margin: 0 0 var(--space-4) 0;
+  orphans: 3;
+  widows: 3;
+}
 
-h1, h2, h3, h4 {
+a {
+  color: var(--color-link);
+  text-decoration: none;
+  border-bottom: 0.5pt solid var(--color-border);
+}
+
+/* Print the target URL after external links. Off by default
+   because it adds noise. Uncomment if you want traceable links. */
+/*
+a[href^="http"]::after {
+  content: " (" attr(href) ")";
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+  word-break: break-all;
+}
+*/
+
+strong, b { font-weight: 600; color: var(--color-heading); }
+em, i     { font-style: italic; }
+
+small { font-size: var(--fs-small); color: var(--color-text-muted); }
+
+sub, sup { font-size: 75%; line-height: 0; }
+sup { vertical-align: super; }
+sub { vertical-align: sub; }
+
+mark {
+  background: var(--color-warning-bg);
+  color: var(--color-text);
+  padding: 0 2pt;
+}
+
+del { color: var(--color-text-muted); }
+ins { text-decoration: underline; }
+
+abbr[title] { border-bottom: 0.5pt dotted var(--color-text-muted); }
+
+
+/* ------------------------------------------------------------
+   6. Headings
+   ------------------------------------------------------------ */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-heading);
   font-weight: 600;
   line-height: 1.25;
-  color: #0d1117;
-  page-break-after: avoid;
+  margin: var(--space-6) 0 var(--space-3) 0;
+  break-after: avoid;           /* keep heading with the text below */
+  break-inside: avoid;
 }
 
+/* Feeds the running header. Every h1 updates the page title. */
 h1 {
-  font-size: 1.8rem;
-  border-bottom: 2px solid #d0d7de;
-  padding-bottom: 0.3em;
+  string-set: doc-title content();
+  font-size: var(--fs-h1);
   margin-top: 0;
+  padding-bottom: var(--space-3);
+  border-bottom: 1.5pt solid var(--color-accent);
 }
 
 h2 {
-  font-size: 1.3rem;
-  border-bottom: 1px solid #eaecef;
-  padding-bottom: 0.25em;
-  margin-top: 1.6em;
+  font-size: var(--fs-h2);
+  padding-bottom: var(--space-2);
+  border-bottom: 0.75pt solid var(--color-border);
 }
 
-h3 {
-  font-size: 1.1rem;
-  margin-top: 1.2em;
-}
+h3 { font-size: var(--fs-h3); color: var(--color-accent-strong); }
+h4 { font-size: var(--fs-h4); }
+h5 { font-size: var(--fs-h5); }
+h6 { font-size: var(--fs-h6); color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.03em; }
 
-p {
-  margin: 0.6em 0;
-}
+/* Start every top-level section on a fresh page. Remove if you
+   prefer continuous flow. */
+/* h1 { break-before: page; } */
 
+
+/* ------------------------------------------------------------
+   7. Lists
+   ------------------------------------------------------------ */
 ul, ol {
-  margin: 0.5em 0;
-  padding-left: 1.6em;
+  margin: 0 0 var(--space-4) 0;
+  padding-left: var(--space-6);
 }
 
-li {
-  margin: 0.2em 0;
+li { margin-bottom: var(--space-2); }
+
+li > ul, li > ol {
+  margin-top: var(--space-2);
+  margin-bottom: 0;
 }
 
+ul { list-style-type: disc; }
+ul ul { list-style-type: circle; }
+ul ul ul { list-style-type: square; }
+
+/* Task-list checkboxes from Markdown */
+li input[type="checkbox"] { margin-right: var(--space-2); }
+
+/* Definition lists */
+dl { margin: 0 0 var(--space-4) 0; }
+dt { font-weight: 600; color: var(--color-heading); margin-top: var(--space-3); }
+dd { margin: 0 0 var(--space-2) var(--space-5); }
+
+
+/* ------------------------------------------------------------
+   8. Blockquotes
+   ------------------------------------------------------------ */
+blockquote {
+  margin: var(--space-4) 0;
+  padding: var(--space-2) var(--space-4);
+  border-left: 3pt solid var(--color-accent);
+  background: var(--color-surface-alt);
+  color: var(--color-text-muted);
+  break-inside: avoid;
+}
+blockquote p:last-child { margin-bottom: 0; }
+
+
+/* ------------------------------------------------------------
+   9. Code
+   ------------------------------------------------------------ */
+code, pre, kbd, samp {
+  font-family: var(--font-mono);
+  font-size: var(--fs-code);
+}
+
+/* Inline code */
 code {
-  font-family: "SF Mono", Menlo, Monaco, Consolas, "Courier New", monospace;
-  background: #f6f8fa;
-  padding: 0.15em 0.35em;
-  border-radius: 4px;
-  font-size: 0.9em;
-  color: #24292f;
+  background: var(--color-surface-alt);
+  border: 0.5pt solid var(--color-border-soft);
+  border-radius: var(--radius);
+  padding: 0.5pt 3pt;
+  color: var(--color-accent-strong);
 }
 
+/* Code block */
 pre {
-  background: #f6f8fa;
-  border: 1px solid #e1e4e8;
-  border-radius: 6px;
-  padding: 12px 14px;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-  font-size: 0.85em;
+  margin: var(--space-4) 0;
+  padding: var(--space-4);
+  background: var(--color-surface-alt);
+  border: 0.5pt solid var(--color-border);
+  border-radius: var(--radius);
   line-height: 1.45;
-  page-break-inside: avoid;
+  /* Wrap long lines so code never overflows the page width */
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  break-inside: avoid;
 }
 
+/* Reset inline-code styling when inside a block */
 pre code {
   background: none;
-  padding: 0;
-  border-radius: 0;
-  font-size: 1em;
-  color: #24292f;
-}
-
-hr {
   border: none;
-  border-top: 1px solid #d0d7de;
-  margin: 1.6em 0;
+  padding: 0;
+  color: var(--color-text);
+  font-size: inherit;
 }
 
-table {
-  border-collapse: collapse;
-  margin: 1em 0;
-  width: 100%;
-  font-size: 0.95em;
-  page-break-inside: avoid;
+kbd {
+  background: var(--color-surface);
+  border: 0.75pt solid var(--color-border);
+  border-bottom-width: 2pt;
+  border-radius: var(--radius);
+  padding: 0.5pt 4pt;
+  font-size: var(--fs-small);
 }
+
+/* --- Syntax highlighting (highlight.js classes) ---
+   Muted palette tuned for print. Pygments users can map the
+   same colours onto .highlight .k, .s, .c, etc. */
+.hljs-comment, .hljs-quote            { color: #6b7280; font-style: italic; }
+.hljs-keyword, .hljs-selector-tag     { color: #8250df; }
+.hljs-string, .hljs-attr              { color: #2f7d4f; }
+.hljs-number, .hljs-literal           { color: #b3541e; }
+.hljs-title, .hljs-function .hljs-title { color: #235a86; }
+.hljs-type, .hljs-class .hljs-title   { color: #1e3f5f; }
+.hljs-built_in, .hljs-builtin-name    { color: #9c6b12; }
+.hljs-meta                            { color: #6b7280; }
+.hljs-tag                             { color: #5b6067; }
+.hljs-name                            { color: #8250df; }
+.hljs-deletion  { background: var(--color-danger-bg); }
+.hljs-addition  { background: var(--color-tip-bg); }
+
+
+/* ------------------------------------------------------------
+   10. Tables
+   ------------------------------------------------------------ */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: var(--space-4) 0;
+  font-size: 10pt;
+  break-inside: auto;
+}
+
+/* Repeat the header row on every page a long table spans */
+thead { display: table-header-group; }
 
 th, td {
-  border: 1px solid #d0d7de;
-  padding: 8px 12px;
+  padding: var(--space-2) var(--space-3);
+  border: 0.5pt solid var(--color-border);
   text-align: left;
+  vertical-align: top;
 }
 
 th {
-  background: #f6f8fa;
+  background: var(--color-accent);
+  color: #ffffff;
   font-weight: 600;
 }
 
-tr:nth-child(even) td {
-  background: #fafbfc;
+/* Zebra striping for readability */
+tbody tr:nth-child(even) { background: var(--color-surface-alt); }
+
+/* Avoid splitting a row across a page break */
+tr { break-inside: avoid; }
+
+caption {
+  caption-side: bottom;
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+  padding-top: var(--space-2);
+  text-align: left;
 }
 
-blockquote {
-  border-left: 4px solid #d0d7de;
-  margin: 1em 0;
-  padding: 0.4em 1em;
-  color: #57606a;
-}
 
-strong {
+/* ------------------------------------------------------------
+   11. Callouts / admonitions
+   Supports two markup styles:
+     <div class="callout callout-warning"> ... </div>
+     <div class="admonition warning"><p class="admonition-title">...</p></div>
+   ------------------------------------------------------------ */
+.callout, .admonition {
+  margin: var(--space-4) 0;
+  padding: var(--space-3) var(--space-4);
+  border-left: 3pt solid var(--color-note);
+  background: var(--color-note-bg);
+  border-radius: var(--radius);
+  break-inside: avoid;
+}
+.callout > :last-child, .admonition > :last-child { margin-bottom: 0; }
+
+.callout-title, .admonition-title {
   font-weight: 600;
+  margin: 0 0 var(--space-2) 0;
+  color: var(--color-note);
 }
 
-/* Syntax highlighting (pandoc default classes) */
-.sourceCode {
-  background: #f6f8fa;
+/* Note / info (default already set above) */
+.callout-note, .admonition.note, .callout.note { }
+
+/* Tip / success */
+.callout-tip, .admonition.tip, .callout.tip,
+.callout-success, .admonition.success {
+  border-left-color: var(--color-tip);
+  background: var(--color-tip-bg);
 }
-code .kw { color: #cf222e; }   /* keyword */
-code .dt { color: #953800; }   /* data type */
-code .st { color: #0a3069; }   /* string */
-code .co { color: #6e7781; font-style: italic; } /* comment */
-code .fu { color: #8250df; }   /* function */
-code .va { color: #24292f; }   /* variable */
-code .cn { color: #0550ae; }   /* constant */
-code .op { color: #24292f; }   /* operator */
+.callout-tip .callout-title, .admonition.tip .admonition-title,
+.callout-success .callout-title { color: var(--color-tip); }
+
+/* Warning / caution */
+.callout-warning, .admonition.warning, .callout.warning,
+.callout-caution, .admonition.caution {
+  border-left-color: var(--color-warning);
+  background: var(--color-warning-bg);
+}
+.callout-warning .callout-title, .admonition.warning .admonition-title,
+.callout-caution .callout-title { color: var(--color-warning); }
+
+/* Danger / error */
+.callout-danger, .admonition.danger, .callout.danger,
+.callout-error, .admonition.error {
+  border-left-color: var(--color-danger);
+  background: var(--color-danger-bg);
+}
+.callout-danger .callout-title, .admonition.danger .admonition-title,
+.callout-error .callout-title { color: var(--color-danger); }
+
+/* Important */
+.callout-important, .admonition.important, .callout.important {
+  border-left-color: var(--color-important);
+  background: var(--color-important-bg);
+}
+.callout-important .callout-title,
+.admonition.important .admonition-title { color: var(--color-important); }
+
+
+/* ------------------------------------------------------------
+   12. Images and figures
+   ------------------------------------------------------------ */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+figure {
+  margin: var(--space-5) 0;
+  text-align: center;
+  break-inside: avoid;
+}
+
+figcaption {
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+  margin-top: var(--space-2);
+}
+
+
+/* ------------------------------------------------------------
+   13. Horizontal rule and misc
+   ------------------------------------------------------------ */
+hr {
+  border: none;
+  border-top: 0.75pt solid var(--color-border);
+  margin: var(--space-6) 0;
+}
+
+/* Footnotes */
+.footnotes {
+  margin-top: var(--space-6);
+  padding-top: var(--space-3);
+  border-top: 0.5pt solid var(--color-border);
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+}
+
+
+/* ------------------------------------------------------------
+   14. Cover page
+   Wrap title content in <div class="cover"> ... </div>.
+   ------------------------------------------------------------ */
+.cover {
+  break-after: page;
+  padding-top: 40mm;
+  text-align: left;
+}
+.cover .cover-title {
+  font-size: 32pt;
+  font-weight: 600;
+  color: var(--color-heading);
+  border: none;
+  margin: 0 0 var(--space-4) 0;
+  padding: 0;
+}
+.cover .cover-subtitle {
+  font-size: 15pt;
+  color: var(--color-text-muted);
+  font-weight: 400;
+  margin: 0 0 var(--space-7) 0;
+}
+.cover .cover-meta {
+  font-size: 10pt;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+}
+
+
+/* ------------------------------------------------------------
+   15. Print / pagination utilities
+   ------------------------------------------------------------ */
+.page-break   { break-before: page; }
+.no-break     { break-inside: avoid; }
+.keep-with-next { break-after: avoid; }
+
+/* Hidden element that sets the footer string, e.g.
+   <span class="doc-footer">Reputation Management — Internal</span> */
+.doc-footer { string-set: doc-footer content(); display: none; }
