@@ -1,134 +1,107 @@
-# 📚 Notes Website
+# Notes
 
-A modern, responsive notes and resources portal for developers. This website provides quick access to curated learning materials, documentation, interview preparation guides, and roadmaps across various technologies.
+A private reference library of cheat sheets, long-form notes and roadmaps, grouped by
+topic and searchable from one page. Built for me and for people I send the link to, so
+there is no onboarding and nothing to explain.
 
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
-![Bootstrap](https://img.shields.io/badge/Bootstrap-7952B3?style=flat&logo=bootstrap&logoColor=white)
+Live at [notes.rohitshukla.net](https://notes.rohitshukla.net). Excluded from search
+engines by `robots.txt` and a `noindex` meta tag, so the link is the only way in.
 
----
+## What it does
 
-## ✨ Features
+Type a topic and open the document. Search ranks by relevance across titles and
+keywords, opens the topics that contain hits, and puts the strongest match first.
+Filter by topic from the rail, expand or collapse everything at once, and share the
+result: the query and the topic live in the URL.
 
-- 🎨 **Modern UI** - Clean, card-based layout with smooth animations
-- 📱 **Responsive Design** - Works seamlessly on desktop, tablet, and mobile
-- 🔍 **Search Functionality** - Quickly find notes by keyword
-- 📂 **Organized Categories** - Resources grouped by technology/topic
-- 📧 **Feedback System** - Built-in feedback form with EmailJS integration
-- ⚡ **Fast Loading** - Optimized assets and CDN-based dependencies
+Every document sits in the markup, so the library browses and every link works with
+JavaScript switched off. JavaScript adds search, filtering and the feedback form on
+top of that.
 
----
+Two themes. The choice persists, and the page follows the operating system until you
+override it. Contrast is verified at WCAG 2.2 AA across both.
 
-## 🗂️ Project Structure
+On phones the topic rail is hidden and the accordion carries the navigation.
+
+## Topics
+
+Java & Spring, Go, System design, Infra & ops, SQL & data, DSA, Web, Interview &
+career, AI, Workplace, Personal. The rail shows the live count for each; those
+numbers are not repeated here, because a number in a README goes stale the first time
+a document is added.
+
+## Structure
 
 ```
 notes/
-├── index.html                 # Main entry point
-├── myPersonalDocs.html        # Personal documents page
-├── README.md                  # Project documentation
-├── robots.txt                 # Search engine configuration
+├── index.html                 The library. Every document is in this markup.
+├── myPersonalDocs.html        Workplace documents, reachable by URL only
+├── DESIGN-PROMPT.md           Reusable design prompt for future pages
+├── robots.txt                 Disallow: /
+├── site.webmanifest           Icons and colours for an installed shortcut
+├── favicon.ico, *.png         Icon set, at the root where browsers look for it
+├── CNAME                      Custom domain for GitHub Pages
 │
-├── assets/                    # Static assets
+├── assets/
 │   ├── css/
-│   │   └── style.css          # Custom styles
-│   └── js/
-│       └── script.js          # Custom JavaScript
+│   │   ├── tokens.css         Design tokens, both themes, base styles
+│   │   └── library.css        Components
+│   ├── js/
+│   │   └── library.js         Search, filtering, accordion, theme, feedback
+│   └── fonts/                 Calibri, self-hosted as woff2
 │
-├── images/                    # Image assets
-│   ├── notes-logo.png         # Website logo
-│   ├── java-image.png         # Category card images
-│   ├── dsa-image.png
-│   ├── ai.png
-│   └── ...                    # Other category images
+├── notes/                     Every document, plus the architecture diagrams
+│   └── go-cheat-sheet/        Go, one topic per file
 │
-├── docs/                      # PDF documents (general)
-│   ├── dsa-complete-roadmap.pdf
-│   ├── 250-plus-dsa-questions-for-placements.pdf
-│   └── ...
+├── docs/                      Roadmaps and workplace training
 │
-└── notes/                     # PDF notes (technical)
-    ├── java-terminology.pdf
-    ├── core-java.pdf
-    ├── collections.pdf
-    ├── spring-boot-questions-and-answer.pdf
-    └── ...
+└── .github/workflows/         static.yml, deploys the repo as-is to Pages
 ```
 
----
+## Adding a document
 
-## 🛠️ Technologies Used
+Add one `<li>` to `index.html` inside the right topic, following the rows already
+there:
 
-| Technology | Purpose |
-|------------|---------|
-| **HTML5** | Structure and semantic markup |
-| **CSS3** | Styling, animations, and responsiveness |
-| **JavaScript** | Interactivity and dynamic features |
-| **Bootstrap 5** | UI components and grid system |
-| **EmailJS** | Contact form functionality |
+```html
+<li data-keys="lowercase title, aliases, filename, topic id, kind">
+  <a class="row" href="/notes/your-file.pdf" target="_blank" rel="noopener" data-row>
+    <span class="row-title">Your title</span>
+    <span class="row-kind">Cheat sheet</span>
+  </a>
+</li>
+```
 
----
+`data-keys` is the search haystack. Anything a reader might type belongs in it,
+including the filename. Keep both halves in sync: a word that appears in the title but
+not in `data-keys` makes the row unfindable.
 
-## 📖 Categories
+`row-kind` is one of Cheat sheet, Notes, Roadmap or Link.
 
-| Category | Description |
-|----------|-------------|
-| ☕ **Java** | Core Java, Collections, OOPs, Interview Questions |
-| 🧮 **DSA** | Data Structures, Algorithms, Practice Problems |
-| 🤖 **AI** | Artificial Intelligence resources |
-| 🗄️ **SQL** | PostgreSQL, SQL fundamentals |
-| 🌐 **Web Tech** | HTML, CSS, JavaScript |
-| 💼 **Interview** | HR rounds, Technical interviews |
-| ⚛️ **React/JS** | React.js roadmaps and tutorials |
-| 🔧 **DevOps** | Redis, Postman, CI/CD |
-| 🐹 **Go** | Golang tutorials and roadmaps |
-| 🌱 **Spring** | Spring Boot, Spring Framework |
+Then bump that topic's two count numbers, one in the rail and one on the section
+heading. Those are the fallback for readers without JavaScript. The total line above
+the list is calculated at runtime and needs no edit.
 
----
+## Running it
 
-## 🚀 Getting Started
+No build step and no dependencies. It needs `http://` rather than `file://`, because
+the CSS, JavaScript and fonts are referenced from the site root:
 
-### Prerequisites
+```bash
+python3 -m http.server 8000
+```
 
-- A modern web browser (Chrome, Firefox, Safari, Edge)
-- A local web server (optional, for best experience)
+Then open `http://localhost:8000`.
 
-### Installation
+## Stack
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/rohitshukla001/notes.git
-   cd notes
-   ```
+Plain HTML, CSS and JavaScript. No framework, no bundler, no CDN: Calibri is
+self-hosted, and the feedback form reaches EmailJS over its REST API rather than
+loading their SDK. What is in git is what ships.
 
-2. **Open in browser**
-   - Simply open `index.html` in your browser
-   - Or use a local server:
-     ```bash
-     # Using Python
-     python -m http.server 8000
-     
-     # Using Node.js
-     npx serve
-     ```
+That form needs a live EmailJS connection. If it starts returning 412, the Gmail
+grant has expired and needs reconnecting from the EmailJS dashboard.
 
-3. **Access the website**
-   ```
-   http://localhost:8000 
-   https://notes.rohitshukla.net/
-   ```
+## Author
 
----
-
-## 👨‍💻 Author
-
-**Rohit Shukla**
-
-[![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white)](https://github.com/rohitshukla001)
-[![Website](https://img.shields.io/badge/Website-4285F4?style=flat&logo=google-chrome&logoColor=white)](https://info.rohitshukla.net)
-
----
-
-<p align="center">
-  Made with ❤️ by Rohit Shukla
-</p>
+Rohit Shukla, [github.com/rohitshukla001](https://github.com/rohitshukla001)

@@ -1,376 +1,1099 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Notes Website</title>
-      <link rel="shortcut icon" href="notes/favi.png" />
-      <!-- Google Fonts: Poppins -->
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-      <!-- Bootstrap CSS -->
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-      <!-- Custom CSS -->
-      <link rel="stylesheet" href="assets/css/style.css">
-      <!-- Bootstrap JS -->
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-      <!-- EmailJS -->
-      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-   </head>
-   <body>
-      <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-dark">
-         <div class="container-fluid">
-            <a class="navbar-brand" href="#"> <img src="images/notes-logo.png" alt="Logo" class="nav-logo"> </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-               aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <span
-               class="navbar-toggler-icon"></span> </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-               <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                  <li class="nav-item"> <a class="nav-link active" aria-current="page" href="/">HOME</a> </li>
-               </ul>
-               <form class="search-form d-flex"> <input type="text" class="form-control search-input"
-                  placeholder="Search notes..." aria-label="Search"> <button type="submit"
-                  class="common-btn search-button">Search</button> </form>
-            </div>
-         </div>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Notes</title>
+  <meta name="description" content="Searchable library of cheat sheets, notes and roadmaps on Java, Go, system design, infrastructure, SQL and DSA.">
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="stylesheet" href="/assets/css/tokens.css">
+  <link rel="stylesheet" href="/assets/css/library.css">
+  <script>
+    try {
+      var t = localStorage.getItem('notes:theme');
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
+</head>
+<body>
+  <div class="page">
+    <a class="skip" href="#stream">Skip to the library</a>
+
+    <header class="site-head">
+      <div class="head-inner">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">N</span>
+          <span class="brand-text">Notes <span class="brand-sub">by Rohit Shukla</span></span>
+        </div>
+        <div class="head-actions">
+          <search class="searchbar">
+            <form role="search" id="search-form">
+              <label class="sr-only" for="q">Search notes</label>
+              <div class="field">
+                <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+                <input id="q" name="q" type="search" autocomplete="off" spellcheck="false" enterkeyhint="search" placeholder="Search notes…" aria-controls="stream">
+              </div>
+            </form>
+          </search>
+          <button class="theme-toggle" type="button" id="theme-toggle" aria-label="Switch to dark mode" title="Switch to dark mode" hidden>
+            <svg id="icon-sun" aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"></path></svg>
+            <svg id="icon-moon" aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"></path></svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="shell">
+      <h1 class="sr-only">Reference library</h1>
+
+      <nav class="rail" aria-label="Library navigation">
+        <div class="rail-box">
+          <h2 class="eyebrow">Topics</h2>
+          <ul class="rail-list" id="rail">
+            <li>
+              <a class="rail-link" href="#sec-java" data-topic="java">
+                <span class="rail-label">Java &amp; Spring</span>
+                <span class="rail-count" data-count>43</span>
+              </a>
+            </li>
+            <li>
+              <a class="rail-link" href="#sec-go" data-topic="go">
+                <span class="rail-label">Go</span>
+                <span class="rail-count" data-count>27</span>
+              </a>
+            </li>
+            <li>
+              <a class="rail-link" href="#sec-sysdes" data-topic="sysdes">
+                <span class="rail-label">System design</span>
+                <span class="rail-count" data-count>18</span>
+              </a>
+            </li>
+            <li>
+              <a class="rail-link" href="#sec-infra" data-topic="infra">
+                <span class="rail-label">Infra &amp; ops</span>
+                <span class="rail-count" data-count>10</span>
+              </a>
+            </li>
+            <li>
+              <a class="rail-link" href="#sec-sql" data-topic="sql">
+                <span class="rail-label">SQL &amp; data</span>
+                <span class="rail-count" data-count>10</span>
+              </a>
+            </li>
+            <li>
+              <a class="rail-link" href="#sec-dsa" data-topic="dsa">
+                <span class="rail-label">DSA</span>
+                <span class="rail-count" data-count>5</span>
+              </a>
+            </li>
+            <li>
+              <a class="rail-link" href="#sec-web" data-topic="web">
+                <span class="rail-label">Web</span>
+                <span class="rail-count" data-count>5</span>
+              </a>
+            </li>
+            <li>
+              <a class="rail-link" href="#sec-career" data-topic="career">
+                <span class="rail-label">Interview &amp; career</span>
+                <span class="rail-count" data-count>3</span>
+              </a>
+            </li>
+            <li>
+              <a class="rail-link" href="#sec-ai" data-topic="ai">
+                <span class="rail-label">AI</span>
+                <span class="rail-count" data-count>3</span>
+              </a>
+            </li>
+            <li>
+              <a class="rail-link" href="#sec-workplace" data-topic="workplace">
+                <span class="rail-label">Workplace</span>
+                <span class="rail-count" data-count>5</span>
+              </a>
+            </li>
+            <li>
+              <a class="rail-link" href="#sec-personal" data-topic="personal">
+                <span class="rail-label">Personal</span>
+                <span class="rail-count" data-count>2</span>
+              </a>
+            </li>
+          </ul>
+
+        </div>
       </nav>
-      <!-- Card Section -->
-      <div class="container my-5">
-         <div class="row g-4">
-            <!-- Card 1:  -->
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-               <div class="card h-100">
-                  <img src="images/java-image.png" class="card-img-top" alt="JAVA">
-                  <div class="card-body">
-                     <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
-                     Resources</a>
-                     <div class="card-expanded-content">
-                        <ul>
-                           <li><a href="/cheat-sheet/java-oop-principles.pdf" target="_blank">OOP Principles</a></li>
-                           <li><a href="/cheat-sheet/java-solid-principles.pdf" target="_blank">SOLID Principles</a></li>
-                           <li><a href="/cheat-sheet/java-abstract-interface.pdf" target="_blank">Abstract & Interface</a></li>
-                           <li><a href="/cheat-sheet/java-generics.pdf" target="_blank">Generics</a></li>
-                           <li><a href="/cheat-sheet/java-string-immutability.pdf" target="_blank">String Immutability</a></li>
-                           <li><a href="/cheat-sheet/java-exception-handling.pdf" target="_blank">Exception Handling</a></li>
-                           <li><a href="/cheat-sheet/java-multithreading.pdf" target="_blank">Multithreading</a></li>
-                           <li><a href="/cheat-sheet/java-8-features.pdf" target="_blank">Java 8 Features</a></li>
-                           <li><a href="/cheat-sheet/java-singleton-patterns.pdf" target="_blank">Singleton Pattern</a></li>
-                           <li><a href="/cheat-sheet/java-factory-pattern.pdf" target="_blank">Factory Pattern</a></li>
-                           <li><a href="/cheat-sheet/java_testing.pdf" target="_blank">Testing</a></li>
-                           <li><a href="/cheat-sheet/java-history-questions.pdf" target="_blank">History Questions</a></li>
-                           <li><a href="/cheat-sheet/spring-boot.pdf" target="_blank">Spring Boot</a></li>
 
-                           <li><a href="/cheat-sheet/java-interview-guide-part1.pdf" target="_blank">Interview Guide (Part 1)</a></li>
-                           <li><a href="/cheat-sheet/java-interview-guide-part2.pdf" target="_blank">Interview Guide (Part 2)</a></li>
-                           <li><a href="/cheat-sheet/java-interview-guide-part3.pdf" target="_blank">Interview Guide (Part 3)</a></li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <!-- Card 2: Go -->
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-               <div class="card h-100">
-                  <img src="images/go.png" class="card-img-top" alt="Go">
-                  <div class="card-body">
-                     <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
-                     Resources</a>
-                     <div class="card-expanded-content">
-                        <ul>
-                           <li><a href="/cheat-sheet/go-cheat-sheet/go-basics.pdf" target="_blank">Go Basics</a></li>
-                           <li><a href="/cheat-sheet/go-cheat-sheet/vars-types-collections.pdf" target="_blank">Vars, Types & Collections</a></li>
-                           <li><a href="/cheat-sheet/go-cheat-sheet/pointers-values.pdf" target="_blank">Pointers & Values</a></li>
-                           <li><a href="/cheat-sheet/go-cheat-sheet/funcs-structs-interfaces.pdf" target="_blank">Funcs, Structs & Interfaces</a></li>
-                           <li><a href="/cheat-sheet/go-cheat-sheet/interface-internals.pdf" target="_blank">Interface Internals</a></li>
-                           <li><a href="/cheat-sheet/go-cheat-sheet/generics-in-go.pdf" target="_blank">Generics in Go</a></li>
-                           <li><a href="/cheat-sheet/go-cheat-sheet/reflection-in-go.pdf" target="_blank">Reflection in Go</a></li>
-                           <li><a href="/cheat-sheet/go-cheat-sheet/error-handling-go.pdf" target="_blank">Error Handling</a></li>
-                           <li><a href="/cheat-sheet/go-cheat-sheet/concurrency.pdf" target="_blank">Concurrency</a></li>
-                           <li><a href="/cheat-sheet/go-cheat-sheet/goroutines.pdf" target="_blank">Goroutines</a></li>
-                           <li><a href="/cheat-sheet/go-cheat-sheet/slices.pdf" target="_blank">Slices</a></li>
-                           <li><a href="/cheat-sheet/go-cheat-sheet/slice-internals.pdf" target="_blank">Slice Internals</a></li>
-                           <li><a href="/cheat-sheet/go-cheat-sheet/map-internals.pdf" target="_blank">Map Internals</a></li>
-                           <li><a href="/cheat-sheet/go-cheat-sheet/linear-data-structures.pdf" target="_blank">Linear Data Structures</a></li>
-                           <li><a href="/cheat-sheet/go-cheat-sheet/tree-data-structures.pdf" target="_blank">Tree Data Structures</a></li>
-                           <li><a href="/cheat-sheet/go-cheat-sheet/graph-data-structures.pdf" target="_blank">Graph Data Structures</a></li>
-                           <li><a href="/cheat-sheet/go-cheat-sheet/heaps-priority-queue.pdf" target="_blank">Heaps & Priority Queue</a></li>
-                           <li><a href="/cheat-sheet/go-cheat-sheet/specialized-ds.pdf" target="_blank">Specialized Data Structures</a></li>
-                           <li><a href="/cheat-sheet/go-cheat-sheet/design-patterns-go.pdf" target="_blank">Design Patterns</a></li>
-                           <li><a href="/cheat-sheet/go-cheat-sheet/testing.pdf" target="_blank">Testing</a></li>
-                           <li><a href="/cheat-sheet/go-cheat-sheet/logging-in-go.pdf" target="_blank">Logging</a></li>
-                           <li><a href="/cheat-sheet/go-cheat-sheet/tracing-in-go.pdf" target="_blank">Tracing</a></li>
-                           <li><a href="/cheat-sheet/go-cheat-sheet/rate-limiter-design.pdf" target="_blank">Rate Limiter Design</a></li>
-                           <li><a href="/cheat-sheet/go-cheat-sheet/cache-vs-cookies.pdf" target="_blank">Cache vs Cookies</a></li>
-                           <li><a href="/cheat-sheet/go-cheat-sheet/websockets-in-go.pdf" target="_blank">WebSockets in Go</a></li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <!-- Card 3: AI -->
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-               <div class="card h-100">
-                  <img src="images/ai.png" class="card-img-top" alt="AI">
-                  <div class="card-body">
-                     <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">
-                     ↓ Show Resources
-                     </a>
-                     <div class="card-expanded-content">
-                        <ul>
-                           <li><a href="/cheat-sheet/rag.pdf" target="_blank">RAG</a></li>
+      <main class="main">
+        <noscript><p class="hint">Search needs JavaScript. Every topic below still opens without it.</p></noscript>
 
-                           <li><a href="docs/Roadmap.pdf" target="_blank">Roadmap</a></li>
-                           <li><a href="docs/Roadmap2.pdf" target="_blank">Roadmap 2</a></li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <!-- Card 4: Java + -->
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-               <div class="card h-100">
-                  <img src="images/java-image-plus.png" class="card-img-top" alt="Java Advanced">
-                  <div class="card-body">
-                     <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">
-                     ↓ Show Resources
-                     </a>
-                     <div class="card-expanded-content">
-                        <ul>
-                           <li><a href="/cheat-sheet/java-collections.pdf" target="_blank">Collections</a></li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <!-- Card 5: SQL -->
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-               <div class="card h-100">
-                  <img src="images/sql-image.png" class="card-img-top" alt="SQL">
-                  <div class="card-body">
-                     <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
-                     Resources</a>
-                     <div class="card-expanded-content">
-                        <ul>
-                           <li><a href="/cheat-sheet/sql-basics.pdf" target="_blank">SQL Basics</a></li>
-                           <li><a href="/cheat-sheet/sql-intermediate.pdf" target="_blank">SQL Intermediate</a></li>
-                           <li><a href="/cheat-sheet/sql-advanced.pdf" target="_blank">SQL Advanced</a></li>
-                           <li><a href="/cheat-sheet/bigquery.pdf" target="_blank">BigQuery</a></li>
-                           <li><a href="/cheat-sheet/jdbc.pdf" target="_blank">JDBC</a></li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <!-- Card 6: Web Technology -->
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-               <div class="card h-100">
-                  <img src="images/web-image.png" class="card-img-top" alt="Web Technology">
-                  <div class="card-body">
-                     <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
-                     Resources</a>
-                     <div class="card-expanded-content">
-                        <ul>
-                                                      <li><a href="/cheat-sheet/wordpress.pdf" target="_blank">Wordpress</a></li>
-                           <li><a href="/cheat-sheet/html.pdf" target="_blank">HTML</a></li>
+        <div class="bar">
+          <p class="count" id="count" aria-live="polite">Browse the library by topic</p>
+          <button class="link-btn" type="button" id="clear" hidden>Clear all</button>
+          <button class="link-btn" type="button" id="bulk" hidden>Expand all</button>
+        </div>
 
-                           <li><a href="/notes/html-interview-questions.pdf" target="_blank">HTML Questions</a>
-                           </li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <!-- Card 7: Interview -->
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-               <div class="card h-100">
-                  <img src="images/interview-image.png" class="card-img-top" alt="Interview">
-                  <div class="card-body">
-                     <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
-                     Resources</a>
-                     <div class="card-expanded-content">
-                        <ul>
-                           <li><a href="/cheat-sheet/SM_Product.pdf" target="_blank">SM Product</a></li>
-                           <li><a href="/cheat-sheet/RM_Product.pdf" target="_blank">RM Product</a></li>
-                           <li><a href="/notes/path-to-google.pdf" target="_blank">My Roadmap</a></li>
-                           <li><a href="/notes/hr-round-question.pdf" target="_blank">HR Round</a></li>
-                           <li><a href="https://testbook.com/interview/servlet-interview-questions"
-                              target="_blank">Servlet Questions</a></li>
-                           <li><a href="https://www.edureka.co/blog/interview-questions/servlet-interview-questions/"
-                              target="_blank">Servlet Questions 1</a></li>
-                           <li><a href="https://www.interviewbit.com/servlet-interview-questions/"
-                              target="_blank">Servlet Questions 2</a></li>
-                           <li><a href="https://career.guru99.com/top-50-servlet-interview-questions/"
-                              target="_blank">Servlet Questions 3</a></li>
-                           <li><a href="https://www.tutorialspoint.com/servlets/pdf/servlets_interview_questions.pdf"
-                              target="_blank">Servlet Questions 4</a></li>
-                           <li><a href="/notes/java-unit-4-notes.pdf" target="_blank">Java Unit Notes</a></li>
-                           <li><a href="/notes/java-collections-1.pdf" target="_blank">Java collections 1</a></li>
-                           <li><a href="/notes/java-collections-2.pdf" target="_blank">Java collections 2</a></li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <!-- Card 8: JavaScript/React -->
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-               <div class="card h-100">
-                  <img src="images/javascript-react.png" class="card-img-top" alt="JavaScript React">
-                  <div class="card-body">
-                     <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
-                     Resources</a>
-                     <div class="card-expanded-content">
-                        <ul>
-                           <li><a href="https://medium.com/@rajanraj8979/roadmap-for-react-js-for-beginners-to-advance-522ce3588838"
-                              target="_blank">React roadmap-1</a></li>
-                           <li><a href="https://learningdaily.dev/the-best-react-developer-roadmap-for-2024-1aaf406c5a32"
-                              target="_blank">React roadmap-2</a></li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <!-- Card 9: System Design and DevOps -->
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-               <div class="card h-100">
-                  <img src="images/SD-and-devops-img.png" class="card-img-top" alt="SD and DevOps">
-                  <div class="card-body">
-                     <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
-                     Resources</a>
-                     <div class="card-expanded-content">
-                        <ul>
-                           <li><a href="/cheat-sheet/networking-primer.pdf" target="_blank">Networking Primer</a></li>
-                           <li><a href="/cheat-sheet/rest-api.pdf" target="_blank">REST API</a></li>
-                           <li><a href="/cheat-sheet/grpc.pdf" target="_blank">gRPC</a></li>
-                           <li><a href="/cheat-sheet/nats.pdf" target="_blank">NATS</a></li>
-                            <li><a href="/cheat-sheet/rabbitmq.pdf" target="_blank">Rabbit MQ</a></li>
-                           <li><a href="/cheat-sheet/google-pubsub.pdf" target="_blank">Google Pub/Sub</a></li>
-                           <li><a href="/cheat-sheet/authentication-vs-authorization.pdf" target="_blank">Authentication vs Authorization</a></li>
-                           <li><a href="/cheat-sheet/caching-strategy.pdf" target="_blank">Caching Strategy</a></li>
-                           <li><a href="/cheat-sheet/redis.pdf" target="_blank">Redis</a></li>
-                           <li><a href="/cheat-sheet/elasticsearch.pdf" target="_blank">Elasticsearch</a></li>
-                           <li><a href="/cheat-sheet/rate-limiting.pdf" target="_blank">Rate Limiting</a></li>
-                           <li><a href="/cheat-sheet/scaling-strategy.pdf" target="_blank">Scaling Strategy</a></li>
-                           <li><a href="/cheat-sheet/failure-handling.pdf" target="_blank">Failure Handling</a></li>
-                           <li><a href="/cheat-sheet/concurrency-resilience.pdf" target="_blank">Concurrency & Resilience</a></li>
-                           <li><a href="/cheat-sheet/saga-pattern.pdf" target="_blank">Saga Pattern</a></li>
-                           <li><a href="/cheat-sheet/outbox-pattern.pdf" target="_blank">Outbox Pattern</a></li>
-                           <li><a href="/cheat-sheet/docker.pdf" target="_blank">Docker</a></li>
-                           <li><a href="/cheat-sheet/kubernetes.pdf" target="_blank">Kubernetes</a></li>
-                           <li><a href="/cheat-sheet/terraform.pdf" target="_blank">Terraform</a></li>
-                           <li><a href="/cheat-sheet/ci-cd-pipeline.pdf" target="_blank">CI/CD Pipeline</a></li>
-                           <li><a href="/cheat-sheet/git.pdf" target="_blank">Git</a></li>
-                           <li><a href="/cheat-sheet/logging-observability.pdf" target="_blank">Logging & Observability</a></li>
-                           <li><a href="/cheat-sheet/opentelemetry.pdf" target="_blank">OpenTelemetry</a></li>
-                           <li><a href="/cheat-sheet/prometheus.pdf" target="_blank">Prometheus</a></li>
-                           <li><a href="/cheat-sheet/grafana.pdf" target="_blank">Grafana</a></li>
-                           <li><a href="/cheat-sheet/datadog.pdf" target="_blank">Datadog</a></li>
-                           <li><a href="/cheat-sheet/system_design.pdf" target="_blank">System Design</a></li>
-                           <li><a href="/cheat-sheet/system_design_2.pdf" target="_blank">System Design 2</a></li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <!-- Card 10: DSA -->
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-               <div class="card h-100">
-                  <img src="images/dsa-image.png" class="card-img-top" alt="DSA">
-                  <div class="card-body">
-                     <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
-                     Resources</a>
-                     <div class="card-expanded-content">
-                        <ul>
-                           <li><a href="docs/dsa-complete-roadmap.pdf" target="_blank">Roadmap</a></li>
-                           <li><a href="docs/250-plus-dsa-questions-for-placements.pdf" target="_blank">Practice
-                              Questions</a>
-                           </li>
-                           <li><a href="https://whimsical.com/master-roadmap-SzYF2dY2SqwtPQfY5A3mZS"
-                              target="_blank">Master RoadMap</a></li>
-                           <li><a href="notes/dsa-topics.pdf"
-                              target="_blank">DSA Topics</a></li>
-                           <li><a href="notes/path-to-google-alt.pdf"
-                              target="_blank">Path to Google</a></li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <!-- Card 11: Spring -->
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-               <div class="card h-100">
-                  <img src="images/spring-image.png" class="card-img-top" alt="Spring">
-                  <div class="card-body">
-                     <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
-                     Resources</a>
-                     <div class="card-expanded-content">
-                        <ul>
-                            <li><a href="/cheat-sheet/spring_boot_internal.pdf" target="_blank">Spring Boot Internal</a></li>
-                           <li><a href="/cheat-sheet/dependency-injection.pdf" target="_blank">Dependency Injection</a></li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <!-- Card 12: Personal -->
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-               <div class="card h-100">
-                  <img src="images/personal-image.png" class="card-img-top" alt="Personal">
-                  <div class="card-body">
-                     <a href="#" class="card-toggle-link" onclick="toggleCard(this); return false;">↓ Show
-                     Resources</a>
-                     <div class="card-expanded-content">
-                        <ul>
-                           <li><a href="https://jstrieb.github.io/link-lock/#eyJ2IjoiMC4wLjEiLCJlIjoiY2Rkb0piQnlnbXpSanpSNEttbGMwenhoV1hPVmFTTVpGVDRkRzlNbzQ2OEVCOWV0N1FONGpIMUh4Vmo0YzA4SWd4SFplbGttbzh4MjRHQlhPZDBMNmtVPSIsImgiOiI4MTcqKio5NiIsInMiOiI0elRLeWlFMERYUWhPalNpcTk0RDR3PT0iLCJpIjoielNVaEpacUJXU1p5UFVZNCJ9"
-                              target="_blank">Personal Notes</a></li>
-                           <li><a href="/notes/tamil.pdf" target="_blank">Tamil</a></li>
-                        </ul>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <!-- Empty State -->
-            <div class="empty-state">
-               <img src="images/folder.png" alt="No Results" />
-               <h3>No Results Found</h3>
-               <p>We couldn't find any notes matching your search. Try a different keyword or check your spelling.</p>
-               <a href="#" class="common-btn"
-                  onclick="document.querySelector('.search-input').value = ''; filterCards(); return false;">
-               Clear Search
-               </a>
-            </div>
-         </div>
+        <div id="stream" tabindex="-1">
+          <div class="empty" id="empty" hidden>
+            <h2 id="empty-title">Nothing matches that search</h2>
+            <p>Only titles and keywords are indexed, not the text inside the documents. Try a shorter word, or clear the search and open a topic.</p>
+            <button class="btn" type="button" id="empty-clear">Clear all</button>
+          </div>
+
+          <div class="topics" id="topics">
+        <details class="topic" id="sec-java" data-topic="java">
+          <summary class="topic-head">
+            <svg class="chev" aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 3.5 5 4.5-5 4.5"></path></svg>
+            <h2 class="topic-label">Java &amp; Spring</h2>
+            <span class="topic-count" data-count>43</span>
+          </summary>
+          <div class="topic-body">
+            <ul class="rows">
+            <li data-keys="oop principles object oriented inheritance polymorphism java-oop-principles.pdf java sheet">
+              <a class="row" href="/notes/java-oop-principles.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">OOP principles</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="solid principles design principles java-solid-principles.pdf java sheet">
+              <a class="row" href="/notes/java-solid-principles.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">SOLID principles</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="abstract classes &amp; interfaces  java-abstract-interface.pdf java sheet">
+              <a class="row" href="/notes/java-abstract-interface.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Abstract classes &amp; interfaces</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="generics type erasure wildcard java-generics.pdf java sheet">
+              <a class="row" href="/notes/java-generics.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Generics</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="string immutability string pool java-string-immutability.pdf java sheet">
+              <a class="row" href="/notes/java-string-immutability.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">String immutability</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="exception handling try catch checked java-exception-handling.pdf java sheet">
+              <a class="row" href="/notes/java-exception-handling.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Exception handling</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="multithreading thread executor concurrency java-multithreading.pdf java sheet">
+              <a class="row" href="/notes/java-multithreading.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Multithreading</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="java 8 features lambda stream optional functional java-8-features.pdf java sheet">
+              <a class="row" href="/notes/java-8-features.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Java 8 features</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="singleton pattern  java-singleton-patterns.pdf java sheet">
+              <a class="row" href="/notes/java-singleton-patterns.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Singleton pattern</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="factory pattern  java-factory-pattern.pdf java sheet">
+              <a class="row" href="/notes/java-factory-pattern.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Factory pattern</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="collections list map set hashmap java-collections.pdf java sheet">
+              <a class="row" href="/notes/java-collections.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Collections</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="testing junit mockito java_testing.pdf java sheet">
+              <a class="row" href="/notes/java_testing.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Testing</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="java history questions  java-history-questions.pdf java sheet">
+              <a class="row" href="/notes/java-history-questions.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Java history questions</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="spring boot  spring-boot.pdf java sheet">
+              <a class="row" href="/notes/spring-boot.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Spring Boot</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="spring boot internals autoconfiguration bean lifecycle spring_boot_internal.pdf java sheet">
+              <a class="row" href="/notes/spring_boot_internal.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Spring Boot internals</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="dependency injection ioc spring bean dependency-injection.pdf java sheet">
+              <a class="row" href="/notes/dependency-injection.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Dependency injection</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="interview guide part 1  java-interview-guide-part1.pdf java map">
+              <a class="row" href="/notes/java-interview-guide-part1.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Interview guide (part 1)</span>
+                <span class="row-kind">Roadmap</span>
+              </a>
+            </li>
+            <li data-keys="interview guide part 2  java-interview-guide-part2.pdf java map">
+              <a class="row" href="/notes/java-interview-guide-part2.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Interview guide (part 2)</span>
+                <span class="row-kind">Roadmap</span>
+              </a>
+            </li>
+            <li data-keys="interview guide part 3  java-interview-guide-part3.pdf java map">
+              <a class="row" href="/notes/java-interview-guide-part3.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Interview guide (part 3)</span>
+                <span class="row-kind">Roadmap</span>
+              </a>
+            </li>
+            <li data-keys="core java  core-java.pdf java note">
+              <a class="row" href="/notes/core-java.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Core Java</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="core java interview questions  core-java-interview-questions.pdf java note">
+              <a class="row" href="/notes/core-java-interview-questions.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Core Java interview questions</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="core java questions &amp; answers  core-java-interview-questions-and-answer.pdf java note">
+              <a class="row" href="/notes/core-java-interview-questions-and-answer.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Core Java questions &amp; answers</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="java  java.pdf java note">
+              <a class="row" href="/notes/java.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Java</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="java terminology glossary jvm jre jdk java-terminology.pdf java note">
+              <a class="row" href="/notes/java-terminology.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Java terminology</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="java unit 4 notes  java-unit-4-notes.pdf java note">
+              <a class="row" href="/notes/java-unit-4-notes.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Java unit 4 notes</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="collections notes  collections.pdf java note">
+              <a class="row" href="/notes/collections.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Collections (notes)</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="collections tier 1 basics collections_firsttier.pdf java note">
+              <a class="row" href="/notes/Collections_firstTier.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Collections (tier 1)</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="collections tier 2  collections_secondtier.pdf java note">
+              <a class="row" href="/notes/Collections_secondTier.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Collections (tier 2)</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="collections tier 3 advanced internals collections_thirdtier.pdf java note">
+              <a class="row" href="/notes/Collections_thirdTier.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Collections (tier 3)</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="java collections 1  java-collections-1.pdf java note">
+              <a class="row" href="/notes/java-collections-1.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Java collections 1</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="java collections 2  java-collections-2.pdf java note">
+              <a class="row" href="/notes/java-collections-2.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Java collections 2</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="java 8 features tier 1 lambda java8_features_tier1.pdf java note">
+              <a class="row" href="/notes/Java8_Features_Tier1.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Java 8 features (tier 1)</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="java 8 features tier 2  java8_features_tier2.pdf java note">
+              <a class="row" href="/notes/Java8_Features_Tier2.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Java 8 features (tier 2)</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="java 8 features tier 3  java8_features_tier3.pdf java note">
+              <a class="row" href="/notes/Java8_Features_Tier3.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Java 8 features (tier 3)</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="stream api tier 1 streams collectors streamapi_firsttier.pdf java note">
+              <a class="row" href="/notes/StreamAPI_firstTier.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Stream API (tier 1)</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="stream api tier 2  streamapi_secondtier.pdf java note">
+              <a class="row" href="/notes/StreamAPI_secondTier.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Stream API (tier 2)</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="stream api tier 3  streamapi_thirdtier.pdf java note">
+              <a class="row" href="/notes/StreamAPI_thirdTier.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Stream API (tier 3)</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="stream api all tiers streams complete streamapi_alltier.pdf java note">
+              <a class="row" href="/notes/StreamAPI_allTier.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Stream API (all tiers)</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="multithreading notes  multithreading.pdf java note">
+              <a class="row" href="/notes/multithreading.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Multithreading (notes)</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="oop notes  oops.pdf java note">
+              <a class="row" href="/notes/oops.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">OOP (notes)</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="exception handling notes  exception-handling.pdf java note">
+              <a class="row" href="/notes/exception-handling.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Exception handling (notes)</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="spring boot questions &amp; answers  spring-boot-questions-and-answer.pdf java note">
+              <a class="row" href="/notes/spring-boot-questions-and-answer.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Spring Boot questions &amp; answers</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="backend  backend.pdf java note">
+              <a class="row" href="/notes/backend.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Backend</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            </ul>
+          </div>
+        </details>
+        <details class="topic" id="sec-go" data-topic="go">
+          <summary class="topic-head">
+            <svg class="chev" aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 3.5 5 4.5-5 4.5"></path></svg>
+            <h2 class="topic-label">Go</h2>
+            <span class="topic-count" data-count>27</span>
+          </summary>
+          <div class="topic-body">
+            <ul class="rows">
+            <li data-keys="go basics golang syntax go-basics.pdf go sheet">
+              <a class="row" href="/notes/go-cheat-sheet/go-basics.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Go basics</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="vars, types &amp; collections  vars-types-collections.pdf go sheet">
+              <a class="row" href="/notes/go-cheat-sheet/vars-types-collections.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Vars, types &amp; collections</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="pointers &amp; values  pointers-values.pdf go sheet">
+              <a class="row" href="/notes/go-cheat-sheet/pointers-values.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Pointers &amp; values</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="funcs, structs &amp; interfaces  funcs-structs-interfaces.pdf go sheet">
+              <a class="row" href="/notes/go-cheat-sheet/funcs-structs-interfaces.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Funcs, structs &amp; interfaces</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="interface internals itab eface interface-internals.pdf go sheet">
+              <a class="row" href="/notes/go-cheat-sheet/interface-internals.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Interface internals</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="generics in go type parameters generics-in-go.pdf go sheet">
+              <a class="row" href="/notes/go-cheat-sheet/generics-in-go.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Generics in Go</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="reflection in go  reflection-in-go.pdf go sheet">
+              <a class="row" href="/notes/go-cheat-sheet/reflection-in-go.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Reflection in Go</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="error handling errors wrap error-handling-go.pdf go sheet">
+              <a class="row" href="/notes/go-cheat-sheet/error-handling-go.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Error handling</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="concurrency channels select mutex concurrency.pdf go sheet">
+              <a class="row" href="/notes/go-cheat-sheet/concurrency.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Concurrency</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="goroutines scheduler concurrency goroutines.pdf go sheet">
+              <a class="row" href="/notes/go-cheat-sheet/goroutines.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Goroutines</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="slices  slices.pdf go sheet">
+              <a class="row" href="/notes/go-cheat-sheet/slices.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Slices</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="slice internals append capacity growth slice-internals.pdf go sheet">
+              <a class="row" href="/notes/go-cheat-sheet/slice-internals.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Slice internals</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="map internals hashmap bucket map-internals.pdf go sheet">
+              <a class="row" href="/notes/go-cheat-sheet/map-internals.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Map internals</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="linear data structures array stack queue linked list linear-data-structures.pdf go sheet">
+              <a class="row" href="/notes/go-cheat-sheet/linear-data-structures.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Linear data structures</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="tree data structures bst trie tree-data-structures.pdf go sheet">
+              <a class="row" href="/notes/go-cheat-sheet/tree-data-structures.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Tree data structures</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="graph data structures bfs dfs graph-data-structures.pdf go sheet">
+              <a class="row" href="/notes/go-cheat-sheet/graph-data-structures.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Graph data structures</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="heaps &amp; priority queue  heaps-priority-queue.pdf go sheet">
+              <a class="row" href="/notes/go-cheat-sheet/heaps-priority-queue.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Heaps &amp; priority queue</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="specialized data structures bloom filter lru specialized-ds.pdf go sheet">
+              <a class="row" href="/notes/go-cheat-sheet/specialized-ds.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Specialized data structures</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="design patterns in go  design-patterns-go.pdf go sheet">
+              <a class="row" href="/notes/go-cheat-sheet/design-patterns-go.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Design patterns in Go</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="testing in go table driven testing.pdf go sheet">
+              <a class="row" href="/notes/go-cheat-sheet/testing.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Testing in Go</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="logging in go slog logging-in-go.pdf go sheet">
+              <a class="row" href="/notes/go-cheat-sheet/logging-in-go.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Logging in Go</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="tracing in go opentelemetry tracing-in-go.pdf go sheet">
+              <a class="row" href="/notes/go-cheat-sheet/tracing-in-go.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Tracing in Go</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="rate limiter design token bucket rate-limiter-design.pdf go sheet">
+              <a class="row" href="/notes/go-cheat-sheet/rate-limiter-design.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Rate limiter design</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="cache vs cookies  cache-vs-cookies.pdf go sheet">
+              <a class="row" href="/notes/go-cheat-sheet/cache-vs-cookies.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Cache vs cookies</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="websockets in go  websockets-in-go.pdf go sheet">
+              <a class="row" href="/notes/go-cheat-sheet/websockets-in-go.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">WebSockets in Go</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="go tutorial golang golang-tutorial.pdf go note">
+              <a class="row" href="/notes/golang-tutorial.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Go tutorial</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="go roadmap golang learning path roadmap-golang.pdf go map">
+              <a class="row" href="/notes/roadmap-golang.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Go roadmap</span>
+                <span class="row-kind">Roadmap</span>
+              </a>
+            </li>
+            </ul>
+          </div>
+        </details>
+        <details class="topic" id="sec-sysdes" data-topic="sysdes">
+          <summary class="topic-head">
+            <svg class="chev" aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 3.5 5 4.5-5 4.5"></path></svg>
+            <h2 class="topic-label">System design</h2>
+            <span class="topic-count" data-count>18</span>
+          </summary>
+          <div class="topic-body">
+            <ul class="rows">
+            <li data-keys="networking primer tcp http dns networking-primer.pdf sysdes sheet">
+              <a class="row" href="/notes/networking-primer.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Networking primer</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="rest api http verbs idempotency rest-api.pdf sysdes sheet">
+              <a class="row" href="/notes/rest-api.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">REST API</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="grpc protobuf rpc grpc.pdf sysdes sheet">
+              <a class="row" href="/notes/grpc.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">gRPC</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="nats messaging jetstream nats.pdf sysdes sheet">
+              <a class="row" href="/notes/nats.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">NATS</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="rabbitmq amqp queue messaging rabbitmq.pdf sysdes sheet">
+              <a class="row" href="/notes/rabbitmq.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">RabbitMQ</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="google pub/sub messaging gcp google-pubsub.pdf sysdes sheet">
+              <a class="row" href="/notes/google-pubsub.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Google Pub/Sub</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="authentication vs authorization oauth jwt authz authn authentication-vs-authorization.pdf sysdes sheet">
+              <a class="row" href="/notes/authentication-vs-authorization.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Authentication vs authorization</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="caching strategy cache aside write through caching-strategy.pdf sysdes sheet">
+              <a class="row" href="/notes/caching-strategy.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Caching strategy</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="rate limiting throttle token bucket rate-limiting.pdf sysdes sheet">
+              <a class="row" href="/notes/rate-limiting.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Rate limiting</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="scaling strategy horizontal sharding scaling-strategy.pdf sysdes sheet">
+              <a class="row" href="/notes/scaling-strategy.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Scaling strategy</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="failure handling retry timeout fallback failure-handling.pdf sysdes sheet">
+              <a class="row" href="/notes/failure-handling.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Failure handling</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="concurrency &amp; resilience circuit breaker bulkhead concurrency-resilience.pdf sysdes sheet">
+              <a class="row" href="/notes/concurrency-resilience.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Concurrency &amp; resilience</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="saga pattern distributed transaction compensation saga-pattern.pdf sysdes sheet">
+              <a class="row" href="/notes/saga-pattern.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Saga pattern</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="outbox pattern transactional messaging cdc outbox-pattern.pdf sysdes sheet">
+              <a class="row" href="/notes/outbox-pattern.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Outbox pattern</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="system design  system_design.pdf sysdes sheet">
+              <a class="row" href="/notes/system_design.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">System design</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="system design 2  system_design_2.pdf sysdes sheet">
+              <a class="row" href="/notes/system_design_2.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">System design 2</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="system design concepts  system_design_concepts.pdf sysdes note">
+              <a class="row" href="/notes/system_design_concepts.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">System design concepts</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="temporal workflow durable execution orchestration temporal-workflow.pdf sysdes note">
+              <a class="row" href="/notes/temporal-workflow.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Temporal workflow</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            </ul>
+          </div>
+        </details>
+        <details class="topic" id="sec-infra" data-topic="infra">
+          <summary class="topic-head">
+            <svg class="chev" aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 3.5 5 4.5-5 4.5"></path></svg>
+            <h2 class="topic-label">Infra &amp; ops</h2>
+            <span class="topic-count" data-count>10</span>
+          </summary>
+          <div class="topic-body">
+            <ul class="rows">
+            <li data-keys="docker container image docker.pdf infra sheet">
+              <a class="row" href="/notes/docker.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Docker</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="kubernetes k8s pod deployment kubernetes.pdf infra sheet">
+              <a class="row" href="/notes/kubernetes.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Kubernetes</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="terraform iac hcl terraform.pdf infra sheet">
+              <a class="row" href="/notes/terraform.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Terraform</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="ci/cd pipeline build deploy ci-cd-pipeline.pdf infra sheet">
+              <a class="row" href="/notes/ci-cd-pipeline.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">CI/CD pipeline</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="git rebase merge branch git.pdf infra sheet">
+              <a class="row" href="/notes/git.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Git</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="logging &amp; observability  logging-observability.pdf infra sheet">
+              <a class="row" href="/notes/logging-observability.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Logging &amp; observability</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="opentelemetry otel tracing spans opentelemetry.pdf infra sheet">
+              <a class="row" href="/notes/opentelemetry.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">OpenTelemetry</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="prometheus metrics promql prometheus.pdf infra sheet">
+              <a class="row" href="/notes/prometheus.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Prometheus</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="grafana dashboard metrics grafana.pdf infra sheet">
+              <a class="row" href="/notes/grafana.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Grafana</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="datadog apm monitoring datadog.pdf infra sheet">
+              <a class="row" href="/notes/datadog.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Datadog</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            </ul>
+          </div>
+        </details>
+        <details class="topic" id="sec-sql" data-topic="sql">
+          <summary class="topic-head">
+            <svg class="chev" aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 3.5 5 4.5-5 4.5"></path></svg>
+            <h2 class="topic-label">SQL &amp; data</h2>
+            <span class="topic-count" data-count>10</span>
+          </summary>
+          <div class="topic-body">
+            <ul class="rows">
+            <li data-keys="sql basics select join where sql-basics.pdf sql sheet">
+              <a class="row" href="/notes/sql-basics.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">SQL basics</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="sql intermediate group by having sql-intermediate.pdf sql sheet">
+              <a class="row" href="/notes/sql-intermediate.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">SQL intermediate</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="sql advanced window cte index sql-advanced.pdf sql sheet">
+              <a class="row" href="/notes/sql-advanced.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">SQL advanced</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="bigquery warehouse gcp bigquery.pdf sql sheet">
+              <a class="row" href="/notes/bigquery.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">BigQuery</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="jdbc java database connectivity jdbc.pdf sql sheet">
+              <a class="row" href="/notes/jdbc.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">JDBC</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="redis cache key value redis-cheat-sheet.pdf sql sheet">
+              <a class="row" href="/notes/redis-cheat-sheet.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Redis</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="elasticsearch search index lucene elasticsearch.pdf sql sheet">
+              <a class="row" href="/notes/elasticsearch.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Elasticsearch</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="sql  sql.pdf sql note">
+              <a class="row" href="/notes/sql.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">SQL</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="postgresql postgres psql postgresql.pdf sql note">
+              <a class="row" href="/notes/postgresql.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">PostgreSQL</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="redis notes  redis.pdf sql note">
+              <a class="row" href="/notes/redis.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Redis (notes)</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            </ul>
+          </div>
+        </details>
+        <details class="topic" id="sec-dsa" data-topic="dsa">
+          <summary class="topic-head">
+            <svg class="chev" aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 3.5 5 4.5-5 4.5"></path></svg>
+            <h2 class="topic-label">DSA</h2>
+            <span class="topic-count" data-count>5</span>
+          </summary>
+          <div class="topic-body">
+            <ul class="rows">
+            <li data-keys="dsa roadmap  dsa-complete-roadmap.pdf dsa map">
+              <a class="row" href="/docs/dsa-complete-roadmap.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">DSA roadmap</span>
+                <span class="row-kind">Roadmap</span>
+              </a>
+            </li>
+            <li data-keys="250+ practice questions placement problems 250-plus-dsa-questions-for-placements.pdf dsa map">
+              <a class="row" href="/docs/250-plus-dsa-questions-for-placements.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">250+ practice questions</span>
+                <span class="row-kind">Roadmap</span>
+              </a>
+            </li>
+            <li data-keys="dsa topics  dsa-topics.pdf dsa note">
+              <a class="row" href="/notes/dsa-topics.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">DSA topics</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="path to google faang prep path-to-google-alt.pdf dsa map">
+              <a class="row" href="/notes/path-to-google-alt.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Path to Google</span>
+                <span class="row-kind">Roadmap</span>
+              </a>
+            </li>
+            <li data-keys="master roadmap (whimsical)   dsa link">
+              <a class="row" href="https://whimsical.com/master-roadmap-SzYF2dY2SqwtPQfY5A3mZS" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Master roadmap (Whimsical)<span class="row-ext" aria-hidden="true">&#8599;</span></span>
+                <span class="row-kind">Link</span>
+              </a>
+            </li>
+            </ul>
+          </div>
+        </details>
+        <details class="topic" id="sec-web" data-topic="web">
+          <summary class="topic-head">
+            <svg class="chev" aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 3.5 5 4.5-5 4.5"></path></svg>
+            <h2 class="topic-label">Web</h2>
+            <span class="topic-count" data-count>5</span>
+          </summary>
+          <div class="topic-body">
+            <ul class="rows">
+            <li data-keys="html  html.pdf web sheet">
+              <a class="row" href="/notes/html.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">HTML</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="html interview questions  html-interview-questions.pdf web note">
+              <a class="row" href="/notes/html-interview-questions.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">HTML interview questions</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="angular frontend typescript angular.pdf web note">
+              <a class="row" href="/notes/angular.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Angular</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="wordpress cms wordpress.pdf web sheet">
+              <a class="row" href="/notes/wordpress.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">WordPress</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="react roadmap javascript frontend  web link">
+              <a class="row" href="https://learningdaily.dev/the-best-react-developer-roadmap-for-2024-1aaf406c5a32" target="_blank" rel="noopener" data-row>
+                <span class="row-title">React roadmap<span class="row-ext" aria-hidden="true">&#8599;</span></span>
+                <span class="row-kind">Link</span>
+              </a>
+            </li>
+            </ul>
+          </div>
+        </details>
+        <details class="topic" id="sec-career" data-topic="career">
+          <summary class="topic-head">
+            <svg class="chev" aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 3.5 5 4.5-5 4.5"></path></svg>
+            <h2 class="topic-label">Interview &amp; career</h2>
+            <span class="topic-count" data-count>3</span>
+          </summary>
+          <div class="topic-body">
+            <ul class="rows">
+            <li data-keys="my roadmap plan goals path-to-google.pdf career map">
+              <a class="row" href="/notes/path-to-google.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">My roadmap</span>
+                <span class="row-kind">Roadmap</span>
+              </a>
+            </li>
+            <li data-keys="hr round questions behavioural hr-round-question.pdf career note">
+              <a class="row" href="/notes/hr-round-question.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">HR round questions</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="servlet interview questions java web  career link">
+              <a class="row" href="https://www.interviewbit.com/servlet-interview-questions/" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Servlet interview questions<span class="row-ext" aria-hidden="true">&#8599;</span></span>
+                <span class="row-kind">Link</span>
+              </a>
+            </li>
+            </ul>
+          </div>
+        </details>
+        <details class="topic" id="sec-ai" data-topic="ai">
+          <summary class="topic-head">
+            <svg class="chev" aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 3.5 5 4.5-5 4.5"></path></svg>
+            <h2 class="topic-label">AI</h2>
+            <span class="topic-count" data-count>3</span>
+          </summary>
+          <div class="topic-body">
+            <ul class="rows">
+            <li data-keys="rag retrieval augmented generation embeddings rag.pdf ai sheet">
+              <a class="row" href="/notes/rag.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">RAG</span>
+                <span class="row-kind">Cheat sheet</span>
+              </a>
+            </li>
+            <li data-keys="ai roadmap  roadmap.pdf ai map">
+              <a class="row" href="/docs/Roadmap.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">AI roadmap</span>
+                <span class="row-kind">Roadmap</span>
+              </a>
+            </li>
+            <li data-keys="ai roadmap 2  roadmap2.pdf ai map">
+              <a class="row" href="/docs/Roadmap2.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">AI roadmap 2</span>
+                <span class="row-kind">Roadmap</span>
+              </a>
+            </li>
+            </ul>
+          </div>
+        </details>
+        <details class="topic" id="sec-workplace" data-topic="workplace">
+          <summary class="topic-head">
+            <svg class="chev" aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 3.5 5 4.5-5 4.5"></path></svg>
+            <h2 class="topic-label">Workplace</h2>
+            <span class="topic-count" data-count>5</span>
+          </summary>
+          <div class="topic-body">
+            <ul class="rows">
+            <li data-keys="new hire academy onboarding new%20hire%20academy%20.pdf workplace note">
+              <a class="row" href="/docs/New%20Hire%20Academy%20.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">New hire academy</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="security training  security-training.pdf workplace note">
+              <a class="row" href="/docs/security-training.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Security training</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="security training r&amp;d  security-training-r-and-d.pdf workplace note">
+              <a class="row" href="/docs/security-training-r-and-d.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Security training (R&amp;D)</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="workplace safety  workplace-safety.pdf workplace note">
+              <a class="row" href="/docs/workplace-safety.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Workplace safety</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="harassment prevention training posh prevention-of-sexual-harassment-training.pdf workplace note">
+              <a class="row" href="/docs/prevention-of-sexual-harassment-training.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Harassment prevention training</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            </ul>
+          </div>
+        </details>
+        <details class="topic" id="sec-personal" data-topic="personal">
+          <summary class="topic-head">
+            <svg class="chev" aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 3.5 5 4.5-5 4.5"></path></svg>
+            <h2 class="topic-label">Personal</h2>
+            <span class="topic-count" data-count>2</span>
+          </summary>
+          <div class="topic-body">
+            <ul class="rows">
+            <li data-keys="personal notes (locked) password protected  personal link">
+              <a class="row" href="https://jstrieb.github.io/link-lock/#eyJ2IjoiMC4wLjEiLCJlIjoiY2Rkb0piQnlnbXpSanpSNEttbGMwenhoV1hPVmFTTVpGVDRkRzlNbzQ2OEVCOWV0N1FONGpIMUh4Vmo0YzA4SWd4SFplbGttbzh4MjRHQlhPZDBMNmtVPSIsImgiOiI4MTcqKio5NiIsInMiOiI0elRLeWlFMERYUWhPalNpcTk0RDR3PT0iLCJpIjoielNVaEpacUJXU1p5UFVZNCJ9" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Personal notes (locked)<span class="row-ext" aria-hidden="true">&#8599;</span></span>
+                <span class="row-kind">Link</span>
+              </a>
+            </li>
+            <li data-keys="tamil language tamil.pdf personal note">
+              <a class="row" href="/notes/tamil.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Tamil</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            </ul>
+          </div>
+        </details>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <footer class="site-foot">
+      <div class="foot-inner">
+        <p>Design and developed by Rohit Shukla</p>
+        <button class="feedback-btn" type="button" id="feedback-open">
+          <span class="feedback-icon" aria-hidden="true">✉</span>
+          Share your feedback
+        </button>
       </div>
-      <!-- Footer with Feedback Link -->
-      <div class="text-center py-4">
-         <p> <span class="developer-container"> Developed by <a href="https://github.com/rohitshukla001"
-            target="_blank" class="developer-container">Rohit Shukla</a> ↗ <img
-            src="https://info.rohitshukla.net/images/project/rohit-shukla.png" alt="Rohit Shukla"
-            class="developer-image"> </span>
-         <p> <span class="feedback-btn" onclick="toggleFeedbackForm()"> <span class="feedback-icon">✉</span> Share Your
-            Feedback </span> 
-         </p>
-         </p>
+    </footer>
+
+    <dialog class="feedback-popup" id="feedbackPopup" aria-labelledby="feedback-title">
+      <div class="popup-header">
+        <h2 id="feedback-title">Send feedback</h2>
+        <button class="close-btn" type="button" id="feedback-close" aria-label="Close feedback form">×</button>
       </div>
-      <!-- Feedback Popup -->
-      <div id="feedbackPopup" class="feedback-popup">
-         <div class="popup-header">
-            <h4>Submit Feedback</h4>
-            <span class="close-btn" onclick="toggleFeedbackForm()">×</span>
-         </div>
-         <form id="feedbackForm">
-            <div class="form-group"> <label for="name">Name:</label> <input type="text" class="form-control" id="name"
-               name="name" required> </div>
-            <div class="form-group"> <label for="email">Email:</label> <input type="email" class="form-control"
-               id="email" name="email" required> </div>
-            <div class="form-group"> <label for="message">Message:</label> <textarea class="form-control" id="message"
-               name="message" rows="3" required></textarea> </div>
-            <button type="submit" class="common-btn search-button">Submit</button>
-         </form>
-         <p id="formMessage" class="mt-2"></p>
-      </div>
-      <!-- Custom JavaScript -->
-      <script src="assets/js/script.js"></script>
-   </body>
+      <form id="feedbackForm"
+            data-endpoint="https://api.emailjs.com/api/v1.0/email/send"
+            data-service="rohitvendasta@gmail.com"
+            data-template="template_euenjja"
+            data-key="dnQ7CtoblL4arIed7">
+        <div class="form-group">
+          <label for="fb-name">Name</label>
+          <input class="form-control" type="text" id="fb-name" name="name" autocomplete="name" required>
+        </div>
+        <div class="form-group">
+          <label for="fb-email">Email</label>
+          <input class="form-control" type="email" id="fb-email" name="email" autocomplete="email" required>
+        </div>
+        <div class="form-group">
+          <label for="fb-message">Message</label>
+          <textarea class="form-control" id="fb-message" name="message" rows="4" required aria-describedby="fb-message-count"></textarea>
+          <p class="field-note" id="fb-message-count">0 of 50 words</p>
+        </div>
+        <p class="form-message" id="formMessage" role="status" aria-live="polite"></p>
+        <button class="btn" type="submit" id="feedback-submit">Send</button>
+      </form>
+    </dialog>
+  </div>
+
+  <script src="/assets/js/library.js" defer></script>
+</body>
 </html>
