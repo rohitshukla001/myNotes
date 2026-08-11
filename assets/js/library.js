@@ -194,6 +194,21 @@
     themeBtn.title = label;
   }
 
+  var searchbar = document.querySelector('.searchbar');
+  var searchSlot = document.getElementById('search-slot');
+  var headActions = document.querySelector('.head-actions');
+  var narrow = matchMedia('(max-width: 48rem)');
+
+  function placeSearch() {
+    var target = narrow.matches ? searchSlot : headActions;
+    if (searchbar.parentNode !== target) target.prepend(searchbar);
+  }
+
+  narrow.addEventListener('change', placeSearch);
+  window.addEventListener('resize', placeSearch);
+  window.addEventListener('orientationchange', placeSearch);
+  placeSearch();
+
   form.addEventListener('submit', function (e) { e.preventDefault(); });
   input.addEventListener('input', apply);
 
