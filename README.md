@@ -48,7 +48,7 @@ notes/
 │   │   └── library.css        Components
 │   ├── js/
 │   │   └── library.js         Search, filtering, accordion, theme, feedback
-│   └── fonts/                 Calibri, self-hosted as woff2
+│   └── fonts/                 Calibri, self-hosted (woff2 upright, ttf italics)
 │
 ├── notes/                     Every document, plus the architecture diagrams
 │   └── go-cheat-sheet/        Go, one topic per file

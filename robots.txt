@@ -1,2 +1,22 @@
+# Crawling is deliberately allowed.
+#
+# Every HTML page carries:
+#   <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+#
+# A crawler has to be able to fetch a page to read that directive. Blocking the
+# site here would prevent it from ever being seen, and a blocked URL can still be
+# listed in search results as a bare link with no description. Allowing the crawl
+# is what makes the noindex effective.
+
 User-agent: *
-Disallow: /
+Allow: /
+
+# PDFs are the exception, and for a specific reason: a PDF cannot carry a meta
+# robots tag, and GitHub Pages cannot send an X-Robots-Tag HTTP header, so there
+# is no noindex directive for a crawler to discover. Disallowing these paths is
+# the only control available for them. It stops the contents being read and
+# indexed; a URL could still be listed without a snippet if linked externally.
+
+Disallow: /notes/
+Disallow: /guide/
+Disallow: /docs/

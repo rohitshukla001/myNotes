@@ -58,7 +58,7 @@
             <li>
               <a class="rail-link" href="#sec-java" data-topic="java">
                 <span class="rail-label">Java &amp; Spring</span>
-                <span class="rail-count" data-count>43</span>
+                <span class="rail-count" data-count>46</span>
               </a>
             </li>
             <li>
@@ -70,19 +70,19 @@
             <li>
               <a class="rail-link" href="#sec-sysdes" data-topic="sysdes">
                 <span class="rail-label">System design</span>
-                <span class="rail-count" data-count>18</span>
+                <span class="rail-count" data-count>22</span>
               </a>
             </li>
             <li>
               <a class="rail-link" href="#sec-infra" data-topic="infra">
                 <span class="rail-label">Infra &amp; ops</span>
-                <span class="rail-count" data-count>10</span>
+                <span class="rail-count" data-count>11</span>
               </a>
             </li>
             <li>
               <a class="rail-link" href="#sec-sql" data-topic="sql">
                 <span class="rail-label">SQL &amp; data</span>
-                <span class="rail-count" data-count>10</span>
+                <span class="rail-count" data-count>12</span>
               </a>
             </li>
             <li>
@@ -148,20 +148,44 @@
           <summary class="topic-head">
             <svg class="chev" aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 3.5 5 4.5-5 4.5"></path></svg>
             <h2 class="topic-label">Java &amp; Spring</h2>
-            <span class="topic-count" data-count>43</span>
+            <span class="topic-count" data-count>45</span>
           </summary>
           <div class="topic-body">
             <ul class="rows">
-            <li data-keys="oop principles object oriented inheritance polymorphism java-oop-principles.pdf java sheet">
-              <a class="row" href="/notes/java-oop-principles.pdf" target="_blank" rel="noopener" data-row>
-                <span class="row-title">OOP principles</span>
-                <span class="row-kind">Cheat sheet</span>
+            <li data-keys="api backend development rest http status codes idempotency safety pagination keyset cursor versioning grpc graphql jwt oauth oidc idor mass assignment rate limiting timeouts retries circuit breaker idempotency key caching etag spring boot controlleradvice problem details observability api-backend-development.pdf java note">
+              <a class="row" href="/guide/api-backend-development.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">API and backend development</span>
+                <span class="row-kind">Notes</span>
               </a>
             </li>
-            <li data-keys="solid principles design principles java-solid-principles.pdf java sheet">
-              <a class="row" href="/notes/java-solid-principles.pdf" target="_blank" rel="noopener" data-row>
-                <span class="row-title">SOLID principles</span>
-                <span class="row-kind">Cheat sheet</span>
+            <li data-keys="design patterns gof gang of four creational structural behavioral singleton factory method builder adapter decorator facade proxy strategy observer template method command chain of responsibility design-patterns.pdf java note">
+              <a class="row" href="/guide/design-patterns.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Design patterns</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="oop object oriented programming four pillars encapsulation abstraction inheritance polymorphism information hiding leaky abstraction fragile base class alan kay messaging identity equality == equals hashcode contract reflexive symmetric transitive interned string pool immutability final defensive copy record compact constructor shallowly immutable abstract class interface default method diamond problem sealed type permits exhaustive switch expression problem static member method hiding constructor initialization order overridable method escape this overloading overriding static dispatch dynamic dispatch covariant return @override generics type erasure invariance covariance pecs producer extends consumer super wildcard composition delegation association aggregation ownership lifetime value object entity primitive obsession rich anemic domain model optional null object checked unchecked exception object-oriented-programming.pdf java note">
+              <a class="row" href="/guide/object-oriented-programming.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Object oriented programming</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="design principles solid srp ocp lsp isp dip dry kiss yagni coupling cohesion composition over inheritance law of demeter tell dont ask information hiding fail fast defensive programming pola design-principles.pdf java note">
+              <a class="row" href="/guide/design-principles.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Design principles</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="security fundamentals owasp top 10 2025 broken access control security misconfiguration software supply chain failures mishandling exceptional conditions same origin policy cors preflight access-control-allow-origin security headers content security policy nosniff referrer-policy permissions-policy frame-ancestors clickjacking path traversal file upload rate limiting abuse prevention credential stuffing brute force rebac threat modelling stride cia triad confidentiality integrity availability trust boundary defence in depth least privilege fail closed secure by default authentication authorization mfa multi factor webauthn passkey password storage argon2id bcrypt scrypt pbkdf2 salt pepper work factor session cookie httponly secure samesite session fixation jwt json web token alg none algorithm confusion access refresh token oauth 2.0 openid connect oidc authorization code pkce client credentials implicit deprecated rbac abac acl idor sql injection prepared statement parameterized query xss cross site scripting stored reflected dom contextual output encoding csp csrf cross site request forgery synchronizer token broken access control mass assignment ssrf server side request forgery 169.254.169.254 imds metadata encoding hashing encryption symmetric asymmetric hmac signature aes-gcm authenticated encryption tls mtls hsts certificate validation supply chain sbom log4shell dependency scanning secrets rotation security logging security-fundamentals.pdf java note">
+              <a class="row" href="/guide/security-fundamentals.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Security fundamentals</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="testing test pyramid ice cream cone testing trophy test levels purposes regression smoke acceptance risk based testing what not to test rest api testing status codes 401 403 unit test solitary sociable arrange act assert given when then junit 5 displayname nested parameterized csvsource methodsource property based jqwik shrinking test double dummy stub spy mock fake mockito verify meszaros classicist mockist london detroit chicago school integration test webmvctest datajpatest springboottest testcontainers serviceconnection postgres h2 contract testing pact spring cloud contract consumer driven end to end tdd red green refactor clock instant awaitility thread sleep flaky quarantine object mother test data builder fixture legacy characterization test seam feathers coverage line branch goodhart mutation testing pit pitest assertj bigdecimal testing.pdf java note">
+              <a class="row" href="/guide/testing.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Testing</span>
+                <span class="row-kind">Notes</span>
               </a>
             </li>
             <li data-keys="abstract classes &amp; interfaces  java-abstract-interface.pdf java sheet">
@@ -215,12 +239,6 @@
             <li data-keys="collections list map set hashmap java-collections.pdf java sheet">
               <a class="row" href="/notes/java-collections.pdf" target="_blank" rel="noopener" data-row>
                 <span class="row-title">Collections</span>
-                <span class="row-kind">Cheat sheet</span>
-              </a>
-            </li>
-            <li data-keys="testing junit mockito java_testing.pdf java sheet">
-              <a class="row" href="/notes/java_testing.pdf" target="_blank" rel="noopener" data-row>
-                <span class="row-title">Testing</span>
                 <span class="row-kind">Cheat sheet</span>
               </a>
             </li>
@@ -383,12 +401,6 @@
             <li data-keys="multithreading notes  multithreading.pdf java note">
               <a class="row" href="/notes/multithreading.pdf" target="_blank" rel="noopener" data-row>
                 <span class="row-title">Multithreading (notes)</span>
-                <span class="row-kind">Notes</span>
-              </a>
-            </li>
-            <li data-keys="oop notes  oops.pdf java note">
-              <a class="row" href="/notes/oops.pdf" target="_blank" rel="noopener" data-row>
-                <span class="row-title">OOP (notes)</span>
                 <span class="row-kind">Notes</span>
               </a>
             </li>
@@ -594,6 +606,30 @@
           </summary>
           <div class="topic-body">
             <ul class="rows">
+            <li data-keys="software architecture quality attributes ilities adr decision record layered hexagonal ports adapters clean onion modular monolith microservices distributed monolith service boundaries conway law team topologies ddd domain driven design ubiquitous language bounded context aggregate value object anticorruption layer context map event driven cqrs event sourcing c4 diagram fitness function archunit erosion strangler fig software-architecture.pdf sysdes note">
+              <a class="row" href="/guide/software-architecture.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Software architecture</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="system design interview framework requirements estimation capacity latency numbers load balancer l4 l7 api gateway stateless data store selection queue event stream object storage cdn search scaling reads writes availability redundancy nines fan-out url shortener base62 news feed feed timeline system-design.pdf sysdes note">
+              <a class="row" href="/guide/system-design.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">System design</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="caching cache aside read-through write-through write-behind refresh-ahead ttl invalidation eviction lru lfu w-tinylfu stampede thundering herd penetration avalanche bloom filter hot key redis memcached caffeine cacheable cdn etag cache-control stale-while-revalidate caching.pdf sysdes note">
+              <a class="row" href="/guide/caching.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Caching</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="distributed systems partial failure fallacies two generals clock skew lamport happens-before vector clock linearizability causal eventual consistency cap pacelc quorum consensus raft leader election split brain fencing token exactly-once at-least-once kafka partitions consumer group saga outbox backpressure load shedding distributed lock distributed-systems.pdf sysdes note">
+              <a class="row" href="/guide/distributed-systems.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Distributed systems</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
             <li data-keys="networking primer tcp http dns networking-primer.pdf sysdes sheet">
               <a class="row" href="/notes/networking-primer.pdf" target="_blank" rel="noopener" data-row>
                 <span class="row-title">Networking primer</span>
@@ -636,12 +672,6 @@
                 <span class="row-kind">Cheat sheet</span>
               </a>
             </li>
-            <li data-keys="caching strategy cache aside write through caching-strategy.pdf sysdes sheet">
-              <a class="row" href="/notes/caching-strategy.pdf" target="_blank" rel="noopener" data-row>
-                <span class="row-title">Caching strategy</span>
-                <span class="row-kind">Cheat sheet</span>
-              </a>
-            </li>
             <li data-keys="rate limiting throttle token bucket rate-limiting.pdf sysdes sheet">
               <a class="row" href="/notes/rate-limiting.pdf" target="_blank" rel="noopener" data-row>
                 <span class="row-title">Rate limiting</span>
@@ -678,24 +708,6 @@
                 <span class="row-kind">Cheat sheet</span>
               </a>
             </li>
-            <li data-keys="system design  system_design.pdf sysdes sheet">
-              <a class="row" href="/notes/system_design.pdf" target="_blank" rel="noopener" data-row>
-                <span class="row-title">System design</span>
-                <span class="row-kind">Cheat sheet</span>
-              </a>
-            </li>
-            <li data-keys="system design 2  system_design_2.pdf sysdes sheet">
-              <a class="row" href="/notes/system_design_2.pdf" target="_blank" rel="noopener" data-row>
-                <span class="row-title">System design 2</span>
-                <span class="row-kind">Cheat sheet</span>
-              </a>
-            </li>
-            <li data-keys="system design concepts  system_design_concepts.pdf sysdes note">
-              <a class="row" href="/notes/system_design_concepts.pdf" target="_blank" rel="noopener" data-row>
-                <span class="row-title">System design concepts</span>
-                <span class="row-kind">Notes</span>
-              </a>
-            </li>
             <li data-keys="temporal workflow durable execution orchestration temporal-workflow.pdf sysdes note">
               <a class="row" href="/notes/temporal-workflow.pdf" target="_blank" rel="noopener" data-row>
                 <span class="row-title">Temporal workflow</span>
@@ -709,10 +721,22 @@
           <summary class="topic-head">
             <svg class="chev" aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 3.5 5 4.5-5 4.5"></path></svg>
             <h2 class="topic-label">Infra &amp; ops</h2>
-            <span class="topic-count" data-count>10</span>
+            <span class="topic-count" data-count>12</span>
           </summary>
           <div class="topic-body">
             <ul class="rows">
+            <li data-keys="cloud devops dora deployment frequency lead time iaas paas faas saas shared responsibility region availability zone egress spot container namespaces cgroups jvm maxrampercentage exit 137 dockerfile multi-stage kubernetes pod deployment service ingress requests limits liveness readiness probe hpa ci cd pipeline release canary blue-green terraform infrastructure as code state drift secrets vault alerting on-call incident postmortem error budget toil sre cloud-and-devops.pdf infra note">
+              <a class="row" href="/guide/cloud-and-devops.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Cloud and DevOps</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="observability production engineering monitoring telemetry instrumentation resource attributes micrometer opentelemetry otel otlp collector exporter pipeline metric types counter gauge histogram summary cardinality label explosion red use golden signals structured logging mdc log levels sampling tracing context propagation traceparent head tail sampling percentiles p99 tail latency amplification coordinated omission hdrhistogram wrk2 thread dump jcmd heap dump memory leak eclipse mat dominator tree garbage collection young mixed full g1 zgc gc log jfr java flight recorder async-profiler flame graph safepoint bias load test stress soak spike chaos engineering blast radius production readiness observability.pdf infra note">
+              <a class="row" href="/guide/observability.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Observability and production engineering</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
             <li data-keys="docker container image docker.pdf infra sheet">
               <a class="row" href="/notes/docker.pdf" target="_blank" rel="noopener" data-row>
                 <span class="row-title">Docker</span>
@@ -737,10 +761,10 @@
                 <span class="row-kind">Cheat sheet</span>
               </a>
             </li>
-            <li data-keys="git rebase merge branch git.pdf infra sheet">
-              <a class="row" href="/notes/git.pdf" target="_blank" rel="noopener" data-row>
-                <span class="row-title">Git</span>
-                <span class="row-kind">Cheat sheet</span>
+            <li data-keys="git engineering practices object model blob tree commit tag content addressed refs branches head detached head origin index staging area merge rebase fast forward three way merge base rewrite history amend interactive rebase squash fixup force with lease ff-only no-ff fetch pull clone remote tracking ref ahead behind diverged reset soft mixed hard revert restore switch reflog recover deleted branch worktree bisect skip secret rotation api key leaked branch protection codeowners required status checks hooks pre-commit no-verify stash cherry-pick conflict rerere bisect binary search branching strategy git flow github flow trunk based development commit hygiene atomic commit conventional commits hooks pre-commit pull request code review shipping incomplete work feature flag branch by abstraction expand contract monorepo polyrepo semantic versioning semver hyrum law tags annotated release notes describe git-and-engineering-practices.pdf infra note">
+              <a class="row" href="/guide/git-and-engineering-practices.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Git and engineering practices</span>
+                <span class="row-kind">Notes</span>
               </a>
             </li>
             <li data-keys="logging &amp; observability  logging-observability.pdf infra sheet">
@@ -780,10 +804,22 @@
           <summary class="topic-head">
             <svg class="chev" aria-hidden="true" width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 3.5 5 4.5-5 4.5"></path></svg>
             <h2 class="topic-label">SQL &amp; data</h2>
-            <span class="topic-count" data-count>10</span>
+            <span class="topic-count" data-count>12</span>
           </summary>
           <div class="topic-body">
             <ul class="rows">
+            <li data-keys="database fundamentals rdbms keys primary foreign surrogate normalization 1nf 2nf 3nf denormalize index b-tree composite index leftmost prefix query plan explain locking deadlock replication sharding partitioning nosql cap connection pool hikari n+1 database-fundamentals.pdf sql note">
+              <a class="row" href="/guide/database-fundamentals.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">Database fundamentals</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
+            <li data-keys="acid transactions atomicity consistency isolation durability isolation levels dirty read phantom read lost update write skew mvcc wal snapshot isolation outbox saga acid.pdf sql note">
+              <a class="row" href="/guide/acid.pdf" target="_blank" rel="noopener" data-row>
+                <span class="row-title">ACID transactions</span>
+                <span class="row-kind">Notes</span>
+              </a>
+            </li>
             <li data-keys="sql basics select join where sql-basics.pdf sql sheet">
               <a class="row" href="/notes/sql-basics.pdf" target="_blank" rel="noopener" data-row>
                 <span class="row-title">SQL basics</span>
@@ -995,8 +1031,8 @@
           </summary>
           <div class="topic-body">
             <ul class="rows">
-            <li data-keys="new hire academy onboarding new%20hire%20academy%20.pdf workplace note">
-              <a class="row" href="/docs/New%20Hire%20Academy%20.pdf" target="_blank" rel="noopener" data-row>
+            <li data-keys="new hire academy onboarding new-hire-academy.pdf workplace note">
+              <a class="row" href="/docs/new-hire-academy.pdf" target="_blank" rel="noopener" data-row>
                 <span class="row-title">New hire academy</span>
                 <span class="row-kind">Notes</span>
               </a>

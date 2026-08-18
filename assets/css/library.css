@@ -194,6 +194,13 @@
 }
 .row:hover { background:var(--surface-raised); border-color:var(--line-strong); color:var(--ink); }
 .row-title { min-width:0; margin-right:auto; overflow-wrap:anywhere; }
+
+/* Guide documents are marked automatically. Any row whose link points into
+   /guide/ gets the pin, so a new entry needs no change here or in the markup.
+   Decorative only: it is a pseudo-element, so it stays out of the DOM text and
+   therefore out of the search index that library.js builds from .row-title. */
+.row[href^="/guide/"] .row-title::after { content:" \1F4CD"; }
+
 .row-ext { color:var(--ink-muted); }
 .row-kind { flex:none; font-size:var(--text-xs); color:var(--ink-muted); white-space:nowrap; }
 
